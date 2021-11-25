@@ -23,11 +23,11 @@ public class UserDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, pass);
 
-			System.out.println("Database ¿¬°á ¼º°ø!");
+			System.out.println("Database ì—°ê²° ì„±ê³µ!");
 		} catch (ClassNotFoundException e) {
-			System.out.println("DB µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ :" + e.toString());
+			System.out.println("DB ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨ :" + e.toString());
 		} catch (SQLException sql) {
-			System.out.println("DB Á¢¼Ó½ÇÆĞ :" + sql.toString());
+			System.out.println("DB ì ‘ì†ì‹¤íŒ¨ :" + sql.toString());
 		} catch (Exception e) {
 			System.out.println("Unkonwn error");
 			e.printStackTrace();
@@ -43,38 +43,49 @@ public class UserDao {
 			System.out.println(query);
 			
 			rs = pstmt.executeQuery();
-			// ¾ÆÀÌµğ°¡ ÀÖ´Â °æ¿ì
+			// ì•„ì´ë””ê°€ ìˆëŠ” ê²½ìš°
 			if (rs.next()) {
-				// ºñ¹Ğ¹øÈ£ °Ë»ç
+				// ë¹„ë°€ë²ˆí˜¸ ê²€ì‚¬
 				if (rs.getString(1).equals(USER_PWD)) {
-					return 1; // ·Î±×ÀÎ ¼º°ø
+					
+					return 1; // ë¡œê·¸ì¸ ì„±ê³µ
 				} else
-					return 0; // Àß¸øµÈ ºñ¹Ğ¹øÈ£
+					return 0; // ì˜ëª»ëœ ë¹„ë°€ë²ˆí˜¸
 			}
-			return -1; // ¾ÆÀÌµğ°¡ ¾ø´Â °æ¿ì
+			return -1; // ì•„ì´ë””ê°€ ì—†ëŠ” ê²½ìš°
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -2; // µ¥ÀÌÅÍº£ÀÌ½º ÀÚÃ¼ ¿À·ù
+		return -2; // ë°ì´í„°ë² ì´ìŠ¤ ìì²´ ì˜¤ë¥˜
 	}
 
 	public int join(User user) {
+		
+		//user.setUserIDNull();
+		//user.setUserPasswordNull();
+		//for test
+		//System.out.println(user.getUserID());
+		//System.out.println(user.getUserPassword());
+		
+		
+		
+		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?)";
 
-		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?) commit";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, user.getUserPassword());
+			pstmt.setString(1, user.getUserAddress());
+			pstmt.setString(2, user.getUserPhone());
 			pstmt.setString(3, user.getUserName());
-			pstmt.setString(4, user.getUserAddress());
-			pstmt.setString(5, user.getUserPhone());
+			pstmt.setString(4, user.getUserPassword());
+			pstmt.setString(5, user.getUserID());
+			
 			
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1;// DB¿À·ù
+		return -1;// DBì˜¤ë¥˜
 	}
 
 }
