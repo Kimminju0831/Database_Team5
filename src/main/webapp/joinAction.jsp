@@ -75,7 +75,7 @@ request.setCharacterEncoding("UTF-8");
 		else {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href = 'Main.html'");
+			script.println("location.href = 'login.jsp'");
 			script.println("</script>");
 		}
 	}

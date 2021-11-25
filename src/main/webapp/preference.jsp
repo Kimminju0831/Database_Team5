@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!-- import JDBC package -->
-<%@ page language = "java" import = "java.text.*, java.sql.*" %>    
+<%@ page import="user.UserDao"%>
+<%@ page language = "java" import = "java.text.*, java.sql.*" %>   
+
+<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:setProperty name="user" property="userID" />
+<jsp:setProperty name="user" property="userPassword" />
+<jsp:setProperty name="user" property="userName" />
+<jsp:setProperty name="user" property="userAddress" />
+<jsp:setProperty name="user" property="userPhone" />
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +23,7 @@
 	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
-	String user = "university";
+	String dbuser = "university";
 	String pass = "aaaa";
 	String url = "jdbc:oracle:thin:@"+serverIP + ":"+portNum+":"+strSID;
 	
@@ -22,12 +31,19 @@
 	PreparedStatement pstmt;
 	ResultSet rs;
 	Class.forName("oracle.jdbc.driver.OracleDriver");
-	conn = DriverManager.getConnection(url, user, pass);
+	conn = DriverManager.getConnection(url, dbuser, pass);
 	
 	System.out.println("Connect Success!");
 	conn.close();
 
 	//======================================================================================//
+	
+	UserDao userDAO = new UserDao();
+	
+	out.println("<a> æ»≥Á«œººø‰,");
+	
+	out.println(user.getUserID());
+	out.println(" ¥‘, π›∞©Ω¿¥œ¥Ÿ. <a> <br><br>");
 	
 	request.setCharacterEncoding("UTF-8");
 	String D_preference = request.getParameter("D_preference");
