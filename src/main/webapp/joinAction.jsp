@@ -12,11 +12,11 @@ request.setCharacterEncoding("UTF-8");
 <jsp:setProperty name="user" property="userName" />
 <jsp:setProperty name="user" property="userAddress" />
 <jsp:setProperty name="user" property="userPhone" />
-
+  
 
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <title>joinAction</title>
 </head>
