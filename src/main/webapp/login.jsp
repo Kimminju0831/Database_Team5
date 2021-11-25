@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<%
+
+
+%>
 	<form method="post" action="loginAction.jsp">
 		<h3>로그인</h3>
 		<input type="text" placeholder="아이디" name="userID" maxlength="50">

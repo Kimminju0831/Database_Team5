@@ -34,16 +34,16 @@ request.setCharacterEncoding("UTF-8");
 		userID = (String) session.getAttribute("userID");
 
 	}
-	if (userID != null) {
-
+	
+	/*if (userID != null) {
 		//for test
 		System.out.println("1");
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('이미 로그인 되어있습니다.')");
-		script.println("location.href='Main.html'");
+		script.println("location.href='login.jsp'");
 		script.println("</script>");
-	}
+	}*/
 	//for test
 	System.out.println(user.getUserID() + " " + user.getUserPassword() +" "+ user.getUserName()
 	+" "+ user.getUserAddress()+" "+ user.getUserPhone());
@@ -76,7 +76,7 @@ request.setCharacterEncoding("UTF-8");
 		else {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href = 'Main.html'");
+			script.println("location.href = 'login.jsp'");
 			script.println("</script>");
 		}
 	}

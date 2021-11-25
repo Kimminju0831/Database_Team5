@@ -33,7 +33,7 @@ request.setCharacterEncoding("UTF-8");
 		session.setAttribute("userID", user.getUserID());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = 'Main.html'");
+		script.println("location.href = 'Main.jsp'");
 		script.println("</script>");
 		
 	} else if (result == 0) { // 로그인 실패
