@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="Users.UserDao"%>
+<%@ page import="user.UserDao"%>
 
 <%@ page import="java.io.PrintWriter"%>
 <%
 request.setCharacterEncoding("UTF-8");
 %>
 
-<jsp:useBean id="user" class="Users.User" scope="page"></jsp:useBean>
+<jsp:useBean id="user" class="user.User" scope="page"></jsp:useBean>
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
@@ -25,15 +25,18 @@ request.setCharacterEncoding("UTF-8");
 <body>
 	<%
 	UserDao userDAO = new UserDao();
-
-	int result = userDAO.login(user.getUserID(), user.getUserPassword());
+	
+	String C_ID = request.getParameter("userID");
+	String C_PW = request.getParameter("userPassword");
+	
+	int result = userDAO.login(C_ID, C_PW);
 
 	//로그인 성공
 	if (result == 1) {
 		session.setAttribute("userID", user.getUserID());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = 'Main.jsp'");
+		script.println("location.href = 'Main.html'");
 		script.println("</script>");
 		
 	} else if (result == 0) { // 로그인 실패

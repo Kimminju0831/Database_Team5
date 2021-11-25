@@ -15,7 +15,6 @@ public class User {
 		this.userID = userID;
 	}
 
-
 	public String getUserPassword() {
 		return userPassword;
 	}
@@ -24,18 +23,6 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-//
-	public void setUserIDNull() {
-		this.userID = null;
-	}
-
-	public void setUserPasswordNull() {
-		this.userPassword = null;
-	}
-
-	//
-	
-	
 	public String getUserName() {
 		return userName;
 	}

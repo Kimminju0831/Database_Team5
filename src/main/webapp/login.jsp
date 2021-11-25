@@ -8,19 +8,20 @@
 </head>
 <body>
 
-<%
-
-
-%>
 	<form method="post" action="loginAction.jsp">
 		<h3>로그인</h3>
+		
 		<input type="text" placeholder="아이디" name="userID" maxlength="50">
-		<br> <input type="password" placeholder="비밀번호"
-			name="userPassword" maxlength="50"> <br> 
-			<input
-			type="submit" value="로그인">
+		
+		<br> 
+		
+		<input type="text" placeholder="비밀번호" name="userPassword" maxlength="50"> <br> 
 			
-			<a href = "join.jsp">회원가입</a>
+		<br>
+		
+		<input type="submit" value="로그인">
+			
+		<a href = "join.jsp">회원가입</a>
 		
 	</form>
 
