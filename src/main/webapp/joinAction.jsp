@@ -6,7 +6,12 @@
 request.setCharacterEncoding("UTF-8");
 %>
 
+<<<<<<< HEAD:src/main/webapp/account/joinAction.jsp
 <jsp:useBean id="user" class="user.User" scope="page" />
+=======
+
+<jsp:useBean id="user" class="Users.User" scope="page"></jsp:useBean>
+>>>>>>> fecdf0867558b857240d6701c20f340e77cf4430:src/main/webapp/joinAction.jsp
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
@@ -16,7 +21,7 @@ request.setCharacterEncoding("UTF-8");
 
 <!DOCTYPE html>
 <html>
-<head> 
+<head>      
 <meta charset="UTF-8">
 <title>joinAction</title>
 </head>

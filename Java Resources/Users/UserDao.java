@@ -46,7 +46,6 @@ public class UserDao {
 			// 아이디가 있는 경우
 			if (rs.next()) {
 				// 비밀번호 검사
-				
 				if (rs.getString(1).equals(USER_PWD)) {
 					return 1; // 로그인 성공
 				} else

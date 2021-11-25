@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
                     
     
     
@@ -9,6 +10,20 @@
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp/java"/>
                         
+=======
+                
+    
+    
+    <wb-module deploy-name="TeamProject">
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp/java"/>
+                
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Java Resources"/>
+                                
+        
+>>>>>>> fecdf0867558b857240d6701c20f340e77cf4430
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/Java Resources"/>
@@ -18,6 +33,7 @@
         
         
         <property name="context-root" value="TeamProject"/>
+<<<<<<< HEAD
                                         
         
         
@@ -30,6 +46,17 @@
     </wb-module>
                 
 
+=======
+                                
+        
+        
+        <property name="java-output-path" value="/TeamProject/build/classes"/>
+                            
+    
+    
+    </wb-module>
+            
+>>>>>>> fecdf0867558b857240d6701c20f340e77cf4430
 
 
 </project-modules>
