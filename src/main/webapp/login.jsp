@@ -8,7 +8,14 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 
+=======
+<%
+
+
+%>
+>>>>>>> bb1888d0c3eb6c1ed0151f21badf08583a3fe2df
 	<form method="post" action="loginAction.jsp">
 		<h3>로그인</h3>
 		

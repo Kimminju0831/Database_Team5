@@ -6,12 +6,8 @@
 request.setCharacterEncoding("UTF-8");
 %>
 
-<<<<<<< HEAD:src/main/webapp/account/joinAction.jsp
-<jsp:useBean id="user" class="user.User" scope="page" />
-=======
 
-<jsp:useBean id="user" class="Users.User" scope="page"></jsp:useBean>
->>>>>>> fecdf0867558b857240d6701c20f340e77cf4430:src/main/webapp/joinAction.jsp
+<jsp:useBean id="user" class="user.User" scope="page"></jsp:useBean>
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
@@ -38,16 +34,16 @@ request.setCharacterEncoding("UTF-8");
 		userID = (String) session.getAttribute("userID");
 
 	}
-	if (userID != null) {
-
+	
+	/*if (userID != null) {
 		//for test
 		System.out.println("1");
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('이미 로그인 되어있습니다.')");
-		script.println("location.href='Main.html'");
+		script.println("location.href='login.jsp'");
 		script.println("</script>");
-	}
+	}*/
 	//for test
 	System.out.println(user.getUserID() + " " + user.getUserPassword() +" "+ user.getUserName()
 	+" "+ user.getUserAddress()+" "+ user.getUserPhone());
