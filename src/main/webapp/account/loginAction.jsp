@@ -24,15 +24,21 @@ request.setCharacterEncoding("UTF-8");
 <body>
 	<%
 	UserDao userDAO = new UserDao();
+	
+	String C_ID = request.getParameter("userID");
+	String C_PW = request.getParameter("userPassword");
+	
+//	System.out.println(C_ID+C_PW);
 
-	int result = userDAO.login(user.getUserID(), user.getUserPassword());
-
+	int result = userDAO.login(C_ID, C_PW);
+	
+	
 	//로그인 성공
 	if (result == 1) {
 		session.setAttribute("userID", user.getUserID());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href = 'preference.html'");
+		script.println("location.href = 'Main.html'");
 		script.println("</script>");
 		
 	} else if (result == 0) { // 로그인 실패

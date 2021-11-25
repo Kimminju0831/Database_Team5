@@ -35,15 +35,13 @@ public class UserDao {
 	}
 
 	public int login(String USER_ID, String USER_PWD) {
-		String query = "select USER_PWD from USERS where USER_ID = ?";
-
-		// for test
-		System.out.println(query);
-
+		String query = "select USER_PWD from USERS where USER_ID = '" + USER_ID + "'";
+		
 		try {
 			pstmt = conn.prepareStatement(query);
 
-			pstmt.setString(1, USER_ID);
+			System.out.println(query);
+			
 			rs = pstmt.executeQuery();
 			// 아이디가 있는 경우
 			if (rs.next()) {
@@ -63,7 +61,7 @@ public class UserDao {
 
 	public int join(User user) {
 
-		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?)";
+		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?) commit";
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, user.getUserID());
