@@ -62,14 +62,15 @@ public class UserDao {
 
 	public int join(User user) {
 
-		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?) commit";
+		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?)";
 		try {
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, user.getUserPassword());
-			pstmt.setString(3, user.getUserName());
-			pstmt.setString(4, user.getUserAddress());
-			pstmt.setString(5, user.getUserPhone());
+			 pstmt = conn.prepareStatement(SQL);
+	         pstmt.setString(1, user.getUserAddress());
+	         pstmt.setString(2, user.getUserPhone());
+	         pstmt.setString(3, user.getUserName());
+	         pstmt.setString(4, user.getUserPassword());
+	         pstmt.setString(5, user.getUserID());
+
 			
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
