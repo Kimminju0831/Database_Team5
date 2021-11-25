@@ -6,7 +6,8 @@
 request.setCharacterEncoding("UTF-8");
 %>
 
-<jsp:useBean id="user" class="Users.User" scope="page" />
+
+<jsp:useBean id="user" class="Users.User" scope="page"></jsp:useBean>
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
@@ -16,7 +17,7 @@ request.setCharacterEncoding("UTF-8");
 
 <!DOCTYPE html>
 <html>
-<head> 
+<head>      
 <meta charset="UTF-8">
 <title>joinAction</title>
 </head>
