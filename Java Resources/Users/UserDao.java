@@ -49,6 +49,7 @@ public class UserDao {
 			if (rs.next()) {
 				// 비밀번호 검사
 				if (rs.getString(1).equals(USER_PWD)) {
+					
 					return 1; // 로그인 성공
 				} else
 					return 0; // 잘못된 비밀번호
@@ -62,15 +63,24 @@ public class UserDao {
 	}
 
 	public int join(User user) {
-
+		
+		//user.setUserIDNull();
+		//user.setUserPasswordNull();
+		//for test
+		//System.out.println(user.getUserID());
+		//System.out.println(user.getUserPassword());
+		
+		
+		
 		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, user.getUserID());
-			pstmt.setString(2, user.getUserPassword());
+			pstmt.setString(1, user.getUserAddress());
+			pstmt.setString(2, user.getUserPhone());
 			pstmt.setString(3, user.getUserName());
-			pstmt.setString(4, user.getUserAddress());
-			pstmt.setString(5, user.getUserPhone());
+			pstmt.setString(4, user.getUserPassword());
+			pstmt.setString(5, user.getUserID());
+			
 			
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
