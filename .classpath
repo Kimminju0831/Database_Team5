@@ -17,5 +17,6 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="src/main/java"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
