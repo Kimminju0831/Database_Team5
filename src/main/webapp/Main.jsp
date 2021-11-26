@@ -26,9 +26,14 @@ if (session.getAttribute("userID") == null) {
 %>
 
 	<a href = 'Delete_path.jsp'>회원 탈퇴 페이지</a>
+	<br>
 	<a href = 'Mypage.jsp'>마이 페이지</a>
+	<br>
 	<a href = 'prefer.jsp'>취향 페이지</a>
+	<br>
 	<a href = 'support.html'>지원 페이지</a>
+	<br>
+	<a href = 'Donation_list.jsp'>기부 목록 페이지</a>
 	
 <% 
 }
