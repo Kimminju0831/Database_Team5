@@ -72,10 +72,11 @@
 		<h3>게시판 목록</h3>
 		<table width="900">
 			<tr>
-				<td width = "20%">번호</td>
+				<td width = "10%">번호</td>
 				<td width = "20%">기간</td>
-				<td width = "20%">수혜자</td>
+				<td width = "30%">수혜자</td>
 				<td width = "20%">단체명</td>
+				<td width = "10%">신청</td>
 			</tr>
 			
 			<%
@@ -86,11 +87,18 @@
 			%>
 			
 			<tr>
+			<form method="post" action = "Donation_Content.jsp">
 				<td><%=board.getn() %></td>	
 				<td><%=board.getip() %></td>
-				<td><%=board.getid() %></td>
+				<td><%=board.getcontent() %></td>
 				<td><%=board.gettitle() %></td>
-				
+				<input type = "hidden" name = "org_id" value = <%=board.getid() %>>
+				<input type = "hidden" name = "no" value = <%=board.getn() %>>
+				<input type = "hidden" name = "period" value = <%=board.getip() %>>
+				<input type = "hidden" name = "benefit" value = <%=board.getcontent() %>>
+				<input type = "hidden" name = "name" value = <%=board.gettitle() %>>
+				<td><input type="submit" value="참여하기"></td>
+			</form>
 			</tr>
 			
 			<tr>
