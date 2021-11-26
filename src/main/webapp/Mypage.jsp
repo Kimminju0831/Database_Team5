@@ -2,8 +2,6 @@
     pageEncoding="EUC-KR"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
-<%@	page import="java.time.LocalDate" %>
-<%@ page import="java.time.ZoneId" %>
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>   
 
 <jsp:useBean id="user" class="user.User" scope="page" />
@@ -32,11 +30,13 @@
 	String url = "jdbc:oracle:thin:@"+serverIP + ":"+portNum+":"+strSID;
 	
 	Connection conn = null;
-	PreparedStatement pstmt;
-	ResultSet rs;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	conn = DriverManager.getConnection(url, dbuser, pass);
-
+	conn.setAutoCommit(false);
+		
 	//======================================================================================//
 	
 	String userid = "";
@@ -51,60 +51,61 @@
 		
 	
 	request.setCharacterEncoding("UTF-8");
-	String D_preference = request.getParameter("D_preference");
+	out.println("<br><br>" + userid + " 님의 마이페이지 입니다." + " <br><br>");
 	
-	String P_preference = request.getParameter("P_preference");
+	// select donation_type, beneficiary from donation_preference where u_id = 'admin1';
 	
-	String D_period = request.getParameter("D_period");
-	
-	// insert into DONATION_PREFERENCE (DONATION_TYPE, BENEFICIARY, U_ID, DUSER_ID) 
-	//	values ('LONG', 'ABANDONED PETS', '661-05-9723', '661-05-9723');
-	
-	sql = "insert into DONATION_PREFERENCE (DONATION_TYPE, BENEFICIARY, U_ID, DUSER_ID) "+
-			"values ('"+ D_period + "', '" + D_preference + "', '" + userid + "', '" + userid + "') ";
-	
-	System.out.println(sql);
+	sql = "SELECT donation_type, beneficiary "
+		 + "FROM donation_preference WHERE u_id = '"+ userid +"'";
 	
 	try {
-		pstmt = conn.prepareStatement(sql);
-
 		System.out.println(sql);
+	
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
 		
-		rs = pstmt.executeQuery();
+		if(rs.next()){
+			System.out.println(rs.getString(1));
+			System.out.println(rs.getString(2));
+			
+			out.println("<p>"+ userid+ "님의 기부 취향은 " +
+			rs.getString(1) + " " + rs.getString(2) + "</p>");
 		}
+		
+		//out.println("<p>" + donation_t + " " + beneficiary+ "</p>")
+		
+	}
 	catch (Exception e) {
 		e.printStackTrace();
 	}
 	
+	sql = "SELECT product_type, product_name "
+			 + "FROM preference WHERE us_id = '"+ userid +"'";
 	
-	request.setCharacterEncoding("UTF-8");
-	
-	String gift = request.getParameter("gift");
-	
-	String gift_type = request.getParameter("gift_type");
-	
-	LocalDate now = LocalDate.now();
-	
-	//insert into PREFERENCE (Product_name, R_Date, Product_type, Us_id) values ('COMPACT CUSHION', TO_DATE('2021-04-17', 'yyyy-mm-dd'), 'COSMETICS', '354-64-4664');
-	
-	sql = "insert into PREFERENCE (Product_name, R_Date, Product_type, Us_id) values ('" + gift_type + "', TO_DATE('" + now + "', 'yyyy-mm-dd'), '" + gift + "', '" + userid + "')";
-	
-	System.out.println(sql);
 	
 	try {
-		pstmt = conn.prepareStatement(sql);
-
 		System.out.println(sql);
+	
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
 		
-		rs = pstmt.executeQuery();
+		if(rs.next()){
+			System.out.println(rs.getString(1));
+			System.out.println(rs.getString(2));
+			
+			out.println("<p>"+ userid+ "님의 선물 취향은 " +
+			rs.getString(1) + " " + rs.getString(2) + "</p>");
 		}
+		
+		
+	}
 	catch (Exception e) {
 		e.printStackTrace();
 	}
 	
+	rs.close();
 	conn.close();
 
 %>
-<a href = 'Main.jsp'>메인 페이지</a>
 </body>
 </html>
