@@ -8,8 +8,6 @@
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAddress" />
-<jsp:setProperty name="user" property="userPhone" />
 <!DOCTYPE html>
 <html>
 <head>
