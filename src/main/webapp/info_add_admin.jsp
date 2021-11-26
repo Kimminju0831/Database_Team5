@@ -39,14 +39,14 @@
 		String name = request.getParameter("name");
 		String phone = request.getParameter("phone");
 		String D_preference = request.getParameter("D_preference");
-		
+		String D_period = request.getParameter("D_period");
 		String gift = request.getParameter("gift");
 		
 		String gift_type = request.getParameter("gift_type");
 		
 		LocalDate now = LocalDate.now();
 		
-		String D_period = request.getParameter("D_period");
+		
 	%>
 	
 	<%
@@ -61,7 +61,7 @@
         
         if(check_id.equals("000-00-000"))
         {
-        	String check_pw_sql = "select user_pwd from users WHERE user_id= '"+ adminpw +"'";
+        	String check_pw_sql = "select user_pwd from users WHERE user_id= '"+ check_id +"'";
 			String check_pwd = "";
         	rs = stmt.executeQuery(check_pw_sql);
         	while(rs.next()) {
@@ -69,7 +69,7 @@
         	}
         
         
-        	if(check_id.equals("admin"))
+        	if(check_pwd.equals("admin"))
         	{
         		//아이디 중복체크
         		String check = "select user_id from users";
@@ -87,6 +87,7 @@
         		}
         		else if(repeat == 0)
         		{	
+        			conn.setAutoCommit(false);
         			String add = "insert into USERS (ADDRESS, PHONE, NAME, USER_PWD, USER_ID) values " + "('" + addr + "', '" + phone
                             + "', '" + name + "', '" + pw + "', '" + id + "')";
         			int cnt = stmt.executeUpdate(add);
@@ -106,6 +107,7 @@
               	  			{
               	  				out.println("기부취향, 선물 취향이 성공적으로 등록되었습니다. ");
               	  				out.println("<br/>");
+              	  				conn.commit();
               	  			}
               	  			else{
               	  				out.println("취향 등록에 실패했습니다. ");
@@ -120,7 +122,6 @@
               	  		out.println("가입에 실패하였습니다. ");
               	  		out.println("<br/>");
                 	}
-                    conn.commit();
             		out.println("<br/>");
         		}
         	}

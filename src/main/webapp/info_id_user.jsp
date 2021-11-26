@@ -79,6 +79,7 @@
         			}
         			else if(repeat == 0)
         			{
+        				conn.setAutoCommit(false);
         				out.println("변경이 가능한 아이디입니다.");
         				out.println("<br/>");
             			out.println("아이디를 변경하겠습니다. ");
@@ -94,6 +95,7 @@
                     	{
                   	  		out.println("아이디가 성공적으로 바뀌었습니다.");
                   	  		out.println("<br/>");
+                  	  		conn.commit();
                     	}
                     	else
                     	{

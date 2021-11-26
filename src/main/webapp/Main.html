@@ -1,18 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!-- import JDBC package -->
+<%@ page import="user.UserDao"%>
+<%@ page language = "java" import = "java.text.*, java.sql.*" %>   
+
+<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:setProperty name="user" property="userID" />
+<jsp:setProperty name="user" property="userPassword" />
+<jsp:setProperty name="user" property="userName" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Main page</title>
+<title>Insert title here</title>
 </head>
 <body>
+<%
+if (session.getAttribute("userID") == null) {
+	out.println("<a href='login.jsp'>ë¡œê·¸ì¸</a>");
+}else
+{
+	String userid = (String)session.getAttribute("userID");
+	out.println(userid+" ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤! <br>");
+	out.println("<a href='logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a>");
+	
+%>
 
+	<a href = 'Delete_path.jsp'>íšŒì› íƒˆí‡´ í˜ì´ì§€</a>
+	<a href = 'Mypage.jsp'>ë§ˆì´ í˜ì´ì§€</a>
+	<a href = 'prefer.jsp'>ì·¨í–¥ í˜ì´ì§€</a>
+	<a href = 'support.html'>ì§€ì› í˜ì´ì§€</a>
 	
-	<a href="preference.jsp">ÃëÇâ ÀÔ·Â ÆäÀÌÁö·Î ÀÌµ¿ÇÏ±â</a>
-	<br>
-	<a href="support.html">Áö¿ø ÆäÀÌÁö·Î ÀÌµ¿ÇÏ±â</a>
-	<br>
-	<a href="account/Delete.html">È¸¿ø Å»Åğ ÆäÀÌÁö·Î ÀÌµ¿ÇÏ±â</a>
-	<br>
-	
+<% 
+}
+%>
 </body>
 </html>

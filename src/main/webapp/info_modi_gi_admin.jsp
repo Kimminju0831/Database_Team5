@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 권한 사용자 추가</title>
+<title>관리자 권한 사용자 정보 수정</title>
 </head>
 <body>
 	
@@ -35,12 +35,17 @@
 		String adminpw = request.getParameter("adminpw");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		String reason = request.getParameter("reason");
+		String D_preference = request.getParameter("D_preference");
+		String D_period = request.getParameter("D_period");
+		String gift = request.getParameter("gift");
+		String gift_type = request.getParameter("gift_type");
+		LocalDate now = LocalDate.now();
+		
 	%>
 	
 	<%
 		int repeat = 0;
-		out.println("------ 관리자 권한 사용자 탈퇴 결과 ------ <br/><br/>");
+		out.println("------ 관리자 권한 사용자 정보 수정  ------ <br/><br/>");
 	 	String check_sql = "select user_id from users WHERE user_id='"+ adminid + "'";
      	String check_id = "";
         rs = stmt.executeQuery(check_sql);
@@ -61,18 +66,16 @@
         	if(check_pwd.equals("admin"))//관리자 비밀번호 검사
         	{
         		conn.setAutoCommit(false);
-        		String delete = "delete from users\n" + "where user_id = '" + id + "'\n" + "AND user_pwd = '" + pw + "'";
-        		int cnt = stmt.executeUpdate(delete);
-        		if(cnt == 1)
-        		{
-        			out.println(reason+ "의 이유로 " + id + "사용자를 성공적으로 탈퇴시켰습니다.");
-        			out.println("<br/>");
-        			conn.commit();
-        		}
-        		else{
-        			out.println("사용자 탈퇴에 실패했습니다. (사용자의 아이디, 비밀번호를 다시 확인하여주십시오.)");
-        			out.println("<br/>");
-        		}
+          	  	String sql = "update PREFERENCE set Product_name='"+gift_type +"', R_Date = TO_DATE('" + now + "', 'yyyy-mm-dd'), Product_type = '"+gift +"' WHERE US_ID='"+id +"'";
+          	  	int result = stmt.executeUpdate(sql);
+          	  	if(result == 1)
+          	  	{
+          	  		out.println("선물 취향 수정에 성공하였습니다.");
+          	  		conn.commit();
+          	  	}
+          	  	else{
+          	  		out.println("선물 취향 수정에 실패했습니다. ");
+          	  	}
         	}
         	else
         	{
