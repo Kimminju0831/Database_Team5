@@ -106,7 +106,7 @@
 			<a><input type="reset" value="Reset"><input type="submit" value="Submit"></a>
 	</form>
 	
-	<a href="Main.html">메인 페이지로 이동하기</a>
+	<a href="Main.jsp">메인 페이지로 이동하기</a>
 	<br>
 </body>
 </html>

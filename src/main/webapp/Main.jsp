@@ -8,6 +8,9 @@
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
+<jsp:setProperty name="user" property="userAddress" />
+<jsp:setProperty name="user" property="userPhone" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +23,8 @@ if (session.getAttribute("userID") == null) {
 }else
 {
 	String userid = (String)session.getAttribute("userID");
-	out.println(userid+" ´Ô ¹Ý°©½À´Ï´Ù! <br>");
+	String usert = (String)session.getAttribute("userType");
+	out.println(usert + " È¸¿ø | " + userid+" ´Ô ¹Ý°©½À´Ï´Ù! <br>");
 	out.println("<a href='logout.jsp'>·Î±×¾Æ¿ô</a>");
 	
 %>

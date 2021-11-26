@@ -28,12 +28,17 @@ request.setCharacterEncoding("UTF-8");
 	
 	String C_ID = request.getParameter("userID");
 	String C_PW = request.getParameter("userPassword");
+	String type = (String)request.getParameter("userType");
 	
-	int result = userDAO.login(C_ID, C_PW);
+	int result = userDAO.login(C_ID, C_PW, type);
 
 	//로그인 성공
 	if (result == 1) {
 		session.setAttribute("userID", user.getUserID());
+		user.setUsertype(type);
+		System.out.println(user.getUsertype());
+		session.setAttribute("userType", user.getUsertype());
+		System.out.println(user.getUsertype());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("location.href = 'Main.jsp'");

@@ -19,6 +19,13 @@
 			
 		<br>
 		
+		<p>Type</p>
+		<label><input type="checkbox" name="userType" value="basic">일반 사용자</label>
+		<label><input type="checkbox" name="userType" value="donate">기부 단체</label>
+		<label><input type="checkbox" name="userType" value="outsourcing">외주 업체</label>
+		
+		<br>
+		
 		<input type="submit" value="로그인">
 			
 		<a href = "join.jsp">회원가입</a>
