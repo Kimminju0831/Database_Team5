@@ -9,12 +9,21 @@
 <!DOCTYPE html5>
 <%
 
+	String best = "best";
+	String bene = "bene";
+	String period = "period";
+	String all = "all";
+	
 	int pageNum = 15;
 	
 	String PageNum = request.getParameter("pageNum");
-	
 	if(PageNum  == null){
 		PageNum  = "1";
+	}
+	
+	String mode = request.getParameter("mode");
+	if(mode == null){
+		mode = "all";
 	}
 	
 	int current = Integer.parseInt(PageNum);
@@ -23,11 +32,25 @@
 	int end = current * pageNum ;
 	
 	
-
-	DAO manager = DAO.getInstance();
-	List<ExBoardDTO> list = manager.getList();
+	String userid = (String)session.getAttribute("userID");
 	
-	int count = manager.get_data_num();		// 총 데이터 갯수
+	DAO manager = DAO.getInstance();
+	
+	List<ExBoardDTO> list = null;
+	
+	if(mode.compareTo("all")==0){
+		list = manager.getList();
+	}else if(mode.compareTo("best")==0){
+		list = manager.getList_best(userid);
+	}else if(mode.compareTo("bene")==0){
+		list = manager.getList_bene(userid);
+	}else if(mode.compareTo("period")==0){
+		list = manager.getList_period(userid);
+	}else{
+		list = manager.getList();
+	}
+	
+	int count = list.size();		// 총 데이터 갯수
 	
 	if(end>count){
 		end = count;
@@ -42,13 +65,17 @@
 </head>
 
 <body>
-
+		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=all%>">전체 보기</a>
+		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=best%>">베스트</a>
+		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=period%>">기간 맞춤</a>
+		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=bene%>">수혜자 맞춤</a>
 		<h3>게시판 목록</h3>
 		<table width="900">
 			<tr>
-				<td width = "10%">번호</td>
-				<td width = "10%">이름</td>
-				<td width = "10%">제목</td>
+				<td width = "20%">번호</td>
+				<td width = "20%">기간</td>
+				<td width = "20%">수혜자</td>
+				<td width = "20%">단체명</td>
 			</tr>
 			
 			<%
@@ -60,9 +87,12 @@
 			
 			<tr>
 				<td><%=board.getn() %></td>	
+				<td><%=board.getip() %></td>
 				<td><%=board.getid() %></td>
 				<td><%=board.gettitle() %></td>
+				
 			</tr>
+			
 			<tr>
 			<td>
 			<%
@@ -89,7 +119,7 @@
 						
 						if(startPagenum > Block){
 			%>
-						<a href="Donation_list.jsp?pageNum=<%=startPagenum - 10%>">[이전]</a>
+						<a href="Donation_list.jsp?pageNum=<%=startPagenum - 10%>&&mode=<%=mode%>">[이전]</a>
 			<%
 						}
 						
@@ -101,9 +131,9 @@
 			
 			<% 			
 							}else{
-								
+								 
 			%>
-							<a href="Donation_list.jsp?pageNum=<%=i %>">[<%=i %>]</a>		
+							<a href="Donation_list.jsp?pageNum=<%=i %>&&mode=<%=mode%>">[<%=i %>]</a>		
 			<%					
 								
 							}
@@ -112,7 +142,7 @@
 						if(endPagenum < pageCount){
 								
 			%>
-							<a href="Donation_list.jsp?pageNum=<%=startPagenum + 10 %>">[다음]</a>	
+							<a href="Donation_list.jsp?pageNum=<%=startPagenum + 10 %>&&mode=<%=mode%>">[다음]</a>	
 			<%
 						}
 			%>
