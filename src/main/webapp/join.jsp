@@ -18,7 +18,6 @@
 			<input type="text" placeholder="이름" name="userName" maxlength="50"> 
 			<input type="text" placeholder="주소" name="userAddress" maxlength="50"> 
 			<input type="text" placeholder="전화번호" name="userPhone" maxlength="50">
-
 			<input type="submit" value="회원가입">
 
 		</form>
