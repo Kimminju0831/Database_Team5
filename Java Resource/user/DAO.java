@@ -111,9 +111,7 @@ public class DAO {
 					paper.settitle(rs.getString(4));
 					paper.setid(rs.getString(6));
 					num++;
-					
-					System.out.println("처리중");
-					System.out.println(paper);
+
 					list.add(paper);
 				}while(rs.next());
 			}
@@ -167,8 +165,6 @@ public class DAO {
 					paper.setid(rs.getString(6));
 					num++;
 					
-					System.out.println("처리중");
-					System.out.println(paper);
 					list.add(paper);
 				}while(rs.next());
 			}
@@ -222,8 +218,7 @@ public class DAO {
 					paper.setid(rs.getString(6));
 					num++;
 					
-					System.out.println("처리중");
-					System.out.println(paper);
+	
 					list.add(paper);
 				}while(rs.next());
 			}
@@ -276,9 +271,56 @@ public class DAO {
 					paper.settitle(rs.getString(4));
 					paper.setid(rs.getString(6));
 					num++;
+
+					list.add(paper);
+				}while(rs.next());
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		}
+		
+		return list;
+	}
+	
+	public  List<DonateDTO> contain_donate (String userid) {
+	// 해당 사용자가 기부를 결정한 단체 리스트를 반환함.
+		
+		conn = connect();
+		
+		String SQL = "SELECT * FROM DONATE WHERE UD = '" + userid + "'";
+		 
+		System.out.println(SQL);
+		
+		List<DonateDTO> list = null;
+		
+		try {
+			pstmt = conn.createStatement();
+			
+			rs = pstmt.executeQuery(SQL);
+			
+			int num = 1;
+			
+			if(rs.next()) {
+				list = new ArrayList<>();
+				do {
+					DonateDTO paper = new DonateDTO();
+					paper.setn(num);
+					paper.setorgid(rs.getString(1));
+					paper.setorgname(rs.getString(2));
+					paper.setuid(rs.getString(3));
+					num++;
 					
-					System.out.println("처리중");
-					System.out.println(paper);
 					list.add(paper);
 				}while(rs.next());
 			}
