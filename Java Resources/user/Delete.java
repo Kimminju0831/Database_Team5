@@ -1,13 +1,6 @@
 package user;
 
 import java.sql.*;
-import java.text.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
 public class Delete {
 
@@ -72,8 +65,8 @@ public class Delete {
 						System.out.println(sql);
 						pstmt = conn.createStatement();
 						int res = pstmt.executeUpdate(sql);
-						
-						return 1;
+						res = 1;
+						return res;
 					}catch (Exception e){
 							e.printStackTrace();
 					}	
@@ -175,8 +168,8 @@ public class Delete {
 					conn.setAutoCommit(false);
 					pstmt = conn.createStatement();
 					int res = pstmt.executeUpdate(sql);
-					
-					return 1; // 성공
+					res = 1;
+					return res; // 성공
 					}
 				catch (Exception e) {
 					e.printStackTrace();

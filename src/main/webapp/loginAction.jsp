@@ -38,6 +38,7 @@ request.setCharacterEncoding("UTF-8");
 		user.setUsertype(type);
 		System.out.println(user.getUsertype());
 		session.setAttribute("userType", user.getUsertype());
+		session.setAttribute("userPassword", user.getUserPassword());
 		System.out.println(user.getUsertype());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");

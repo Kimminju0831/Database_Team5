@@ -5,10 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import user.ExBoardDTO;
+
 
 public class UserDao {
 	private Connection conn;
@@ -99,4 +97,23 @@ public class UserDao {
 		return -1;// DB오류
 	}
 	
+	public int makedonate(String period, String ptype, String btype, String name, String pwd, String userid) {
+		
+		
+		String SQL = "insert into DONATION_ORGANIZATION " +
+					"(Donation_period, Donation_type, Beneficiary, Donation_organization_name, org_pwd, org_id) " +
+					"values ('"+ period + "', '" + ptype + "', '" + btype +"', '" + name +"', '" + pwd + "', '" + userid + "')";
+		
+		System.out.println(SQL);
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;// DB오류
+		
+	}
 }
