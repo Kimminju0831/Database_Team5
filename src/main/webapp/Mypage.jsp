@@ -53,7 +53,8 @@
 			<table width="900">
 				<tr>
 				<td width = "10%">번호</td>
-				<td width = "20%">단체명</td>
+				<td width = "10%">단체명</td>
+				<td width = "10%"></td>
 			</tr>
 <% 	
 	DAO manager2 = DAO.getInstance();
@@ -72,6 +73,7 @@
 		<tr>
 			<td><%=board.getn() %></td>
 			<td><%=board.getorgname() %></td>
+			<td><button>기부 해지</button></td>
 		</tr>
 <%
 		}

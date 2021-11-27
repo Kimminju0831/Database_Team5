@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
     <wb-module deploy-name="Team5_save">
+                
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Java Resource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Java Resources"/>
+                
         <property name="context-root" value="Team5_save"/>
+                
         <property name="java-output-path" value="/Team5_save/build/classes"/>
+            
     </wb-module>
+    
 </project-modules>
