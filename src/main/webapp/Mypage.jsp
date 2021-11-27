@@ -2,6 +2,12 @@
     pageEncoding="EUC-KR"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
+<%@ page import="user.DAO"%>
+<%@ page import="user.Select"%>
+<%@ page import="user.DonateDTO"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>   
 
 <jsp:useBean id="user" class="user.User" scope="page" />
@@ -10,102 +16,83 @@
 <jsp:setProperty name="user" property="userName" />
 <jsp:setProperty name="user" property="userAddress" />
 <jsp:setProperty name="user" property="userPhone" />
- 
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Preference insert page</title>
+<title>My page</title>
 </head>
 <body>
-
-<% 
-
-	String sql = "";
-	String serverIP = "localhost";
-	String strSID = "orcl";
-	String portNum = "1521";
-	String dbuser = "Team";
-	String pass = "aaaa";
-	String url = "jdbc:oracle:thin:@"+serverIP + ":"+portNum+":"+strSID;
 	
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
+<%
 	
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	conn = DriverManager.getConnection(url, dbuser, pass);
-	conn.setAutoCommit(false);
-		
-	//======================================================================================//
-	
-	String userid = "";
+	String userid = ""; 
 	if (session.getAttribute("userID") == null) {
-	   out.println("<a href='login.jsp'>로그인</a>");
+		out.println("<a href='login.jsp'>로그인</a>");
 	}else
 	{
-	   userid = (String)session.getAttribute("userID");
-	   out.println(userid+" 님 안녕하세요, 반갑습니다! <br>");
-	   out.println("<a href='logout.jsp'>  로그아웃</a>");
+		userid = (String)session.getAttribute("userID");
+		String usert = (String)session.getAttribute("userType");
+		out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
+		out.println("<a href='logout.jsp'>로그아웃</a>");
 	}
-		
 	
-	request.setCharacterEncoding("UTF-8");
-	out.println("<br><br>" + userid + " 님의 마이페이지 입니다." + " <br><br>");
+	out.println("<br><br>");	
+	out.println("<br><br>");
 	
-	// select donation_type, beneficiary from donation_preference where u_id = 'admin1';
+	Select manager = Select.getInstance();
+
+	String donation =  manager.my_donation(userid);
+	String present = manager.my_present(userid);
 	
-	sql = "SELECT donation_type, beneficiary "
-		 + "FROM donation_preference WHERE u_id = '"+ userid +"'";
+	out.println(donation);
+	out.println("<br>");
+	out.println(present);
+%>
+		<h3>기부 참여 목록</h3>
+			<table width="900">
+				<tr>
+				<td width = "10%">번호</td>
+				<td width = "10%">단체명</td>
+				<td width = "10%">단체아이디</td>
+				<td width = "10%"></td>
+			</tr>
+<% 	
+	DAO manager2 = DAO.getInstance();
 	
-	try {
-		System.out.println(sql);
+	List<DonateDTO> list = null;
 	
-		stmt = conn.createStatement();
-		rs = stmt.executeQuery(sql);
-		
-		if(rs.next()){
-			System.out.println(rs.getString(1));
-			System.out.println(rs.getString(2));
-			
-			out.println("<p>"+ userid+ "님의 기부 취향은 " +
-			rs.getString(1) + " " + rs.getString(2) + "</p>");
+	list = manager2.contain_donate(userid);
+	
+	int count = 0;
+	
+	if(list != null){
+		count = list.size();		// 총 데이터 갯수
+	}
+	
+	DonateDTO board  = null;
+	if(list != null){
+		for(int i = 0; i < count ; i++){
+			board = list.get(i);
+%>
+		<tr>
+			<td><%=board.getn() %></td>
+			<td><%=board.getorgname() %></td>
+			<td><%=board.getorgid() %></td>
+			<form method="post" action = "Donation_cancle.jsp">	
+			<input type = "hidden" name = "orgid" value = <%=board.getorgid() %>>
+			<td><input type="submit" value="기부 해지"></td>
+			</form>
+		</tr>
+<%
 		}
 		
-		//out.println("<p>" + donation_t + " " + beneficiary+ "</p>")
-		
 	}
-	catch (Exception e) {
-		e.printStackTrace();
-	}
-	
-	sql = "SELECT product_type, product_name "
-			 + "FROM preference WHERE us_id = '"+ userid +"'";
-	
-	
-	try {
-		System.out.println(sql);
-	
-		stmt = conn.createStatement();
-		rs = stmt.executeQuery(sql);
-		
-		if(rs.next()){
-			System.out.println(rs.getString(1));
-			System.out.println(rs.getString(2));
-			
-			out.println("<p>"+ userid+ "님의 선물 취향은 " +
-			rs.getString(1) + " " + rs.getString(2) + "</p>");
-		}
-		
-		
-	}
-	catch (Exception e) {
-		e.printStackTrace();
-	}
-	
-	rs.close();
-	conn.close();
 
 %>
+	</table>
+	
+	<a href = 'Main.jsp'>메인 페이지</a>
+	<br>
 </body>
 </html>

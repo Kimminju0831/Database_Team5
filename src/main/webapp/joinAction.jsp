@@ -3,7 +3,7 @@
 <%@ page import="user.UserDao"%>
 <%@ page import="java.io.PrintWriter"%>
 <%
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 %>
 
 

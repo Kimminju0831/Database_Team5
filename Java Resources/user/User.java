@@ -6,6 +6,7 @@ public class User {
 	private String userName;
 	private String userAddress;
 	private String userPhone;
+	private String userType;
 
 	public String getUserID() {
 		return userID;
@@ -45,6 +46,22 @@ public class User {
 
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
+	}
+	
+	public String getUsertype() {
+		return userType;
+	}
+
+	public void setUsertype(String userType) {
+		this.userType = userType;
+	}
+	
+	public void setUserinfo_clear() {
+		this.userAddress = "";
+		this.userID = "";
+		this.userName = "";
+		this.userPassword = "";
+		this.userPhone = "";
 	}
 
 }

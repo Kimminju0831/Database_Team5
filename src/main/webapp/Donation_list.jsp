@@ -3,8 +3,12 @@
 	pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>    
-<%@ page import = "java.util.List" %>
-<%@ page import = "user.DAO" %>
+<%@ page import="user.UserDao"%>
+<%@ page import="user.DAO"%>
+<%@ page import="user.Select"%>
+<%@ page import="user.DonateDTO"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 <%@ page import = "user.ExBoardDTO" %>
 <!DOCTYPE html5>
 <%
@@ -49,19 +53,36 @@
 	}else{
 		list = manager.getList();
 	}
+
+	int count = 0;
 	
-	int count = list.size();		// 총 데이터 갯수
+	count = list.size();		// 총 데이터 갯수
 	
 	if(end>count){
 		end = count;
 	}
 
 %>
+<%
+	
+	DAO manager2 = DAO.getInstance();
+	
+	List<DonateDTO> donate_list = null;
+	
+	donate_list = manager2.contain_donate(userid);
+	
+	int donate_count = 0;
+	
+	if(donate_list != null){
+		donate_count = donate_list.size();		// 총 데이터 갯수
+	}
+	
+%>
 <html>
 
 <head>
 <meta charset="EUC-KR">
-<title>Delete page</title>
+<title>Donate page</title>
 </head>
 
 <body>
@@ -97,7 +118,31 @@
 				<input type = "hidden" name = "period" value = <%=board.getip() %>>
 				<input type = "hidden" name = "benefit" value = <%=board.getcontent() %>>
 				<input type = "hidden" name = "name" value = <%=board.gettitle() %>>
-				<td><input type="submit" value="참여하기"></td>
+				
+			<% 
+				Boolean Contain = false;
+				DonateDTO dboard  = null;
+				if(donate_list != null){
+					for(int a = 0; a < donate_count ; a++){
+						dboard = donate_list.get(a);
+						if(board.gettitle().equals(dboard.getorgname())){
+							Contain = true;
+						}
+					} 
+				}
+				
+				if(Contain == true){
+				%>	
+					<td>참여 중</td>
+				<% 
+				}else{
+				%>	
+					<td><input type="submit" value="참여하기"></td>
+				<% 
+				}
+			
+			%>	
+				
 			</form>
 			</tr>
 			
