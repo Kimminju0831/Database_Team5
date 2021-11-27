@@ -63,7 +63,11 @@
 	
 	list = manager2.contain_donate(userid);
 	
-	int count = list.size();		// 識 等檜攪 偎熱
+	int count = 0;
+	
+	if(list != null){
+		count = list.size();		// 識 等檜攪 偎熱
+	}
 	
 	DonateDTO board  = null;
 	if(list != null){

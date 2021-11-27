@@ -53,8 +53,10 @@
 	}else{
 		list = manager.getList();
 	}
+
+	int count = 0;
 	
-	int count = list.size();		// 총 데이터 갯수
+	count = list.size();		// 총 데이터 갯수
 	
 	if(end>count){
 		end = count;
@@ -69,9 +71,12 @@
 	
 	donate_list = manager2.contain_donate(userid);
 	
-	int donate_count = donate_list.size();		// 총 데이터 갯수
-
-
+	int donate_count = 0;
+	
+	if(donate_list != null){
+		donate_count = donate_list.size();		// 총 데이터 갯수
+	}
+	
 %>
 <html>
 
