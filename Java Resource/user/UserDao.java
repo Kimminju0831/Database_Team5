@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import user.ExBoardDTO;
 
 public class UserDao {
 	private Connection conn;
@@ -23,69 +27,76 @@ public class UserDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, pass);
 
-			System.out.println("Database ì—°ê²° ì„±ê³µ!");
+			System.out.println("Database ¿¬°á ¼º°ø!");
 		} catch (ClassNotFoundException e) {
-			System.out.println("DB ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨ :" + e.toString());
+			System.out.println("DB µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ :" + e.toString());
 		} catch (SQLException sql) {
-			System.out.println("DB ì ‘ì†ì‹¤íŒ¨ :" + sql.toString());
+			System.out.println("DB Á¢¼Ó½ÇÆĞ :" + sql.toString());
 		} catch (Exception e) {
 			System.out.println("Unkonwn error");
 			e.printStackTrace();
 		}
 	}
 
-	public int login(String USER_ID, String USER_PWD) {
+	public int login(String USER_ID, String USER_PWD, String type) {
 		String query = "select USER_PWD from USERS where USER_ID = '" + USER_ID + "'";
-		
+
 		try {
 			pstmt = conn.prepareStatement(query);
 
 			System.out.println(query);
-			
+
 			rs = pstmt.executeQuery();
-			// ì•„ì´ë””ê°€ ìˆëŠ” ê²½ìš°
+			// ¾ÆÀÌµğ°¡ ÀÖ´Â °æ¿ì
 			if (rs.next()) {
-				// ë¹„ë°€ë²ˆí˜¸ ê²€ì‚¬
+				// ºñ¹Ğ¹øÈ£ °Ë»ç
 				if (rs.getString(1).equals(USER_PWD)) {
-					
-					return 1; // ë¡œê·¸ì¸ ì„±ê³µ
+					return 1; // ·Î±×ÀÎ ¼º°ø
 				} else
-					return 0; // ì˜ëª»ëœ ë¹„ë°€ë²ˆí˜¸
+					return 0; // Àß¸øµÈ ºñ¹Ğ¹øÈ£
 			}
-			return -1; // ì•„ì´ë””ê°€ ì—†ëŠ” ê²½ìš°
+			return -1; // ¾ÆÀÌµğ°¡ ¾ø´Â °æ¿ì
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -2; // ë°ì´í„°ë² ì´ìŠ¤ ìì²´ ì˜¤ë¥˜
+		return -2; // µ¥ÀÌÅÍº£ÀÌ½º ÀÚÃ¼ ¿À·ù
 	}
 
 	public int join(User user) {
-		
-		//user.setUserIDNull();
-		//user.setUserPasswordNull();
-		//for test
-		//System.out.println(user.getUserID());
-		//System.out.println(user.getUserPassword());
-		
-		
-		
-		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?)";
 
+		String SQL = "INSERT INTO USERS VALUES (?,?,?,?,?)";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, user.getUserAddress());
-			pstmt.setString(2, user.getUserPhone());
-			pstmt.setString(3, user.getUserName());
-			pstmt.setString(4, user.getUserPassword());
-			pstmt.setString(5, user.getUserID());
-			
-			
+	         pstmt.setString(1, user.getUserAddress());
+	         pstmt.setString(2, user.getUserPhone());
+	         pstmt.setString(3, user.getUserName());
+	         pstmt.setString(4, user.getUserPassword());
+	         pstmt.setString(5, user.getUserID());
+
+
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1;// DBì˜¤ë¥˜
+		return -1;// DB¿À·ù
 	}
 
+	public int donate(String org_id, String userid , String name) {
+
+		String SQL = "insert into DONATE (O_id, Don_org_name, UD) values ('"
+				+ org_id + "' , '" + name  + "' , '" + userid + "')";
+		
+		System.out.println(SQL);
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;// DB¿À·ù
+	}
+	
 }
