@@ -4,9 +4,17 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>로그아웃되었습니다.</title>
+<title></title>
 </head>
 <body>
+<%
+		session.setAttribute("userID", null);
+		session.setAttribute("userPW", null);
+		session.setAttribute("userType", null);
 
+%>
+
+		<script>alert('로그아웃했습니다.');</script>
+		<script type="text/javascript"> location.href="Main.jsp"; </script><br/>
 </body>
 </html>
