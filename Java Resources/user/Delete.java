@@ -157,4 +157,42 @@ public class Delete {
 		return 0;
 		
 	}
+	
+	public int donate_delete(String orgid, String userid) {
+		
+		conn = connect();
+		
+		
+		// 반환값 1 : 관리자 삭제 성공 2 : 유저 삭제 성공 0 : 실패 -1 : 패스워드 틀림
+		
+			// DELETE FROM DONATE WHERE UD = 'admin' AND O_ID = '251-87-6136';
+			String sql = "DELETE FROM DONATE WHERE UD = '" + userid + "' AND O_ID = '" 
+					+ orgid + "'";
+				
+				
+				try {
+					System.out.println(sql);
+					conn.setAutoCommit(false);
+					pstmt = conn.createStatement();
+					int res = pstmt.executeUpdate(sql);
+					
+					return 1; // 성공
+					}
+				catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						if (rs != null)
+							rs.close();
+						if (pstmt != null)
+							pstmt.close();
+						if (conn != null)
+							conn.close();
+						} catch (Exception e) {
+							e.getStackTrace();
+						}
+					}
+				return 0;
+		
+	}
 }

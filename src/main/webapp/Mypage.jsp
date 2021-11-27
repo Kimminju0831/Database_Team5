@@ -54,6 +54,7 @@
 				<tr>
 				<td width = "10%">번호</td>
 				<td width = "10%">단체명</td>
+				<td width = "10%">단체아이디</td>
 				<td width = "10%"></td>
 			</tr>
 <% 	
@@ -77,7 +78,11 @@
 		<tr>
 			<td><%=board.getn() %></td>
 			<td><%=board.getorgname() %></td>
-			<td><button>기부 해지</button></td>
+			<td><%=board.getorgid() %></td>
+			<form method="post" action = "Donation_cancle.jsp">	
+			<input type = "hidden" name = "orgid" value = <%=board.getorgid() %>>
+			<td><input type="submit" value="기부 해지"></td>
+			</form>
 		</tr>
 <%
 		}
@@ -86,5 +91,8 @@
 
 %>
 	</table>
+	
+	<a href = 'Main.jsp'>메인 페이지</a>
+	<br>
 </body>
 </html>

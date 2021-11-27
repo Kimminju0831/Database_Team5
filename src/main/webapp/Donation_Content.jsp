@@ -38,7 +38,7 @@
 <body>
 		<script>
 			alert('더 베풀어 주셔서 감사합니다!')
-			history.back()
+			location.href="Donation_list.jsp";
 		</script>
 		
 </body>
