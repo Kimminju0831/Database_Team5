@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>query_product_result</title>
+<title>query_present_result</title>
 </head>
 <body>
 
@@ -65,12 +65,13 @@
 
 	request.setCharacterEncoding("UTF-8");
 
-	//Query 2
-	String production_count = request.getParameter("production_count");
-	
-	if (production_count != null) {
-		sql = "SELECT PRODUCTION_TYPE, DELIVERY_CHARGE\n" + "FROM OUTSOURCING_COMPANY\n" + "WHERE PRODUCT_NUM < "
-		+ production_count;
+	//Query 8
+	String user_name = request.getParameter("user_name");
+
+	if (user_name != null) {
+
+		sql = "SELECT NORMAL_LINK, BETTER_LINK\n" + "FROM MALL, REFER_TO, USERS\n" + "WHERE NORMAL_LINK = N_LINK\n"
+		+ "AND BETTER_LINK = B_LINK\n" + "AND USER_ID = USR_ID\n" + "AND NAME = '" + user_name + "'";
 		System.out.println(sql);
 
 		pstmt = conn.prepareStatement(sql);
@@ -91,14 +92,13 @@
 		}
 		out.println("</table><br>");
 	}
-	
-	//Query 10
+	//Query 20
 	String check = request.getParameter("query_radio");
 	if (check != null) {
 		if (check.equals("yes")) {
+			sql = "(SELECT DISTINCT N_LINK as nor_link, B_LINK as bet_link \n" + "FROM REFER_TO)\n" + "INTERSECT\n"
+			+ "(SELECT DISTINCT NO_LINK as nor_link, BE_LINK as bet_link\n" + "FROM MAKE, PRODUCT)";
 
-			sql = "SELECT PRODUCT_TYPE, COUNT(BETTER_LINK)\n" + "FROM MALL, REFER_TO\n" + "WHERE NORMAL_LINK = N_LINK\n"
-			+ "AND BETTER_LINK = B_LINK\n" + "GROUP BY PRODUCT_TYPE";
 			System.out.println(sql);
 
 			pstmt = conn.prepareStatement(sql);
@@ -120,36 +120,6 @@
 			out.println("</table><br>");
 		}
 	}
-	
-	
-
-	//Query 19
-	String quantity_2 = request.getParameter("quantity_2");
-	if (quantity_2 != null){
-	sql = "SELECT PRODUCT_TYPE, MIN(PRICE)\n" + "FROM PRODUCT, MALL, MAKE\n" + "WHERE QUANTITY = " + quantity_2 + "\n"
-			+ "AND PRODUCT_ID = P_I\n" + "AND NORMAL_LINK = NO_LINK\n" + "AND BETTER_LINK = BE_LINK\n"
-			+ "GROUP BY PRODUCT_TYPE\n" + "ORDER BY PRODUCT_TYPE ASC";
-	System.out.println(sql);
-
-	pstmt = conn.prepareStatement(sql);
-	System.out.println(sql);
-	rs = pstmt.executeQuery();
-
-	out.println("<table border=\"1\">");
-	ResultSetMetaData rsmd = rs.getMetaData();
-	int cnt = rsmd.getColumnCount();
-	for (int i = 1; i <= cnt; i++) {
-		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-	}
-	while (rs.next()) {
-		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
-		out.println("</tr>");
-	}
-	out.println("</table><br>");
-	}
-
 	conn.close();
 	%>
 	<a href='Main.jsp'>메인 페이지</a>

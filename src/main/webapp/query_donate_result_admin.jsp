@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>query_product_result</title>
+<title>query_donate_result</title>
 </head>
 <body>
 
@@ -65,70 +65,39 @@
 
 	request.setCharacterEncoding("UTF-8");
 
-	//Query 2
-	String production_count = request.getParameter("production_count");
-	
-	if (production_count != null) {
-		sql = "SELECT PRODUCTION_TYPE, DELIVERY_CHARGE\n" + "FROM OUTSOURCING_COMPANY\n" + "WHERE PRODUCT_NUM < "
-		+ production_count;
-		System.out.println(sql);
+	//Query 1
+	String donation_type = request.getParameter("donation_type");
+	if (donation_type != null){
+	sql = "SELECT DONATION_ORGANIZATION_NAME\n" + "FROM DONATION_ORGANIZATION\n" + "WHERE DONATION_TYPE = '" + donation_type
+			+ "'";
+	System.out.println(sql);
 
-		pstmt = conn.prepareStatement(sql);
-		System.out.println(sql);
-		rs = pstmt.executeQuery();
+	pstmt = conn.prepareStatement(sql);
+	System.out.println(sql);
+	rs = pstmt.executeQuery();
 
-		out.println("<table border=\"1\">");
-		ResultSetMetaData rsmd = rs.getMetaData();
-		int cnt = rsmd.getColumnCount();
-		for (int i = 1; i <= cnt; i++) {
-			out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-		}
-		while (rs.next()) {
-			out.println("<tr>");
-			out.println("<td>" + rs.getString(1) + "</td>");
-			out.println("<td>" + rs.getString(2) + "</td>");
-			out.println("</tr>");
-		}
-		out.println("</table><br>");
-	}
-	
-	//Query 10
-	String check = request.getParameter("query_radio");
-	if (check != null) {
-		if (check.equals("yes")) {
-
-			sql = "SELECT PRODUCT_TYPE, COUNT(BETTER_LINK)\n" + "FROM MALL, REFER_TO\n" + "WHERE NORMAL_LINK = N_LINK\n"
-			+ "AND BETTER_LINK = B_LINK\n" + "GROUP BY PRODUCT_TYPE";
-			System.out.println(sql);
-
-			pstmt = conn.prepareStatement(sql);
-			System.out.println(sql);
-			rs = pstmt.executeQuery();
-
-			out.println("<table border=\"1\">");
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int cnt = rsmd.getColumnCount();
-			for (int i = 1; i <= cnt; i++) {
+	out.println("<table border=\"1\">");
+	ResultSetMetaData rsmd = rs.getMetaData();
+	int cnt = rsmd.getColumnCount();
+	for (int i = 1; i <= cnt; i++) {
 		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-			}
-			while (rs.next()) {
+	}
+	while (rs.next()) {
 		out.println("<tr>");
 		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
 		out.println("</tr>");
-			}
-			out.println("</table><br>");
-		}
 	}
-	
-	
+	out.println("</table><br>");
+	}
 
-	//Query 19
-	String quantity_2 = request.getParameter("quantity_2");
-	if (quantity_2 != null){
-	sql = "SELECT PRODUCT_TYPE, MIN(PRICE)\n" + "FROM PRODUCT, MALL, MAKE\n" + "WHERE QUANTITY = " + quantity_2 + "\n"
-			+ "AND PRODUCT_ID = P_I\n" + "AND NORMAL_LINK = NO_LINK\n" + "AND BETTER_LINK = BE_LINK\n"
-			+ "GROUP BY PRODUCT_TYPE\n" + "ORDER BY PRODUCT_TYPE ASC";
+	//Query 13
+	String donation_organization_name = request.getParameter("donation_organization_name");
+	
+	if (donation_organization_name != null){
+	sql = "SELECT USER_ID, NAME\n" + "FROM USERS\n" + "WHERE NOT EXISTS ( (SELECT org_id\n" + "FROM Donation_organization\n"
+			+ "WHERE Donation_organization_name = '" + donation_organization_name + "')\n" + "MINUS\n" + "(SELECT D.O_id\n"
+			+ "FROM   DONATE D\n" + "WHERE D.UD = USER_ID))";
+
 	System.out.println(sql);
 
 	pstmt = conn.prepareStatement(sql);
@@ -149,7 +118,73 @@
 	}
 	out.println("</table><br>");
 	}
+	
+	
+	//Query 14
+	String do_org_name = request.getParameter("do_org_name");
 
+	if (do_org_name != null){
+	sql = "SELECT DISTINCT D_id\n"+
+			"FROM RECOMMEND\n"+
+			"WHERE Do_org_name in ('"+do_org_name+"')";
+
+	System.out.println(sql);
+
+	pstmt = conn.prepareStatement(sql);
+	System.out.println(sql);
+	rs = pstmt.executeQuery();
+
+	out.println("<table border=\"1\">");
+	ResultSetMetaData rsmd = rs.getMetaData();
+	int cnt = rsmd.getColumnCount();
+	for (int i = 1; i <= cnt; i++) {
+		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+	}
+	while (rs.next()) {
+		out.println("<tr>");
+		out.println("<td>" + rs.getString(1) + "</td>");
+		out.println("</tr>");
+	}
+	out.println("</table><br>");
+	}
+	
+	
+	
+	//Query 18
+	String beneficiary = request.getParameter("beneficiary");
+
+	if (beneficiary != null){
+	sql = "SELECT DONATION_TYPE, COUNT(USER_ID)\n"+
+			"FROM USERS, DONATION_PREFERENCE\n"+
+			"WHERE USER_ID = U_ID\n"+
+			"AND BENEFICIARY = '"+beneficiary+"'\n"+
+			"GROUP BY DONATION_TYPE\n"+
+			"ORDER BY DONATION_TYPE DESC";
+	
+	System.out.println(sql);
+
+	pstmt = conn.prepareStatement(sql);
+	System.out.println(sql);
+	rs = pstmt.executeQuery();
+
+	out.println("<table border=\"1\">");
+	ResultSetMetaData rsmd = rs.getMetaData();
+	int cnt = rsmd.getColumnCount();
+	for (int i = 1; i <= cnt; i++) {
+		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+	}
+	while (rs.next()) {
+		out.println("<tr>");
+		out.println("<td>" + rs.getString(1) + "</td>");
+		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("</tr>");
+	}
+	out.println("</table><br>");
+
+	}
+	
+	
+	
 	conn.close();
 	%>
 	<a href='Main.jsp'>메인 페이지</a>
