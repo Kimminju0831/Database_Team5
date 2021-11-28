@@ -52,6 +52,8 @@ public class DAO {
 		return conn;
 	}
 	
+	
+	//기부 수혜자 / 기부 취향을 userid 를 통해 가져오기
 	public void set_user_D_Pre(String userid) {
 		
 		conn = connect();
@@ -87,7 +89,7 @@ public class DAO {
 		
 	}
 	
-
+	// 전체 등록된 기부 목록 가져오기
 	public List<ExBoardDTO> getList() {
 		
 		conn = connect();
@@ -134,6 +136,7 @@ public class DAO {
 		return list;
 	}
 	
+	// 등록된 기부 목록을 수혜자 / 타입 맞는 것만 가져오기
 	public List<ExBoardDTO> getList_best(String userid) {
 		
 		set_user_D_Pre(userid);
@@ -187,6 +190,7 @@ public class DAO {
 		return list;
 	}
 	
+	// 등록된 기부 목록을 수혜자 기준으로 가져오기
 	public List<ExBoardDTO> getList_bene(String userid) {
 		
 		set_user_D_Pre(userid);
@@ -241,6 +245,7 @@ public class DAO {
 		return list;
 	}
 	
+	// 등록된 기부 목록을 기간 기준으로 가져오기
 	public List<ExBoardDTO> getList_period(String userid) {
 		
 		set_user_D_Pre(userid);
@@ -343,7 +348,104 @@ public class DAO {
 		return list;
 	}
 	
+	public List<DonateDTO> getList_donate(String userid) {
+		// 해당 기부 단체 (userid) 에 기부하기로 한 사용자 리스트를 반환함
+			conn = connect();
+			
+			String SQL = "SELECT * FROM DONATE WHERE O_ID = '"
+					+ userid + "'";
+			
+			System.out.println(SQL);
+			
+			List<DonateDTO> list = null;
+			
+			try {
+				pstmt = conn.createStatement();
+				
+				rs = pstmt.executeQuery(SQL);
+				
+				int num = 1;
+				
+				if(rs.next()) {
+					list = new ArrayList<>();
+					do {
+						DonateDTO paper = new DonateDTO();
+						paper.setn(num);
+						paper.setorgid(userid);
+						paper.setorgname(rs.getString(2));
+						paper.setuid(rs.getString(3));
+						num++;
+						
+						list.add(paper);
+					}while(rs.next());
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+			
+			return list;
+		}
+	
+	public User getList_user(String userid) {
+	// 유저 전화번호 / 주소 / 이름 / 아이디를 반환함
+		
+		conn = connect();
+		
+		String SQL = "SELECT * FROM USERS WHERE USER_ID = '"
+				+ userid + "'";
+		
+		System.out.println(SQL);
+		
+		
+		User user = new User();
+		try {
+			pstmt = conn.createStatement();
+			
+			rs = pstmt.executeQuery(SQL);
+			
+			if(rs.next()) {
+				
+				do {
+
+					user.setUserID(rs.getString(5));
+					user.setUserName(rs.getString(3));
+					user.setUserPhone(rs.getString(2));
+					user.setUserAddress(rs.getString(1));
+
+				}while(rs.next());
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		}
+		
+		return user;
+	}
+	
 	public int get_data_num() {
+	// 등록된 기부 목록 갯수를 반환함
+		
 		int num = 1;
 		
 		conn = connect();
@@ -377,5 +479,41 @@ public class DAO {
 		return num;
 	}
 	
+	public int get_order_donate(String userid) {
+	// 외주업체에 해당 기업 (userid) 이 주문을 넣었는지 여부를 반환함
+		
+		String yn = "";
+		conn = connect();
+		
+		String SQL = "SELECT * FROM OUTSOURCING_COMPANY WHERE ORGAN_ID = '"+ userid + "'";
+	
+		
+		try {
+			pstmt = conn.createStatement();
+			
+			rs = pstmt.executeQuery(SQL);
+			
+			if(rs.next()) {
+				yn = rs.getString(1);
+				
+				return 1;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		}
+		
+		return 0;
+	}
 
 }
