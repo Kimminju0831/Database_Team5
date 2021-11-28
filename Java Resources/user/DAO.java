@@ -1,13 +1,8 @@
 package user;
 
 import java.sql.*;
-import java.text.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 
 public class DAO {
 
@@ -52,8 +47,6 @@ public class DAO {
 	public void set_user_D_Pre(String userid) {
 		
 		conn = connect();
-		
-		String result = "";
 		
 		String SQL = "SELECT DONATION_TYPE, BENEFICIARY FROM DONATION_PREFERENCE "
 				+ "WHERE U_ID = '" + userid +  "'";
@@ -348,7 +341,7 @@ public class DAO {
 		conn = connect();
 		
 		String SQL = "SELECT COUNT(*) FROM DONATION_ORGANIZATION ORDER BY ORG_ID DESC";
-		List<ExBoardDTO> list = null;
+	
 		
 		try {
 			pstmt = conn.createStatement();

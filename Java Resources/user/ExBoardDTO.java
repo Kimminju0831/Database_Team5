@@ -1,7 +1,5 @@
 package user;
 
-import java.sql.Timestamp;
-
 public class ExBoardDTO {
 
 		private int n;
@@ -9,7 +7,6 @@ public class ExBoardDTO {
 		private String pw;
 		private String title;
 		private String content;
-		private Timestamp data;
 		private int readCount;
 		private String ip;
 		

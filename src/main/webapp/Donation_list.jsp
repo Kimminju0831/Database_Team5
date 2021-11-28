@@ -196,11 +196,19 @@
 								
 			%>
 							<a href="Donation_list.jsp?pageNum=<%=startPagenum + 10 %>&&mode=<%=mode%>">[다음]</a>	
+							
 			<%
+						}
+						
+						String utype = (String)session.getAttribute("userType");
+						if (utype.equals("donate")){
+							String command = "<button onclick = \"location='Duser/write.jsp'\">글쓰기</button>";
+							out.println(command);
 						}
 			%>
 			</td>
 			</tr>
-			<a href = "Main.jsp">메인 페이지로</a>
+		</table>
+		<a href = "Main.jsp">메인 페이지로</a>
 </body>
 </html>
