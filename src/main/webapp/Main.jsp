@@ -52,11 +52,15 @@ if (session.getAttribute("userID") == null) {
 	<a href = 'Duser/people.jsp'>기부 참여자 조회 페이지</a>
 	<br>
 	<a href = 'Duser/write.jsp'>기부 추가 페이지</a>
+	<br>
+	<a href = 'Duser/out_list.jsp'>외주 업체 조회 페이지</a>
 <%		
 	}else if(usert.equals("outsourcing")){
 %>
 	<br>
 	<a href = 'Ouser/order_list.jsp'>주문 페이지</a>
+	<br>
+	<a href = 'Duser/out_list.jsp'>외주 업체 조회 페이지</a>
 <%		
 	}
 }

@@ -15,14 +15,7 @@ public class UserDao {
 
 	public UserDao() {
 		try {
-			/*
-			String serverIP = "localhost";
-			String strSID = "orcl";
-			String portNum = "1521";
-			String user = "Team";
-			String pass = "aaaa";
-			String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-*/
+			
 			String serverIP = "localhost";
 			String strSID = "orcl";
 			String portNum = "1521";
@@ -125,16 +118,42 @@ public class UserDao {
 		
 	}
 	
-	public int makedorder(String DELIVERY_CHARGE, String DESIGN, String PRODUCTION_TYPE, String PRODUCTION_PRICE, String ESTIMATED_DATE, String PRODUCT_NUM, 
-			String userid, String userpw, String ORGAN_ID, String DO_NAME) {
+	public int makedorder(String DELIVERY_CHARGE, String DESIGN, String PRODUCTION_TYPE,
+			String PRODUCTION_PRICE, String ESTIMATED_DATE, String PRODUCT_NUM, 
+			String userpw, String userid, String ORGAN_ID, String DO_NAME) {
 		
 		
 		String SQL = "insert into OUTSOURCING_COMPANY" +
 				" (Delivery_charge, Design, Production_type, Production_Price, " +
-				"Estimated_date, Product_num, Company_pwd, Company_id, Ur_id, " +
+				"Estimated_date, Product_num, Company_pwd, Company_id, " +
 				" organ_id, Do_name) values ('$" + DELIVERY_CHARGE + "', '"+ DESIGN +"', '"+ PRODUCTION_TYPE +"', " +
 				" '$"+ PRODUCTION_PRICE +"', TO_DATE('"+ ESTIMATED_DATE +"', 'yyyy-mm-dd'), "+ PRODUCT_NUM +", '"+ userpw +"', " +
-				"'"+ userid +"', '"+ userid +"', '"+ ORGAN_ID +"', '"+ DO_NAME +"')";
+				"'"+ userid +"', '"+ ORGAN_ID +"', '"+ DO_NAME +"')";
+		
+		System.out.println(SQL);
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;// DB¿À·ù
+		
+	}
+	
+	public int confirmdorder(String DELIVERY_CHARGE, String PRODUCTION_PRICE, String ESTIMATED_DATE, String userid, String orgid) {
+
+		String year = ESTIMATED_DATE.substring(2, 4);
+		String month = ESTIMATED_DATE.substring(5, 7);
+		String day = ESTIMATED_DATE.substring(8);
+		String date = year+"/"+month+"/"+day;
+		
+		
+		String SQL = "UPDATE OUTSOURCING_COMPANY SET DELIVERY_CHARGE='$" + DELIVERY_CHARGE + "', PRODUCTION_PRICE='$"+ PRODUCTION_PRICE 
+				+"', ESTIMATED_DATE='"+ date +"'"
+				+ " WHERE COMPANY_ID='"+ userid +"' AND organ_id = '"+ orgid +"'";
 		
 		System.out.println(SQL);
 		
