@@ -10,7 +10,8 @@
 <body>
 	<p>query_donate</p>
 
-	<form action="./query_donate_result.jsp" method="post">
+	<form action="./query_donate_result_admin.jsp" method="post">
+	
 		<a> <b>  1. 어떤 기부 기간을 가진 기부 단체를 보고 싶으신가요? </b> 
 		<br> <br>기부 타입:
 			
@@ -20,6 +21,12 @@
             <option value="TEMPORARY">TEMPORARY</option>
             </select>
            		<br> <br>
+            
+            <b> 13. _______는 모든 단체에 기부하는 유저의 아이디와 이름은? </b> 
+		<br> <br>
+		기부 기관 이름:
+		<input type="text" name="donation_organization_name"> <br> <br>
+			 
 			 
 			      
             <b>14. 어떤 기부 기관의 아이디를 알고싶으신가요?  </b> 

@@ -89,6 +89,34 @@
 	}
 	out.println("</table><br>");
 
+	//Query 13
+	String donation_organization_name = request.getParameter("donation_organization_name");
+
+	sql = "SELECT USER_ID, NAME\n" + "FROM USERS\n" + "WHERE NOT EXISTS ( (SELECT org_id\n" + "FROM Donation_organization\n"
+			+ "WHERE Donation_organization_name = '" + donation_organization_name + "')\n" + "MINUS\n" + "(SELECT D.O_id\n"
+			+ "FROM   DONATE D\n" + "WHERE D.UD = USER_ID))";
+
+	System.out.println(sql);
+
+	pstmt = conn.prepareStatement(sql);
+	System.out.println(sql);
+	rs = pstmt.executeQuery();
+
+	out.println("<table border=\"1\">");
+	rsmd = rs.getMetaData();
+	cnt = rsmd.getColumnCount();
+	for (int i = 1; i <= cnt; i++) {
+		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+	}
+	while (rs.next()) {
+		out.println("<tr>");
+		out.println("<td>" + rs.getString(1) + "</td>");
+		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("</tr>");
+	}
+	out.println("</table><br>");
+
+	
 	
 	//Query 14
 	String do_org_name = request.getParameter("do_org_name");
