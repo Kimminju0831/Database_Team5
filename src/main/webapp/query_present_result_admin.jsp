@@ -68,53 +68,58 @@
 	//Query 8
 	String user_name = request.getParameter("user_name");
 
-	sql = "SELECT NORMAL_LINK, BETTER_LINK\n" + "FROM MALL, REFER_TO, USERS\n" + "WHERE NORMAL_LINK = N_LINK\n"
-			+ "AND BETTER_LINK = B_LINK\n" + "AND USER_ID = USR_ID\n" + "AND NAME = '" + user_name + "'";
-	System.out.println(sql);
+	if (user_name != null) {
 
-	pstmt = conn.prepareStatement(sql);
-	System.out.println(sql);
-	rs = pstmt.executeQuery();
+		sql = "SELECT NORMAL_LINK, BETTER_LINK\n" + "FROM MALL, REFER_TO, USERS\n" + "WHERE NORMAL_LINK = N_LINK\n"
+		+ "AND BETTER_LINK = B_LINK\n" + "AND USER_ID = USR_ID\n" + "AND NAME = '" + user_name + "'";
+		System.out.println(sql);
 
-	out.println("<table border=\"1\">");
-	ResultSetMetaData rsmd = rs.getMetaData();
-	int cnt = rsmd.getColumnCount();
-	for (int i = 1; i <= cnt; i++) {
-		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+		pstmt = conn.prepareStatement(sql);
+		System.out.println(sql);
+		rs = pstmt.executeQuery();
+
+		out.println("<table border=\"1\">");
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int cnt = rsmd.getColumnCount();
+		for (int i = 1; i <= cnt; i++) {
+			out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+		}
+		while (rs.next()) {
+			out.println("<tr>");
+			out.println("<td>" + rs.getString(1) + "</td>");
+			out.println("<td>" + rs.getString(2) + "</td>");
+			out.println("</tr>");
+		}
+		out.println("</table><br>");
 	}
-	while (rs.next()) {
-		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
-		out.println("</tr>");
-	}
-	out.println("</table><br>");
-
 	//Query 20
-
-	sql = "(SELECT DISTINCT N_LINK as nor_link, B_LINK as bet_link \n"+"FROM REFER_TO)\n" + "INTERSECT\n"
+	String check = request.getParameter("query_radio");
+	if (check != null) {
+		if (check.equals("yes")) {
+			sql = "(SELECT DISTINCT N_LINK as nor_link, B_LINK as bet_link \n" + "FROM REFER_TO)\n" + "INTERSECT\n"
 			+ "(SELECT DISTINCT NO_LINK as nor_link, BE_LINK as bet_link\n" + "FROM MAKE, PRODUCT)";
 
-	System.out.println(sql);
+			System.out.println(sql);
 
-	pstmt = conn.prepareStatement(sql);
-	System.out.println(sql);
-	rs = pstmt.executeQuery();
+			pstmt = conn.prepareStatement(sql);
+			System.out.println(sql);
+			rs = pstmt.executeQuery();
 
-	out.println("<table border=\"1\">");
-	 rsmd = rs.getMetaData();
-	 cnt = rsmd.getColumnCount();
-	for (int i = 1; i <= cnt; i++) {
+			out.println("<table border=\"1\">");
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int cnt = rsmd.getColumnCount();
+			for (int i = 1; i <= cnt; i++) {
 		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-	}
-	while (rs.next()) {
+			}
+			while (rs.next()) {
 		out.println("<tr>");
 		out.println("<td>" + rs.getString(1) + "</td>");
 		out.println("<td>" + rs.getString(2) + "</td>");
 		out.println("</tr>");
+			}
+			out.println("</table><br>");
+		}
 	}
-	out.println("</table><br>");
-
 	conn.close();
 	%>
 	<a href='Main.jsp'>메인 페이지</a>

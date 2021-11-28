@@ -98,13 +98,13 @@
            {
             //비밀번호 동일 -> 관리자 
             %>
-	<a href='query_user_admin.jsp'>사용자 관련 질의 페이지(관리자)</a>
+	<a href='query_user_admin.html'>사용자 관련 질의 페이지(관리자)</a>
 	<br>
-	<a href='query_product_admin.jsp'>상품 자체 관련 질의 페이지(관리자)</a>
+	<a href='query_product_admin.html'>상품 자체 관련 질의 페이지(관리자)</a>
 	<br>
-	<a href='query_donate_admin.jsp'>기부 관련 질의 페이지(관리자)</a>
+	<a href='query_donate_admin.html'>기부 관련 질의 페이지(관리자)</a>
 	<br>
-	<a href='query_present_admin.jsp'>선물 관련 질의 페이지(관리자)</a>
+	<a href='query_present_admin.html'>선물 관련 질의 페이지(관리자)</a>
 	<br>
 	<% 
            }
@@ -118,9 +118,9 @@
              %>
 	<a href='query_user.jsp'>사용자 관련 질의 페이지</a>
 	<br>
-	<a href='query_product.jsp'>상품 자체 관련 질의 페이지</a>
+	<a href='query_product.html'>상품 자체 관련 질의 페이지</a>
 	<br>
-	<a href='query_donate.jsp'>기부 관련 질의 페이지</a>
+	<a href='query_donate.html'>기부 관련 질의 페이지</a>
 	<br>
 	<a href='query_present.jsp'>선물 관련 질의 페이지</a>
 	<br>
