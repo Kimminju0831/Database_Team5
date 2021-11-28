@@ -67,7 +67,7 @@
 
 	//Query 2
 	String production_count = request.getParameter("production_count");
-
+	if (production_count != null){
 	sql = "SELECT PRODUCTION_TYPE, DELIVERY_CHARGE\n" + "FROM OUTSOURCING_COMPANY\n" + "WHERE PRODUCT_NUM < "
 			+ production_count;
 	System.out.println(sql);
@@ -89,10 +89,10 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
-
+	}
 	//Query 4
 	String estimated_date = request.getParameter("estimated_date");
-
+if (estimated_date != null){
 	sql = "SELECT Production_type, SUM(Product_num)\n" + "FROM OUTSOURCING_COMPANY\n" + "WHERE Estimated_date <= TO_DATE('"
 			+ estimated_date + "', 'yyyy-mm-dd')\n" + "GROUP BY Production_type";
 	System.out.println(sql);
@@ -102,8 +102,8 @@
 	rs = pstmt.executeQuery();
 
 	out.println("<table border=\"1\">");
-	rsmd = rs.getMetaData();
-	cnt = rsmd.getColumnCount();
+	ResultSetMetaData rsmd = rs.getMetaData();
+	int cnt = rsmd.getColumnCount();
 	for (int i = 1; i <= cnt; i++) {
 		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
 	}
@@ -114,7 +114,7 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
-
+}
 	//Query 10
 
 	sql = "SELECT PRODUCT_TYPE, COUNT(BETTER_LINK)\n" + "FROM MALL, REFER_TO\n" + "WHERE NORMAL_LINK = N_LINK\n"
