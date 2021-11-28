@@ -91,7 +91,7 @@
 		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=period%>">기간 맞춤</a>
 		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=bene%>">수혜자 맞춤</a>
 		<h3>게시판 목록</h3>
-		<table width="900">
+		<table>
 			<tr>
 				<td width = "10%">번호</td>
 				<td width = "20%">기간</td>
