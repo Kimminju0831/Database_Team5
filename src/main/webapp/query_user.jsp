@@ -13,7 +13,7 @@
    <form action="./query_user_result.jsp" method="post">
            <a>
               
-              <b>3. 어떤 수혜자를 선호하는 유저의 ID가 궁금하신가요? .</b>
+              <b>3. 어떤 수혜자를 선호하는 유저의 ID가 궁금하신가요?</b>
             
             <br><br>수혜자 : 
             <select name="beneficiary">
@@ -30,78 +30,29 @@
             
             <br>
             <br>
-            <!--  
-            <b> 기부 기간을 선택해주세요.</b>
             
-            <br><br>기부 기간 취향 : 
-            <select name="D_period">
-             <option value="SHORTS" selected>SHORTS</option>
-             <option value="LONG">LONG</option>
-             <option value="TEMPORARY">TEMPORARY</option>
+             <b>5. 선택한 유저의 이름, 전화번호, 주소를 알려드립니다. 어떤 디자인의 어떤 유형의 상품을 선택한 유저의 정보를 알고싶으신가요?</b>
+           
+             -->
+              <br><br>디자인 : 
+           <input type="text" name="production_design">
+            <br><br>상품 유형 : 
+            <select name="production_type">
+             <option value="BADGE" selected>BADGE</option>
+             <option value="BAG">BAG</option>
+             <option value="BRACLET">BRACLET</option>
+             <option value="CUP">CUP</option>
+             <option value="KEYRING">KEYRING</option>
+             <option value="NECKLACE">NECKLACE</option>
+             <option value="POSTER">POSTER</option>
+             <option value="RING">RING</option>
+             <option value="STICKER">STICKER</option>
+             <option value="TUMBLER">TUMBLER</option>
             </select>
             
             <br>
             <br>
-
-         
-         <select name= "gift" onchange="categoryChange(this)">
-               <option>선물 취향을 선택해주세요</option>
-               <option value="ACCESSORY">ACCESSORY</option>
-               <option value="GROCERIES">GROCERIES</option>
-               <option value="COSMETICS">COSMETICS</option>
-               <option value="DAILY_NECESSITIES">DAILY_NECESSITIES</option>
-               <option value="BOOKS">BOOKS</option>
-               <option value="DIGITAL">DIGITAL</option>
-               <option value="SUNDRIES">SUNDRIES</option>
-               <option value="AIR_FRESHENER">AIR_FRESHENER</option>
-               <option value="BATH_SUPPLIES">BATH_SUPPLIES</option>
-               <option value="DOLL">DOLL</option>
-               </select>
-
             
-            <select name= "gift_type" id="good">
-            <option>좋아하는 선물 유형을 선택해주세요</option>
-            </select>
-            
-            <script type="text/javascript">
-                function categoryChange(y) {
-                     var good_a = ["BRACELET", "RING", "NECKLACE", "EARRING"];
-                     var good_b = ["MEAL","DESSERT","COFFEE"];
-                     var good_c = ["LIPS","TOTAL","COMPACT CUSHION"];
-                     var good_d = ["TUMBLER","ETC"];
-                     var good_e = ["NOVEL", "SELF_HELP_BOOK", "COMPUTER/IT", "HISTORY/CULTURE", "HEALTH", "COMICS", "CHILDREN COMPLETE COLLECTION", "POETRY/ESSAY", "ECONOMY/BUSINESS", "LIBERAL ARTS"];
-                     var good_f = ["PHONE CASE", "SMARTTALK", "EARPHONE CASE"];
-                     var good_g = ["BAGS","BADGE/KEYRING","STATIONARY","MASK"];
-                     var good_h = ["SCENT"];
-                     var good_i = ["SHOWER","TOWEL","BRUSH","ITEM"];
-                     var good_j = ["ANIMAL_SHAPE","FOOD_SHAPE"];
-                     var target = document.getElementById("good");
-                  
-                     if(y.value == "ACCESSORY") var z = good_a;
-                     else if(y.value == "GROCERIES") var z = good_b;
-                     else if(y.value == "COSMETICS") var z = good_c;
-                     else if(y.value == "DAILY_NECESSITIES") var z = good_d;
-                     else if(y.value == "BOOKS") var z = good_e;
-                     else if(y.value == "DIGITAL") var z = good_f;
-                     else if(y.value == "SUNDRIES") var z = good_g;
-                     else if(y.value == "AIR_FRESHENER") var z = good_h;
-                     else if(y.value == "BATH_SUPPLIES") var z = good_i;
-                     else if(y.value == "DOLL") var z = good_j;
-                  
-                     target.options.length = 0;
-                  
-                     for (x in z) {
-                        var opt = document.createElement("option");
-                        opt.value = z[x];
-                        opt.innerHTML = z[x];
-                        target.appendChild(opt);
-                     }   
-                     }
-            </script>
-         -->
-            
-            <br>
-            <br>
          </a>
          <a><input type="reset" value="Reset"><input type="submit" value="Submit"></a>
    </form>

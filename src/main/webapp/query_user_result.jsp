@@ -65,9 +65,8 @@
 
 	request.setCharacterEncoding("UTF-8");
 
+	//Query 3
 	String beneficiary = request.getParameter("beneficiary");
-
-	//SELECT Duser_id FROM DONATION_PREFERENCE WHERE Beneficiary = 'FIREFIGHTERS';
 
 	sql = "SELECT Duser_id\n FROM DONATION_PREFERENCE\n WHERE Beneficiary = '" + beneficiary + "'";
 	System.out.println(sql);
@@ -90,6 +89,37 @@
 	      out.println("</tr>");
 	   }
 	   out.println("</table><br>");
+
+	   
+	 //Query 5
+		String production_design = request.getParameter("production_design");
+		String production_type = request.getParameter("production_type");
+
+		sql = "SELECT NAME, PHONE, ADDRESS\n FROM USERS, OUTSOURCING_COMPANY\nWHERE UR_ID = USER_ID\n"+
+				"AND DESIGN = '"+ production_design+"'"+
+				"AND PRODUCTION_TYPE = '"+production_type+"'";
+		System.out.println(sql);
+
+		pstmt = conn.prepareStatement(sql);
+
+		System.out.println(sql);
+
+		rs = pstmt.executeQuery();
+
+		   out.println("<table border=\"1\">");
+		    rsmd = rs.getMetaData();
+		    cnt = rsmd.getColumnCount();
+		   for (int i = 1; i <= cnt; i++) {
+		      out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+		   }
+		   while (rs.next()) {
+		      out.println("<tr>");
+		      out.println("<td>" + rs.getString(1) + "</td>");
+		      out.println("<td>" + rs.getString(2) + "</td>");
+		      out.println("<td>" + rs.getString(3) + "</td>");
+		      out.println("</tr>");
+		   }
+		   out.println("</table><br>");
 
 	conn.close();
 	%>
