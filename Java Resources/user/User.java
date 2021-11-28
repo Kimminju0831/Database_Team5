@@ -7,7 +7,7 @@ public class User {
 	private String userAddress;
 	private String userPhone;
 	private String userType;
-
+	
 	public String getUserID() {
 		return userID;
 	}
