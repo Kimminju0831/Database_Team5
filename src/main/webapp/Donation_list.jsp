@@ -56,7 +56,9 @@
 
 	int count = 0;
 	
-	count = list.size();		// 총 데이터 갯수
+	if(list != null){
+		count = list.size();		// 총 데이터 갯수
+	}
 	
 	if(end>count){
 		end = count;
