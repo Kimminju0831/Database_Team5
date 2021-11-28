@@ -23,7 +23,7 @@
 	String PRODUCTION_TYPE = (String)request.getParameter("production_type");
 	String DESIGN = (String)request.getParameter("design");
 	String DO_NAME = (String)request.getParameter("org_name");
-	String ORGAN_ID = (String)request.getParameter("org_id");
+	String ORGAN_ID = (String)request.getParameter("org_id");	
 	
 	UserDao manager = new UserDao();
 	
@@ -33,11 +33,12 @@
 	
 	String DELIVERY_CHARGE = "none";
 	String PRODUCTION_PRICE = "none";
-	String ESTIMATED_DATE = "2000-01-01";
+	String ESTIMATED_DATE = "01/01/01";
 	String unknown = "none";
+	String companyid = request.getParameter("companyid");
 	
 	int res = manager.makedorder(DELIVERY_CHARGE, DESIGN, PRODUCTION_TYPE, PRODUCTION_PRICE, 
-				ESTIMATED_DATE, PRODUCT_NUM, unknown, unknown, ORGAN_ID, DO_NAME);
+				ESTIMATED_DATE, PRODUCT_NUM, unknown, companyid, ORGAN_ID, DO_NAME);
 	
 	if(res!=-1){
 %>

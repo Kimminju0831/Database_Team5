@@ -20,9 +20,11 @@ list = manager.getList_donate(userid);
 
 String org_name = null;
 
-if(list != null){
+org_name = manager.get_donate_org(userid);
+
+if(org_name!=null){
 	
-	org_name = list.get(0).getorgname();
+	out.println(org_name + " 단체의 기부 혜택 주문");
 	
 }else{
 %>
@@ -49,17 +51,31 @@ if(list != null){
 		out.println("<a href='../logout.jsp'>로그아웃</a>");
 		
 	}
-		
-		if(manager.get_order_donate(userid)==1)	//주문을 이미 넣었음 == OUTSOURCING COMPANY 에 ORGAN_ID 가 있음.
+		int menu = manager.get_order_donate(userid);
+		if(menu != 0)	//주문을 이미 넣었음 == OUTSOURCING COMPANY 에 ORGAN_ID 가 있음.
 		{
-			out.println("주문 승인 대기 중");
-				// 주문을 넣고 외주업체 측에서 승인 했음
-			
+				// 주문을 넣고 외주업체 측에서 승인 했음 ==  배달비가 산정됨
+				if(menu == 2){
+				%>
+				<script type="text/javascript">
+				alert('주문이 승인되었습니다.')
+				location.href="../Mypage.jsp";
+				</script>
+				<%			
+				}
 				// 주문을 넣었지만 외주 업체 측에서 승인을 안했음
+				else{
+				%>
+				<script type="text/javascript">
+				alert('주문 승인 대기 중 입니다.')
+				location.href="../Mypage.jsp";
+				</script>
+				<%
+				}
 				
 		}
 		else{	// 주문을 넣지 않았음.
-		
+			String companyid = request.getParameter("company_id");
 			//배송갯수 기부단체명 기부단체ID 상품유형 디자인
 		%>
 			<form action = "./order.jsp" method="POST">
@@ -80,6 +96,7 @@ if(list != null){
 			디자인 : <input type ="text" name ="design">
 				<input type = "hidden" name = "org_name" value = <%=org_name %>>
 				<input type = "hidden" name = "org_id" value = <%=userid %>>
+				<input type = "hidden" name = "companyid" value = <%=companyid %>>
 			<input type="submit" value="완료"> <button type="button" onclick="location='../Main.jsp'">취소</button>
 			</form>
 		

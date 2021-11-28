@@ -21,14 +21,7 @@ public class DAO {
 	
 	public Connection connect() {
 		try {
-			/*
-			String serverIP = "localhost";
-			String strSID = "orcl";
-			String portNum = "1521";
-			String user = "Team";
-			String pass = "aaaa";
-			String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-*/
+		
 			String serverIP = "localhost";
 			String strSID = "orcl";
 			String portNum = "1521";
@@ -299,6 +292,47 @@ public class DAO {
 		return list;
 	}
 	
+	// 등록된 기부 목록을 기간 기준으로 가져오기
+		public String get_donate_org(String userid) {
+			
+			conn = connect();
+			
+			String SQL = "SELECT DONATION_ORGANIZATION_NAME FROM DONATION_ORGANIZATION WHERE ORG_ID = '"
+					+ userid + "'";
+			
+			System.out.println(SQL);
+			
+			try {
+				pstmt = conn.createStatement();
+				
+				rs = pstmt.executeQuery(SQL);
+				
+				if(rs.next()) {
+					
+					do {
+						
+						return rs.getString(1);
+						
+					}while(rs.next());
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+			
+			return null;
+		}
+	
 	public  List<DonateDTO> contain_donate (String userid) {
 	// 해당 사용자가 기부를 결정한 단체 리스트를 반환함.
 		
@@ -374,6 +408,170 @@ public class DAO {
 						paper.setorgid(userid);
 						paper.setorgname(rs.getString(2));
 						paper.setuid(rs.getString(3));
+						num++;
+						
+						list.add(paper);
+					}while(rs.next());
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+			
+			return list;
+		}
+	
+	public List<OrderDTO> getList_orderlist(String companyid, String companypw) {
+		// 아웃소싱 기업에 들어온 주문 목록을 보여줌
+			conn = connect();
+			
+			String SQL = "SELECT * "
+					+ "FROM OUTSOURCING_COMPANY WHERE COMPANY_ID = '"+ companyid +"'";
+			
+			System.out.println(SQL);
+			
+			List<OrderDTO> list = null;
+			
+			try {
+				pstmt = conn.createStatement();
+				
+				rs = pstmt.executeQuery(SQL);
+				
+				int num = 1;
+				
+				if(rs.next()) {
+					list = new ArrayList<>();
+					do {
+						OrderDTO paper = new OrderDTO();
+						paper.setn(num);
+						paper.setCOMPANY_ID(companyid);
+						paper.setCOMPANY_PWD(companypw);
+						//
+						paper.setDELIVERY_CHARGE(rs.getString(1));
+						paper.setDESIGN(rs.getString(2));
+						paper.setDO_NAME(rs.getString(10));
+						String date = rs.getString(5).substring(0, 10);
+						paper.setESTIMATED_DATE(date);
+						paper.setPRODUCT_NUM(rs.getString(6));
+						paper.setPRODUCTION_PRICE(rs.getString(4));
+						paper.setPRODUCTION_TYPE(rs.getString(3));
+						paper.setORGAN_ID(rs.getString(9));
+						
+						num++;
+						
+						list.add(paper);
+					}while(rs.next());
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+			
+			return list;
+		}
+	
+	public List<OrderDTO> getList_orderuser(String userid, String companypw) {
+		// 아웃소싱 기업에 들어온 주문 목록을 보여줌
+			conn = connect();
+			
+			String SQL = "SELECT * "
+					+ "FROM OUTSOURCING_COMPANY WHERE ORGAN_ID = '"+ userid +"'";
+			
+			System.out.println(SQL);
+			
+			List<OrderDTO> list = null;
+			
+			try {
+				pstmt = conn.createStatement();
+				
+				rs = pstmt.executeQuery(SQL);
+				
+				int num = 1;
+				
+				if(rs.next()) {
+					list = new ArrayList<>();
+					do {
+						OrderDTO paper = new OrderDTO();
+						paper.setn(num);
+						paper.setCOMPANY_ID(userid);
+						paper.setCOMPANY_PWD(companypw);
+						//
+						paper.setDELIVERY_CHARGE(rs.getString(1));
+						paper.setDESIGN(rs.getString(2));
+						paper.setDO_NAME(rs.getString(10));
+						String date = rs.getString(5).substring(0, 10);
+						paper.setESTIMATED_DATE(date);
+						paper.setPRODUCT_NUM(rs.getString(6));
+						paper.setPRODUCTION_PRICE(rs.getString(4));
+						paper.setPRODUCTION_TYPE(rs.getString(3));
+						paper.setORGAN_ID(rs.getString(9));
+						
+						num++;
+						
+						list.add(paper);
+					}while(rs.next());
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+			
+			return list;
+		}
+	
+	public List<OrderDTO> getList_outSourcing() {
+		// 존재하는 모든 아웃소싱 기업의 이름을 반환함
+			conn = connect();
+			
+			String SQL = "SELECT DISTINCT COMPANY_ID FROM OUTSOURCING_COMPANY";
+			
+			System.out.println(SQL);
+			
+			List<OrderDTO> list = null;
+			
+			try {
+				pstmt = conn.createStatement();
+				
+				rs = pstmt.executeQuery(SQL);
+				
+				int num = 1;
+				
+				if(rs.next()) {
+					list = new ArrayList<>();
+					do {
+						OrderDTO paper = new OrderDTO();
+						paper.setn(num);
+						paper.setCOMPANY_ID(rs.getString(1));
 						num++;
 						
 						list.add(paper);
@@ -485,7 +683,7 @@ public class DAO {
 		String yn = "";
 		conn = connect();
 		
-		String SQL = "SELECT * FROM OUTSOURCING_COMPANY WHERE ORGAN_ID = '"+ userid + "'";
+		String SQL = "SELECT DELIVERY_CHARGE FROM OUTSOURCING_COMPANY WHERE ORGAN_ID = '"+ userid + "'";
 	
 		
 		try {
@@ -495,8 +693,12 @@ public class DAO {
 			
 			if(rs.next()) {
 				yn = rs.getString(1);
+				if(yn.contains("none")) {
+					return 1;	// 주문 승인 전
+				}else {
+					return 2;	// 주문 승인 후
+				}
 				
-				return 1;
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
