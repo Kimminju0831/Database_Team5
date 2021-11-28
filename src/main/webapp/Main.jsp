@@ -41,7 +41,7 @@ if (session.getAttribute("userID") == null) {
 	<br>
 	<a href = 'Duser/write.jsp'>기부 추가 페이지</a>
 	<br>
-	<a href = 'query_user.jsp'>사용자 질의 처리 페이지</a>
+	<a href = 'select_query_menu.jsp'>질의 메뉴 페이지</a>
 <% 
 }
 %>
