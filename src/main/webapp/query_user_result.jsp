@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Preference insert page</title>
+<title>query_user_result</title>
 </head>
 <body>
 
