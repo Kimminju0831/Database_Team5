@@ -24,18 +24,34 @@
 <% 
 
 	String sql = "";
-	String serverIP = "localhost";
-	String strSID = "orcl";
-	String portNum = "1521";
-	String dbuser = "Team";
-	String pass = "aaaa";
-	String url = "jdbc:oracle:thin:@"+serverIP + ":"+portNum+":"+strSID;
-	
+/*
+String serverIP = "localhost";
+String strSID = "xe";
+String portNum = "1600";
+String user = "ta";
+String pass = "ta";
+String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
+*/
+/*
+String serverIP = "localhost";
+String strSID = "orcl";
+String portNum = "1521";
+String user = "Team";
+String pass = "aaaa";
+String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
+*/
+String serverIP = "localhost";
+String strSID = "orcl";
+String portNum = "1521";
+String username = "team";
+String pass = "1234";
+String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
+
 	Connection conn = null;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	Class.forName("oracle.jdbc.driver.OracleDriver");
-	conn = DriverManager.getConnection(url, dbuser, pass);
+	conn = DriverManager.getConnection(url, username, pass);
 
 	//======================================================================================//
 	
