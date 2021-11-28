@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>query_donate_result</title>
+<title>query_present_result</title>
 </head>
 <body>
 
@@ -65,11 +65,11 @@
 
 	request.setCharacterEncoding("UTF-8");
 
-	//Query 1
-	String donation_type = request.getParameter("donation_type");
+	//Query 8
+	String user_name = request.getParameter("user_name");
 
-	sql = "SELECT DONATION_ORGANIZATION_NAME\n" + "FROM DONATION_ORGANIZATION\n" + "WHERE DONATION_TYPE = '" + donation_type
-			+ "'";
+	sql = "SELECT NORMAL_LINK, BETTER_LINK\n" + "FROM MALL, REFER_TO, USERS\n" + "WHERE NORMAL_LINK = N_LINK\n"
+			+ "AND BETTER_LINK = B_LINK\n" + "AND USER_ID = USR_ID\n" + "AND NAME = '" + user_name + "'";
 	System.out.println(sql);
 
 	pstmt = conn.prepareStatement(sql);
@@ -85,17 +85,15 @@
 	while (rs.next()) {
 		out.println("<tr>");
 		out.println("<td>" + rs.getString(1) + "</td>");
+		out.println("<td>" + rs.getString(2) + "</td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
 
-	
-	//Query 14
-	String do_org_name = request.getParameter("do_org_name");
+	//Query 20
 
-	sql = "SELECT DISTINCT D_id\n"+
-			"FROM RECOMMEND\n"+
-			"WHERE Do_org_name in ('"+do_org_name+"')";
+	sql = "(SELECT DISTINCT N_LINK as nor_link, B_LINK as bet_link \n"+"FROM REFER_TO)\n" + "INTERSECT\n"
+			+ "(SELECT DISTINCT NO_LINK as nor_link, BE_LINK as bet_link\n" + "FROM MAKE, PRODUCT)";
 
 	System.out.println(sql);
 
@@ -104,40 +102,8 @@
 	rs = pstmt.executeQuery();
 
 	out.println("<table border=\"1\">");
-	rsmd = rs.getMetaData();
-	cnt = rsmd.getColumnCount();
-	for (int i = 1; i <= cnt; i++) {
-		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-	}
-	while (rs.next()) {
-		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("</tr>");
-	}
-	out.println("</table><br>");
-	
-	
-	
-	
-	//Query 18
-	String beneficiary = request.getParameter("beneficiary");
-
-	sql = "SELECT DONATION_TYPE, COUNT(USER_ID)\n"+
-			"FROM USERS, DONATION_PREFERENCE\n"+
-			"WHERE USER_ID = U_ID\n"+
-			"AND BENEFICIARY = '"+beneficiary+"'\n"+
-			"GROUP BY DONATION_TYPE\n"+
-			"ORDER BY DONATION_TYPE DESC";
-	
-	System.out.println(sql);
-
-	pstmt = conn.prepareStatement(sql);
-	System.out.println(sql);
-	rs = pstmt.executeQuery();
-
-	out.println("<table border=\"1\">");
-	rsmd = rs.getMetaData();
-	cnt = rsmd.getColumnCount();
+	 rsmd = rs.getMetaData();
+	 cnt = rsmd.getColumnCount();
 	for (int i = 1; i <= cnt; i++) {
 		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
 	}
@@ -149,10 +115,6 @@
 	}
 	out.println("</table><br>");
 
-	
-	
-	
-	
 	conn.close();
 	%>
 	<a href='Main.jsp'>메인 페이지</a>

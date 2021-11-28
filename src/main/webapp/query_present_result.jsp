@@ -65,30 +65,7 @@
 
 	request.setCharacterEncoding("UTF-8");
 
-	//Query 8
-	String user_name = request.getParameter("user_name");
-
-	sql = "SELECT NORMAL_LINK, BETTER_LINK\n" + "FROM MALL, REFER_TO, USERS\n" + "WHERE NORMAL_LINK = N_LINK\n"
-			+ "AND BETTER_LINK = B_LINK\n" + "AND USER_ID = USR_ID\n" + "AND NAME = '" + user_name + "'";
-	System.out.println(sql);
-
-	pstmt = conn.prepareStatement(sql);
-	System.out.println(sql);
-	rs = pstmt.executeQuery();
-
-	out.println("<table border=\"1\">");
-	ResultSetMetaData rsmd = rs.getMetaData();
-	int cnt = rsmd.getColumnCount();
-	for (int i = 1; i <= cnt; i++) {
-		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-	}
-	while (rs.next()) {
-		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
-		out.println("</tr>");
-	}
-	out.println("</table><br>");
+	
 
 	//Query 20
 
@@ -102,8 +79,8 @@
 	rs = pstmt.executeQuery();
 
 	out.println("<table border=\"1\">");
-	rsmd = rs.getMetaData();
-	cnt = rsmd.getColumnCount();
+	ResultSetMetaData rsmd = rs.getMetaData();
+	int cnt = rsmd.getColumnCount();
 	for (int i = 1; i <= cnt; i++) {
 		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
 	}
