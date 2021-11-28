@@ -67,7 +67,7 @@
 
 	//Query 1
 	String donation_type = request.getParameter("donation_type");
-
+	if (donation_type != null){
 	sql = "SELECT DONATION_ORGANIZATION_NAME\n" + "FROM DONATION_ORGANIZATION\n" + "WHERE DONATION_TYPE = '" + donation_type
 			+ "'";
 	System.out.println(sql);
@@ -88,11 +88,14 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	}
 
+	
 	
 	//Query 14
 	String do_org_name = request.getParameter("do_org_name");
 
+	if (do_org_name != null){
 	sql = "SELECT DISTINCT D_id\n"+
 			"FROM RECOMMEND\n"+
 			"WHERE Do_org_name in ('"+do_org_name+"')";
@@ -104,8 +107,8 @@
 	rs = pstmt.executeQuery();
 
 	out.println("<table border=\"1\">");
-	rsmd = rs.getMetaData();
-	cnt = rsmd.getColumnCount();
+	ResultSetMetaData rsmd = rs.getMetaData();
+	int cnt = rsmd.getColumnCount();
 	for (int i = 1; i <= cnt; i++) {
 		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
 	}
@@ -115,13 +118,14 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
-	
+	}
 	
 	
 	
 	//Query 18
 	String beneficiary = request.getParameter("beneficiary");
 
+	if (beneficiary != null){
 	sql = "SELECT DONATION_TYPE, COUNT(USER_ID)\n"+
 			"FROM USERS, DONATION_PREFERENCE\n"+
 			"WHERE USER_ID = U_ID\n"+
@@ -136,8 +140,8 @@
 	rs = pstmt.executeQuery();
 
 	out.println("<table border=\"1\">");
-	rsmd = rs.getMetaData();
-	cnt = rsmd.getColumnCount();
+	ResultSetMetaData rsmd = rs.getMetaData();
+	int cnt = rsmd.getColumnCount();
 	for (int i = 1; i <= cnt; i++) {
 		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
 	}
@@ -149,7 +153,7 @@
 	}
 	out.println("</table><br>");
 
-	
+	}
 	
 	
 	

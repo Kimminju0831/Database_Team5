@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>query_product_result</title>
+<title>query_user_result</title>
 </head>
 <body>
 
@@ -65,74 +65,48 @@
 
 	request.setCharacterEncoding("UTF-8");
 
-	//Query 2
-	String production_count = request.getParameter("production_count");
+	//Query 3
+	String beneficiary = request.getParameter("beneficiary");
 	
-	if (production_count != null) {
-		sql = "SELECT PRODUCTION_TYPE, DELIVERY_CHARGE\n" + "FROM OUTSOURCING_COMPANY\n" + "WHERE PRODUCT_NUM < "
-		+ production_count;
-		System.out.println(sql);
+	if (beneficiary != null){
 
-		pstmt = conn.prepareStatement(sql);
-		System.out.println(sql);
-		rs = pstmt.executeQuery();
-
-		out.println("<table border=\"1\">");
-		ResultSetMetaData rsmd = rs.getMetaData();
-		int cnt = rsmd.getColumnCount();
-		for (int i = 1; i <= cnt; i++) {
-			out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-		}
-		while (rs.next()) {
-			out.println("<tr>");
-			out.println("<td>" + rs.getString(1) + "</td>");
-			out.println("<td>" + rs.getString(2) + "</td>");
-			out.println("</tr>");
-		}
-		out.println("</table><br>");
-	}
-	
-	//Query 10
-	String check = request.getParameter("query_radio");
-	if (check != null) {
-		if (check.equals("yes")) {
-
-			sql = "SELECT PRODUCT_TYPE, COUNT(BETTER_LINK)\n" + "FROM MALL, REFER_TO\n" + "WHERE NORMAL_LINK = N_LINK\n"
-			+ "AND BETTER_LINK = B_LINK\n" + "GROUP BY PRODUCT_TYPE";
-			System.out.println(sql);
-
-			pstmt = conn.prepareStatement(sql);
-			System.out.println(sql);
-			rs = pstmt.executeQuery();
-
-			out.println("<table border=\"1\">");
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int cnt = rsmd.getColumnCount();
-			for (int i = 1; i <= cnt; i++) {
-		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
-			}
-			while (rs.next()) {
-		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
-		out.println("</tr>");
-			}
-			out.println("</table><br>");
-		}
-	}
-	
-	
-
-	//Query 19
-	String quantity_2 = request.getParameter("quantity_2");
-	if (quantity_2 != null){
-	sql = "SELECT PRODUCT_TYPE, MIN(PRICE)\n" + "FROM PRODUCT, MALL, MAKE\n" + "WHERE QUANTITY = " + quantity_2 + "\n"
-			+ "AND PRODUCT_ID = P_I\n" + "AND NORMAL_LINK = NO_LINK\n" + "AND BETTER_LINK = BE_LINK\n"
-			+ "GROUP BY PRODUCT_TYPE\n" + "ORDER BY PRODUCT_TYPE ASC";
+	sql = "SELECT Duser_id\n FROM DONATION_PREFERENCE\n WHERE Beneficiary = '" + beneficiary + "'";
 	System.out.println(sql);
 
 	pstmt = conn.prepareStatement(sql);
+
 	System.out.println(sql);
+
+	rs = pstmt.executeQuery();
+
+	out.println("<table border=\"1\">");
+	ResultSetMetaData rsmd = rs.getMetaData();
+	int cnt = rsmd.getColumnCount();
+	for (int i = 1; i <= cnt; i++) {
+		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
+	}
+	while (rs.next()) {
+		out.println("<tr>");
+		out.println("<td>" + rs.getString(1) + "</td>");
+		out.println("</tr>");
+	}
+	out.println("</table><br>");
+	}
+	
+	//Query 5
+	String production_design = request.getParameter("production_design");
+	String production_type = request.getParameter("production_type");
+	
+	if (production_design !=null && production_type != null){
+
+	sql = "SELECT NAME, PHONE, ADDRESS\n FROM USERS, OUTSOURCING_COMPANY\nWHERE UR_ID = USER_ID\n" + "AND DESIGN = '"
+			+ production_design + "'" + "AND PRODUCTION_TYPE = '" + production_type + "'";
+	System.out.println(sql);
+
+	pstmt = conn.prepareStatement(sql);
+
+	System.out.println(sql);
+
 	rs = pstmt.executeQuery();
 
 	out.println("<table border=\"1\">");
@@ -145,11 +119,13 @@
 		out.println("<tr>");
 		out.println("<td>" + rs.getString(1) + "</td>");
 		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("<td>" + rs.getString(3) + "</td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
 	}
-
+	
+	
 	conn.close();
 	%>
 	<a href='Main.jsp'>메인 페이지</a>

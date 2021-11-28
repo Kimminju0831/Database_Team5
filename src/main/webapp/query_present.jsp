@@ -15,7 +15,9 @@
  <b>20. 링크들 중에서 실제로 사용자들이 선물할 때 참고한 링크들은 무엇인가요?</b>
 		 <br> <br>
 
-			
+			   <input type="checkbox" value="yes" name="query_radio"> QUERY EXECUTE
+            <br>
+            
 			
 				
 		</a> <a><input type="reset" value="Reset"><input type="submit"
