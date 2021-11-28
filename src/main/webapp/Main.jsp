@@ -40,13 +40,9 @@ if (session.getAttribute("userID") == null) {
 	<a href = 'support.html'>지원 페이지</a>
 	<br>
 	<a href = 'Donation_list.jsp'>기부 목록 페이지</a>
-<<<<<<< HEAD
-=======
-	<br>
-	<a href = 'Duser/write.jsp'>기부 추가 페이지</a>
 	<br>
 	<a href = 'select_query_menu.jsp'>질의 메뉴 페이지</a>
->>>>>>> 9fb1d94d783692e9b4795073e3388c6f403b755e
+
 <% 
 	if(usert.equals("donate")){
 %>
@@ -54,6 +50,8 @@ if (session.getAttribute("userID") == null) {
 	<a href = 'Duser/Donate_order.jsp'>기부 혜택 주문 페이지</a>
 	<br>
 	<a href = 'Duser/people.jsp'>기부 참여자 조회 페이지</a>
+	<br>
+	<a href = 'Duser/write.jsp'>기부 추가 페이지</a>
 <%		
 	}else if(usert.equals("outsourcing")){
 %>
