@@ -41,12 +41,17 @@ if (session.getAttribute("userID") == null) {
 	<br>
 	<a href = 'Donation_list.jsp'>기부 목록 페이지</a>
 <% 
-if(usert.equals("donate")){
+	if(usert.equals("donate")){
 %>
 	<br>
 	<a href = 'Duser/Donate_order.jsp'>기부 혜택 주문 페이지</a>
 	<br>
 	<a href = 'Duser/people.jsp'>기부 참여자 조회 페이지</a>
+<%		
+	}else if(usert.equals("outsourcing")){
+%>
+	<br>
+	<a href = 'Ouser/order_list.jsp'>주문 페이지</a>
 <%		
 	}
 }

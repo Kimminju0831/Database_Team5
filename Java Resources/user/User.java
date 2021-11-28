@@ -1,21 +1,12 @@
 package user;
 
 public class User {
-	private int n;
 	private String userID;
 	private String userPassword;
 	private String userName;
 	private String userAddress;
 	private String userPhone;
 	private String userType;
-
-	public int getn() {
-		return n;
-	}
-
-	public void setn(int n) {
-		this.n = n;
-	}
 	
 	public String getUserID() {
 		return userID;

@@ -45,7 +45,27 @@
 <title>기부 참여자 목록</title>
 </head>
 <body>
-<h3><%=list.get(1).getorgname() %> 기부 참여자 목록</h3>
+<h3>
+<%
+	if(list != null){
+
+	
+%>
+	<%=list.get(0).getorgname() %> 기부 참여자 목록</h3>
+	
+<%
+	}else{
+		
+%>
+		<script>
+			alert('운영 중인 기부 콘텐츠가 없습니다.')
+			location.href="../Main.jsp";
+		</script>
+<% 		
+		
+	}
+
+%>
 		<table>
 			<tr>
 				<td width = "5%">번호</td>
@@ -66,16 +86,18 @@
 						
 						User user = new User();
 						user = manager.getList_user(uid);
+						if(user != null){
 						
-			%>
-			<tr>
+				%>
+				<tr>
 						<td><%=i %></td>	
 						<td><%=user.getUserName() %></td>
 						<td><%=user.getUserPhone() %></td>
 						<td><%=user.getUserAddress() %></td>
 						<td> 참여중 </td>
-			</tr>
-			<% 
+				</tr>
+				<% 	
+						}
 					}
 				}
 				
