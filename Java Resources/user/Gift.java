@@ -30,11 +30,11 @@ public class Gift {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, pass);
 
-			System.out.println("Database ì—°ê²° ì„±ê³µ!");
+			System.out.println("Database ¿¬°á ¼º°ø!");
 		} catch (ClassNotFoundException e) {
-			System.out.println("DB ë“œë¼ì´ë²„ ë¡œë”© ì‹¤íŒ¨ :" + e.toString());
+			System.out.println("DB µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ :" + e.toString());
 		} catch (SQLException sql) {
-			System.out.println("DB ì ‘ì†ì‹¤íŒ¨ :" + sql.toString());
+			System.out.println("DB Á¢¼Ó½ÇÆĞ :" + sql.toString());
 		} catch (Exception e) {
 			System.out.println("Unkonwn error");
 			e.printStackTrace();
@@ -47,10 +47,10 @@ public class Gift {
 		
 		String ProductID = "";
 		int proid;
-		Random random = new Random(); //ëœë¤ ê°ì²´ ìƒì„±(ë””í´íŠ¸ ì‹œë“œê°’ : í˜„ì¬ì‹œê°„)
-        random.setSeed(System.currentTimeMillis()); //ì‹œë“œê°’ ì„¤ì •ì„ ë”°ë¡œ í• ìˆ˜ë„ ìˆìŒ
+		Random random = new Random(); //·£´ı °´Ã¼ »ı¼º(µğÆúÆ® ½Ãµå°ª : ÇöÀç½Ã°£)
+        random.setSeed(System.currentTimeMillis()); //½Ãµå°ª ¼³Á¤À» µû·Î ÇÒ¼öµµ ÀÖÀ½
         
-        proid = random.nextInt(8998) + 1001; // 1001ë¶€í„° 9999
+        proid = random.nextInt(8998) + 1001; // 1001ºÎÅÍ 9999
         String p = Integer.toString(proid);
         ProductID = p.substring(0,3) + "-" + p.substring(3);
         
@@ -75,13 +75,13 @@ public class Gift {
 			int cnt = stmt.executeUpdate(query);
 			if (cnt == 1)
 			{
-				System.out.println("refer_to insertë¬¸ ì„±ê³µ");
+				System.out.println("refer_to insert¹® ¼º°ø");
 				conn.commit();
 				result = 1;
 			}
 			else
 			{
-				System.out.println("refer_to insertë¬¸ ì‹¤íŒ¨");
+				System.out.println("refer_to insert¹® ½ÇÆĞ");
 			}
 			
 		} catch (Exception e) {
@@ -99,7 +99,7 @@ public class Gift {
 			}
 		}
 		
-		return result; // ë°ì´í„°ë² ì´ìŠ¤ ìì²´ ì˜¤ë¥˜
+		return result; // µ¥ÀÌÅÍº£ÀÌ½º ÀÚÃ¼ ¿À·ù
 	}
 	
 	public int product_insert(String quantity, String protype, String price, String userid) throws SQLException {
@@ -120,13 +120,13 @@ public class Gift {
 			int cnt = stmt.executeUpdate(query);
 			if (cnt == 1)
 			{
-				System.out.println("product insertë¬¸ ì„±ê³µ");
+				System.out.println("product insert¹® ¼º°ø");
 				conn.commit();
 				result = 1;
 			}
 			else
 			{
-				System.out.println("product insertë¬¸ ì‹¤íŒ¨");
+				System.out.println("product insert¹® ½ÇÆĞ");
 			}
 			
 		} catch (Exception e) {
@@ -144,7 +144,7 @@ public class Gift {
 			}
 		}
 		
-		return result; // ë°ì´í„°ë² ì´ìŠ¤ ìì²´ ì˜¤ë¥˜
+		return result; // µ¥ÀÌÅÍº£ÀÌ½º ÀÚÃ¼ ¿À·ù
 	}
 	
 public int make_insert(String nlink, String blink, String check, String userid)
@@ -162,13 +162,13 @@ public int make_insert(String nlink, String blink, String check, String userid)
 			int cnt = stmt.executeUpdate(query);
 			if (cnt == 1)
 			{
-				System.out.println("make insertë¬¸ ì„±ê³µ");
+				System.out.println("make insert¹® ¼º°ø");
 				conn.commit();
 				result = refer_to_insert(nlink, blink, userid);
 			}
 			else
 			{
-				System.out.println("make insertë¬¸ ì‹¤íŒ¨");
+				System.out.println("make insert¹® ½ÇÆĞ");
 			}
 			
 		} catch (Exception e) {
@@ -212,10 +212,10 @@ public String[] select_links(String PID, String userid)
 		
 		if(links[0].equals("")||links[1].equals(""))
 		{
-			System.out.println("ë§í¬ ì°¾ê¸° ì‹¤íŒ¨");
+			System.out.println("¸µÅ© Ã£±â ½ÇÆĞ");
 		}
 		else {
-			System.out.println("ë§í¬ ì°¾ê¸° ì„±ê³µ");
+			System.out.println("¸µÅ© Ã£±â ¼º°ø");
 		}
 	}
 	catch (Exception e) {
@@ -242,7 +242,7 @@ public int delete_refer_to(String PID, String userid)
 	conn = connect();
 	int result = 0;
 	
-	String[] links = new String[2];//1ë²ˆì´ normal link, 2ë²ˆì´ better link
+	String[] links = new String[2];//1¹øÀÌ normal link, 2¹øÀÌ better link
 	
 	
 	String query = "delete from refer_to where nlink = '" + links[0] + "' and blink = '" + links[1] + "' and USR_ID = '" + userid + "'";
@@ -255,13 +255,13 @@ public int delete_refer_to(String PID, String userid)
 		int cnt = stmt.executeUpdate(query);
 		if (cnt == 0)
 		{
-			System.out.println("refer_to ì·¨ì†Œ ì‹¤íŒ¨");
+			System.out.println("refer_to Ãë¼Ò ½ÇÆĞ");
 			
 		}
 		else if(cnt ==1)
 		{
 			conn.commit();
-			System.out.println("refer_to ì·¨ì†Œ ì„±ê³µ");
+			System.out.println("refer_to Ãë¼Ò ¼º°ø");
 			result = delete_order(PID, userid);
 		}
 		
@@ -297,13 +297,13 @@ public int delete_product(String PID, String userid)
 			int cnt = stmt.executeUpdate(query);
 			if (cnt == 0)
 			{
-				System.out.println("ì£¼ë¬¸ ì·¨ì†Œ ì‹¤íŒ¨");
+				System.out.println("ÁÖ¹® Ãë¼Ò ½ÇÆĞ");
 				
 			}
 			else if(cnt ==1)
 			{
 				conn.commit();
-				System.out.println("ì£¼ë¬¸ ì·¨ì†Œ ì„±ê³µ");
+				System.out.println("ÁÖ¹® Ãë¼Ò ¼º°ø");
 				result = 1;
 			}
 			
@@ -338,12 +338,12 @@ public int delete_product(String PID, String userid)
 			int cnt = stmt.executeUpdate(query);
 			if (cnt == 0)
 			{
-				System.out.println("makeì‚­ì œ ì‹¤íŒ¨");
+				System.out.println("make»èÁ¦ ½ÇÆĞ");
 				
 			}
 			else if(cnt ==1)
 			{
-				System.out.println("make ì‚­ì œ ì™„ë£Œ");
+				System.out.println("make »èÁ¦ ¿Ï·á");
 				conn.commit();
 				result = delete_product(PID, userid);
 			}
