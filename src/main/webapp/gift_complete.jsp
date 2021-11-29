@@ -70,7 +70,7 @@
 			else if(result == 1)
 			{
 				out.println("선물하기에 성공하였습니다. ");
-				mresult = manage.make_insert(blink, nlink, check);
+				mresult = manage.make_insert(blink, nlink, check, userid);
 				if(mresult == 0){
 					out.println("주문에 실패했습니다.");
 				}
