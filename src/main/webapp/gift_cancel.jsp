@@ -3,7 +3,6 @@
 <%@ page language = "java" import="java.text.*, java.sql.*" %>
 <%@page import="java.util.*" %>
 <%@ page import="user.Gift"%> 
-<%@ page import="user.window"%> 
 
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
@@ -50,7 +49,7 @@
 		<%
 		int result;	
 		int mresult;
-		result = manage.delete_order(pid);
+		result = manage.delete_refer_to(pid, userid);
 		
 		if(result == 0)
 		{

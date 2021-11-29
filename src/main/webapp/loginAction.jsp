@@ -26,11 +26,11 @@ request.setCharacterEncoding("UTF-8");
 	<%
 	UserDao userDAO = new UserDao();
 	
-	String C_ID = request.getParameter("userID");
-	String C_PW = request.getParameter("userPassword");
+	String ID = request.getParameter("userID");
+	String PW = request.getParameter("userPassword");
 	String type = (String)request.getParameter("userType");
 	
-	int result = userDAO.login(C_ID, C_PW, type);
+	int result = userDAO.login(ID, PW, type);
 
 	//로그인 성공
 	if (result == 1) {

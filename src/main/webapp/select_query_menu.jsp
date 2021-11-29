@@ -30,10 +30,12 @@
 	%>
 	<%
 
+
 	String sql = "";
 
 	
 	PreparedStatement ps;
+
 	Connection conn = null;
 	Statement stmt = null;
 

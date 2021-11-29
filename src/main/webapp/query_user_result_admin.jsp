@@ -25,11 +25,11 @@
 <body>
 
 	<%
+	/*
 	String sql = "";
 
-
-	
 	PreparedStatement ps;
+
 
 	Connection conn = null;
 	Statement stmt = null;
@@ -79,7 +79,7 @@
 	String production_type = request.getParameter("production_type");
 	if (production_design != null && production_type != null) {
 		sql = "SELECT NAME, PHONE, ADDRESS\n FROM USERS, OUTSOURCING_COMPANY\nWHERE UR_ID = USER_ID\n" + "AND DESIGN = '"
-		+ production_design + "'" + "AND PRODUCTION_TYPE = '" + production_type + "'";
+		+ production_design + "'" + "AND PRODUCTION_TYPE = '" + production_type + "'\n AND PRODUCTION_TYPE != '$'" ;
 		System.out.println(sql);
 		pstmt = conn.prepareStatement(sql);
 		System.out.println(sql);
@@ -150,7 +150,7 @@
 	String production_count_2 = request.getParameter("production_count_2");
 	if (production_count_2 != null) {
 		sql = "SELECT BENEFICIARY, SUM( PRODUCT_NUM )" + "FROM OUTSOURCING_COMPANY , DONATION_ORGANIZATION\n"
-		+ "WHERE ORGAN_ID = ORG_ID\n" + "AND PRODUCT_NUM >= " + production_count_2 + "\n" + "GROUP BY BENEFICIARY";
+		+ "WHERE ORGAN_ID = ORG_ID\n" + "AND PRODUCT_NUM >= " + production_count_2 + "\n AND PRODUCTION_TYPE != '$'\n" + "GROUP BY BENEFICIARY";
 		System.out.println(sql);
 		pstmt = conn.prepareStatement(sql);
 		System.out.println(sql);

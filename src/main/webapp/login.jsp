@@ -15,7 +15,7 @@
 		
 		<br> 
 		
-		<input type="text" placeholder="비밀번호" name="userPassword" maxlength="50"> <br> 
+		<input type="password" placeholder="비밀번호" name="userPassword" maxlength="50"> <br> 
 			
 		<br>
 				
