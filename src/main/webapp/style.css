@@ -4,7 +4,12 @@
 
 @font-face {
 	src: url("./fonts/SangSangTitle.ttf");
-	font-family: "font1"
+	font-family: "font1";
+	src: url("./fonts/Rix∞ÌµÒB.ttf");
+	font-family: "font2";
+	
+	
+	
 }
 
 p {
@@ -16,6 +21,13 @@ p1 {
 	font-family: "font1";
 	font-size: 30px;
 }
+
+p2 {
+	font-family: "font2";
+	font-size: 15px;
+}
+
+
 
 table {
 	width: 100%;
