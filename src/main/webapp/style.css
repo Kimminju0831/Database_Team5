@@ -1,3 +1,29 @@
 .a {
-	background : black;
+	background: black;
+}
+
+@font-face {
+	src: url("./fonts/SangSangTitle.ttf");
+	font-family: "font1"
+}
+
+p {
+	font-family: "font1";
+	font-size: 25px;
+}
+
+p1 {
+	font-family: "font1";
+	font-size: 30px;
+}
+
+table {
+	width: 100%;
+	border-top: 1px solid #444444;
+	border-collapse: collapse;
+}
+
+th, td {
+	border-bottom: 1px solid #444444;
+	padding: 10px;
 }

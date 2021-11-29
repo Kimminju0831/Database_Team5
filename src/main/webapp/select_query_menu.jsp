@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
 <%@ page language="java" import="java.text.*, java.sql.*"%>
@@ -19,115 +19,108 @@
 <body>
 	<%
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>·Î±×ÀÎ</a>");
+		out.println("<a href='login.jsp'>ë¡œê·¸ì¸</a>");
 	} else {
 		String userid = (String) session.getAttribute("userID");
 		String usert = (String) session.getAttribute("userType");
-		out.println(usert + " È¸¿ø | " + userid + " ´Ô ¹İ°©½À´Ï´Ù! <br>");
-		out.println("<a href='logout.jsp'>·Î±×¾Æ¿ô</a><br><br>");
+		out.println(usert + " íšŒì› | " + userid + " ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤! <br>");
+		out.println("<a href='logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a><br><br>");
 	%>
 	<%
-	   /*
-	   String serverIP = "localhost";
-	   String strSID = "xe";
-	   String portNum = "1600";
-	   String user = "ta";
-	   String pass = "ta";
-	   String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-	   */
-	   /*
-	   String serverIP = "localhost";
-	   String strSID = "orcl";
-	   String portNum = "1521";
-	   String user = "Team";
-	   String pass = "aaaa";
-	   String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
+	/*
+	String serverIP = "localhost";
+	String strSID = "xe";
+	String portNum = "1600";
+	String user = "ta";
+	String pass = "ta";
+	String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
 	*/
-	   String serverIP = "localhost";
-	   String strSID = "orcl";
-	   String portNum = "1521";
-	   String username = "team";
-	   String pass = "1234";
-	   String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
+	/*
+	String serverIP = "localhost";
+	String strSID = "orcl";
+	String portNum = "1521";
+	String user = "Team";
+	String pass = "aaaa";
+	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
+	*/
+	String serverIP = "localhost";
+	String strSID = "orcl";
+	String portNum = "1521";
+	String username = "team";
+	String pass = "1234";
+	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
 
-    Connection conn = null;
-    Statement stmt = null;
-    
-    PreparedStatement ps;
-    ResultSet rs;
-    Class.forName("oracle.jdbc.driver.OracleDriver");
-    conn = DriverManager.getConnection(url, username, pass);
-    stmt = conn.createStatement();
+	Connection conn = null;
+	Statement stmt = null;
 
-
+	PreparedStatement ps;
+	ResultSet rs;
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	conn = DriverManager.getConnection(url, username, pass);
+	stmt = conn.createStatement();
 	%>
 	<%
-      request.setCharacterEncoding("UTF-8");
-     
-      String D_preference = request.getParameter("D_preference");
-      String D_period = request.getParameter("D_period");
-      
-   %>
+	request.setCharacterEncoding("UTF-8");
+
+	String D_preference = request.getParameter("D_preference");
+	String D_period = request.getParameter("D_period");
+	%>
 
 	<%
-      int repeat = 0;
-      out.println("------ °ü¸®ÀÚ ±ÇÇÑ »ç¿ëÀÚ Á¤º¸ ¼öÁ¤  ------ <br/><br/>");
-       String check_sql = "select user_id from users WHERE user_id='"+ userid + "'";
-        String check_id = "";
-        rs = stmt.executeQuery(check_sql);
-        while(rs.next()) {
-           check_id = rs.getString(1);
-          }
-        
-        //for test
-        System.out.println("check_id: "+ check_id);
-        //ÀºÁÖ - '000-00-000'
-        if(check_id.equals("000-00-0000"))//°ü¸®ÀÚ ¾ÆÀÌµğ °Ë»ç
-        {
-           String check_pw_sql = "select user_pwd from users WHERE user_id= '"+ check_id +"'";
-         String check_pwd = "";
-           rs = stmt.executeQuery(check_pw_sql);
-           while(rs.next()) {
-              check_pwd = rs.getString(1);
-            //for test
-              System.out.println("check_pwd: "+ check_pwd);
-           }
-        
-        
-           if(check_pwd.equals("admin"))//°ü¸®ÀÚ ºñ¹Ğ¹øÈ£ °Ë»ç
-           {
-            //ºñ¹Ğ¹øÈ£ µ¿ÀÏ -> °ü¸®ÀÚ 
-            %>
-	<a href='query_user_admin.html'>»ç¿ëÀÚ °ü·Ã ÁúÀÇ ÆäÀÌÁö(°ü¸®ÀÚ)</a>
+	int repeat = 0;
+	out.println("------ ê´€ë¦¬ì ê¶Œí•œ ì‚¬ìš©ì ì •ë³´ ìˆ˜ì •  ------ <br/><br/>");
+	String check_sql = "select user_id from users WHERE user_id='" + userid + "'";
+	String check_id = "";
+	rs = stmt.executeQuery(check_sql);
+	while (rs.next()) {
+		check_id = rs.getString(1);
+	}
+
+	//for test
+	System.out.println("check_id: " + check_id);
+	//ì€ì£¼ - '000-00-000'
+	if (check_id.equals("000-00-0000"))//ê´€ë¦¬ì ì•„ì´ë”” ê²€ì‚¬
+	{
+		String check_pw_sql = "select user_pwd from users WHERE user_id= '" + check_id + "'";
+		String check_pwd = "";
+		rs = stmt.executeQuery(check_pw_sql);
+		while (rs.next()) {
+			check_pwd = rs.getString(1);
+			//for test
+			System.out.println("check_pwd: " + check_pwd);
+		}
+
+		if (check_pwd.equals("admin"))//ê´€ë¦¬ì ë¹„ë°€ë²ˆí˜¸ ê²€ì‚¬
+		{
+			//ë¹„ë°€ë²ˆí˜¸ ë™ì¼ -> ê´€ë¦¬ì
+	%>
+	<a href='query_user_admin.html'>ì‚¬ìš©ì ê´€ë ¨ ì§ˆì˜ í˜ì´ì§€(ê´€ë¦¬ì)</a>
 	<br>
-	<a href='query_product_admin.html'>»óÇ° ÀÚÃ¼ °ü·Ã ÁúÀÇ ÆäÀÌÁö(°ü¸®ÀÚ)</a>
+	<a href='query_product_admin.html'>ìƒí’ˆ ìì²´ ê´€ë ¨ ì§ˆì˜ í˜ì´ì§€(ê´€ë¦¬ì)</a>
 	<br>
-	<a href='query_donate_admin.html'>±âºÎ °ü·Ã ÁúÀÇ ÆäÀÌÁö(°ü¸®ÀÚ)</a>
+	<a href='query_donate_admin.html'>ê¸°ë¶€ ê´€ë ¨ ì§ˆì˜ í˜ì´ì§€(ê´€ë¦¬ì)</a>
 	<br>
-	<a href='query_present_admin.html'>¼±¹° °ü·Ã ÁúÀÇ ÆäÀÌÁö(°ü¸®ÀÚ)</a>
-	<br>
-	<% 
-           }
-           else
-           {
-           out.println("°ü¸®ÀÚ ºñ¹Ğ¹øÈ£°¡ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.");
-           }
-          }
-        else{
-            // out.println("°ü¸®ÀÚ °èÁ¤ÀÌ ¾Æ´Õ´Ï´Ù.");
-             %>
-	<a href='query_user.jsp'>»ç¿ëÀÚ °ü·Ã ÁúÀÇ ÆäÀÌÁö</a>
-	<br>
-	<a href='query_product.html'>»óÇ° ÀÚÃ¼ °ü·Ã ÁúÀÇ ÆäÀÌÁö</a>
-	<br>
-	<a href='query_donate.html'>±âºÎ °ü·Ã ÁúÀÇ ÆäÀÌÁö</a>
-	<br>
-	<a href='query_present.jsp'>¼±¹° °ü·Ã ÁúÀÇ ÆäÀÌÁö</a>
+	<a href='query_present_admin.html'>ì„ ë¬¼ ê´€ë ¨ ì§ˆì˜ í˜ì´ì§€(ê´€ë¦¬ì)</a>
 	<br>
 	<%
-        }
-      out.println("<br/>");
-   %>
+	} else {
+	out.println("ê´€ë¦¬ì ë¹„ë°€ë²ˆí˜¸ê°€ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+	}
+	} else {
+	// out.println("ê´€ë¦¬ì ê³„ì •ì´ ì•„ë‹™ë‹ˆë‹¤.");
+	%>
+	<a href='query_user.jsp'>ì‚¬ìš©ì ê´€ë ¨ ì§ˆì˜ í˜ì´ì§€</a>
+	<br>
+	<a href='query_product.html'>ìƒí’ˆ ìì²´ ê´€ë ¨ ì§ˆì˜ í˜ì´ì§€</a>
+	<br>
+	<a href='query_donate.html'>ê¸°ë¶€ ê´€ë ¨ ì§ˆì˜ í˜ì´ì§€</a>
+	<br>
+	<a href='query_present.jsp'>ì„ ë¬¼ ê´€ë ¨ ì§ˆì˜ í˜ì´ì§€</a>
+	<br>
+	<%
+	}
+	out.println("<br/>");
+	%>
 
 	<br>
 	<br>

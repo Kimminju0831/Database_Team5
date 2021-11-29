@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
 <%@	page import="java.time.LocalDate"%>
@@ -16,7 +16,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
+<link href="./style.css" rel="stylesheet">
 <title>query_user_result</title>
 </head>
 <body>
@@ -56,11 +57,11 @@
 
 	String userid = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>·Î±×ÀÎ</a>");
+		out.println("<a href='login.jsp'>ë¡œê·¸ì¸</a>");
 	} else {
 		userid = (String) session.getAttribute("userID");
-		out.println(userid + " ´Ô ¾È³çÇÏ¼¼¿ä, ¹İ°©½À´Ï´Ù! <br>");
-		out.println("<a href='logout.jsp'>  ·Î±×¾Æ¿ô</a>");
+		out.println(userid + " ë‹˜ ì•ˆë…•í•˜ì„¸ìš”, ë°˜ê°‘ìŠµë‹ˆë‹¤! <br>");
+		out.println("<a href='logout.jsp'>  ë¡œê·¸ì•„ì›ƒ</a>");
 	}
 
 	request.setCharacterEncoding("UTF-8");
@@ -181,7 +182,7 @@
 		out.println("</table><br>");
 
 	}
-
+  
 	//Query 9
 	String production_count_2 = request.getParameter("production_count_2");
 
@@ -268,9 +269,10 @@
 			out.println("</table><br>");
 		}
 	}
+	
 
 	conn.close();
 	%>
-	<a href='Main.jsp'>¸ŞÀÎ ÆäÀÌÁö</a>
+	<a href='Main.jsp'>ë©”ì¸ í˜ì´ì§€</a>
 </body>
 </html>
