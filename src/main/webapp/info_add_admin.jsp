@@ -59,7 +59,7 @@
       	  check_id = rs.getString(1);
        	}
         
-        if(check_id.equals("000-00-000"))
+        if(check_id.equals("000-00-0000"))
         {
         	String check_pw_sql = "select user_pwd from users WHERE user_id= '"+ check_id +"'";
 			String check_pwd = "";
@@ -135,5 +135,6 @@
         }
 		out.println("<br/>");
 	%>
+	<a href = 'Main.jsp'>메인 페이지</a>
 </body>
 </html>
