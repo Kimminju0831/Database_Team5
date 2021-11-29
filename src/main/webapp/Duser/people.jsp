@@ -39,6 +39,9 @@
 		end = count;
 	}
 	
+	String det = "";
+	det = manager.get_donate_org(userid);
+	
 	
 %>
 <meta charset="EUC-KR">
@@ -47,11 +50,11 @@
 <body>
 <h3>
 <%
-	if(list != null){
+	if(det != null){
 
 	
 %>
-	<%=list.get(0).getorgname() %> 기부 참여자 목록</h3>
+	<%=det %> 기부 참여자 목록</h3>
 	
 <%
 	}else{
@@ -141,9 +144,14 @@
 							
 			<%
 						}
+						
+						
 			%>
+			
+			
 		</table>
-		
+		<br>
+		<button type="button" onclick="location='out_list.jsp'">기부 혜택 주문 페이지</button>
 		<a href = "../Main.jsp">메인 페이지로</a>
 </body>
 </html>

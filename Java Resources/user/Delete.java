@@ -16,14 +16,7 @@ public class Delete {
 
 	public Connection connect() {
 		try {
-			/*
-			String serverIP = "localhost";
-			String strSID = "orcl";
-			String portNum = "1521";
-			String user = "Team";
-			String pass = "aaaa";
-			String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-*/
+		
 			String serverIP = "localhost";
 			String strSID = "orcl";
 			String portNum = "1521";

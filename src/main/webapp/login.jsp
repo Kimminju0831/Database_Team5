@@ -18,11 +18,10 @@
 		<input type="text" placeholder="비밀번호" name="userPassword" maxlength="50"> <br> 
 			
 		<br>
-		
-		<p>Type</p>
-		<label><input type="checkbox" name="userType" value="basic">일반 사용자</label>
-		<label><input type="checkbox" name="userType" value="donate">기부 단체</label>
-		<label><input type="checkbox" name="userType" value="outsourcing">외주 업체</label>
+				
+		<input type="radio" name="userType" value="basic" checked="checked">일반 사용자
+		<input type="radio" name="userType" value="donate">기부 단체
+		<input type="radio" name="userType" value="outsourcing">외주 업체
 		
 		<br>
 		

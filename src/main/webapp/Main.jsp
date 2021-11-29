@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>   
@@ -22,47 +22,47 @@
 <%
 
 if (session.getAttribute("userID") == null) {
-	out.println("<p1><a href='login.jsp'>·Î±×ÀÎ</a></p1>");
+	out.println("<p1><a href='login.jsp'>ë¡œê·¸ì¸</a></p1>");
 }else
 {
 	String userid = (String)session.getAttribute("userID");
 	String usert = (String)session.getAttribute("userType");
-	out.println("<p1>"+usert + " È¸¿ø | " + userid+" ´Ô ¹İ°©½À´Ï´Ù! <br></p1>");
-	out.println("<p1><a href='logout.jsp'>·Î±×¾Æ¿ô</a></p1>");
+	out.println("<p1>"+usert + " íšŒì› | " + userid+" ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤! <br></p1>");
+	out.println("<p1><a href='logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a></p1>");
 	
 	
 %>
 <p>
-	<a href = 'Delete_path.jsp'>È¸¿ø Å»Åğ ÆäÀÌÁö</a>
+	<a href = 'Delete_path.jsp'>íšŒì› íƒˆí‡´ í˜ì´ì§€</a>
 	<br>
-	<a href = 'Mypage.jsp'>¸¶ÀÌ ÆäÀÌÁö</a>
+	<a href = 'Mypage.jsp'>ë§ˆì´ í˜ì´ì§€</a>
 	<br>
-	<a href = 'prefer.jsp'>ÃëÇâ ÆäÀÌÁö</a>
+	<a href = 'prefer.jsp'>ì·¨í–¥ í˜ì´ì§€</a>
 	<br>
-	<a href = 'support.html'>Áö¿ø ÆäÀÌÁö</a>
+	<a href = 'support.html'>ì§€ì› í˜ì´ì§€</a>
 	<br>
-	<a href = 'Donation_list.jsp'>±âºÎ ¸ñ·Ï ÆäÀÌÁö</a>
+	<a href = 'Donation_list.jsp'>ê¸°ë¶€ ëª©ë¡ í˜ì´ì§€</a>
 
 	<br>
-	<a href = 'Duser/write.jsp'>±âºÎ Ãß°¡ ÆäÀÌÁö</a>
+	<a href = 'Duser/write.jsp'>ê¸°ë¶€ ì¶”ê°€ í˜ì´ì§€</a>
 	<br>
-	<a href = 'select_query_menu.jsp'>ÁúÀÇ ¸Ş´º ÆäÀÌÁö</a>
+	<a href = 'select_query_menu.jsp'>ì§ˆì˜ ë©”ë‰´ í˜ì´ì§€</a>
 </p>
 <% 
 	if(usert.equals("donate")){
 %>
 <b>
 	<br>
-	<a href = 'Duser/Donate_order.jsp'>±âºÎ ÇıÅÃ ÁÖ¹® ÆäÀÌÁö</a>
+	<a href = 'Duser/Donate_order.jsp'>ê¸°ë¶€ í˜œíƒ ì£¼ë¬¸ í˜ì´ì§€</a>
 	<br>
-	<a href = 'Duser/people.jsp'>±âºÎ Âü¿©ÀÚ Á¶È¸ ÆäÀÌÁö</a>
+	<a href = 'Duser/people.jsp'>ê¸°ë¶€ ì°¸ì—¬ì ì¡°íšŒ í˜ì´ì§€</a>
 </b>
 <%		
 	}else if(usert.equals("outsourcing")){
 %>
 <b>
 	<br>
-	<a href = 'Ouser/order_list.jsp'>ÁÖ¹® ÆäÀÌÁö</a>
+	<a href = 'Ouser/order_list.jsp'>ì£¼ë¬¸ í˜ì´ì§€</a>
 </b>
 <%		
 	}

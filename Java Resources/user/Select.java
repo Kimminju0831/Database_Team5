@@ -17,14 +17,7 @@ public class Select {
 
 	public Connection connect() {
 		try {
-			/*
-			String serverIP = "localhost";
-			String strSID = "orcl";
-			String portNum = "1521";
-			String user = "Team";
-			String pass = "aaaa";
-			String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-*/
+		
 			String serverIP = "localhost";
 			String strSID = "orcl";
 			String portNum = "1521";
@@ -88,6 +81,46 @@ public class Select {
 		
 		return result; // 데이터베이스 자체 오류
 	}
+	
+	public ExBoardDTO donation_content (String userid) {
+			
+			conn = connect();
+			
+			String query = "SELECT * FROM DONATION_ORGANIZATION WHERE ORG_ID = '"+ userid +"'";
+			
+			ExBoardDTO result = new ExBoardDTO();
+	
+			try {
+				System.out.println(query);
+
+				pstmt = conn.createStatement();
+				rs = pstmt.executeQuery(query);
+				
+				if(rs.next()){
+					result.setid(rs.getString(6));
+					result.setip(rs.getString(1));
+					result.settitle(rs.getString(4));
+					result.setcontent(rs.getString(3));
+					result.setpw(rs.getString(2));
+				}
+	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+			
+			return result; // 데이터베이스 자체 오류
+		}
 	
 	public String my_present (String userid) {
 		

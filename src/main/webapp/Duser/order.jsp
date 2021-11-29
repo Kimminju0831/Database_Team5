@@ -14,6 +14,7 @@
 	}else
 	{
 		userid = (String)session.getAttribute("userID");
+		userpw = (String)session.getAttribute("userPassword");
 		String usert = (String)session.getAttribute("userType");
 		out.println(usert + " È¸¿ø | " + userid+" ´Ô ¹Ý°©½À´Ï´Ù! <br>");
 	out.println("<a href='logout.jsp'>·Î±×¾Æ¿ô</a>");
@@ -23,7 +24,8 @@
 	String PRODUCTION_TYPE = (String)request.getParameter("production_type");
 	String DESIGN = (String)request.getParameter("design");
 	String DO_NAME = (String)request.getParameter("org_name");
-	String ORGAN_ID = (String)request.getParameter("org_id");
+	String ORGAN_ID = (String)request.getParameter("org_id");	
+	String COMPANYID = (String)request.getParameter("companyid");	
 	
 	UserDao manager = new UserDao();
 	
@@ -33,11 +35,11 @@
 	
 	String DELIVERY_CHARGE = "none";
 	String PRODUCTION_PRICE = "none";
-	String ESTIMATED_DATE = "2000-01-01";
-	String unknown = "none";
+	String ESTIMATED_DATE = "2001-01-01";
+	String companyid = request.getParameter("companyid");
 	
 	int res = manager.makedorder(DELIVERY_CHARGE, DESIGN, PRODUCTION_TYPE, PRODUCTION_PRICE, 
-				ESTIMATED_DATE, PRODUCT_NUM, unknown, unknown, ORGAN_ID, DO_NAME);
+				ESTIMATED_DATE, PRODUCT_NUM, userpw, COMPANYID, ORGAN_ID, DO_NAME);
 	
 	if(res!=-1){
 %>
