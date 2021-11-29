@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ page language = "java" import="java.text.*, java.sql.*" %>
 <%@page import="java.util.*" %>
-<%@ page import = "user.ExBoardDTO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,11 +70,11 @@
 			//out.println("<td>" + blink + "</td>");
 	        out.println("<td> <a href = \"" + blink + "\">" + blink + "</td>");
 	        //out.println("<td>" + nlink + "</td>");
-	        out.println("<td> <button type=\"button\" onclick=\"location.href='gift_complete.jsp?blink=" + blink + "&nlink=" + nlink+ "&check=B'\"> 선물하기 </button>");
+	        out.println("<td> <button type=\"button\" onclick=\"location.href='gift_information.jsp?blink=" + blink + "&nlink=" + nlink+ "&product=" +product + "&check=B'\"> 선물하기 </button>");
 	        out.println("<td> <a href = \"" + nlink + "\">" + nlink + "</td>");
 	       	//out.println("<input type=\"hidden\"value='"+ blink +"'>");
 	       	//out.println("<input type=\"hidden\"value='" + nlink +"'>");
-	       	out.println("<td> <button type=\"button\" onclick=\"location.href='gift_complete.jsp?blink=" + blink + "&nlink=" + nlink+ "&check=N'\"> 선물하기 </button>");
+	       	out.println("<td> <button type=\"button\" onclick=\"location.href='gift_information.jsp?blink=" + blink + "&nlink=" + nlink+ "&product=" +product + "&check=N'\"> 선물하기 </button>");
 	        //out.println("<td> <input type=\"submit\"value=\"선물하기\">");
 	        out.print("</tr>");
 	        
@@ -83,5 +82,9 @@
 		out.println("</table>");
 	
 	%>
+	<br/>
+	<br/>
+		<a href = 'Main.jsp'>메인 페이지</a>
+		<a href = 'gift_list.jsp'>선물 주문내역 페이지</a>
 </body>
 </html>

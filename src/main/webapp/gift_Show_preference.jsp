@@ -75,5 +75,8 @@
 	</a>
 	
 	
+	<br/><br/>
+	<a href = 'Main.jsp'>메인 페이지</a>
+	<a href = 'gift_list.jsp'>선물 주문내역 페이지</a>
 </body>
 </html>
