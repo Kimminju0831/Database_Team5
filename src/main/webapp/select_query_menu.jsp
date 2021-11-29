@@ -27,14 +27,12 @@
 		out.println("<a href='logout.jsp'>로그아웃</a><br><br>");
 	%>
 	<%
-	/*
 	String serverIP = "localhost";
 	String strSID = "xe";
 	String portNum = "1600";
-	String user = "ta";
+	String username = "ta";
 	String pass = "ta";
 	String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-	*/
 	/*
 	String serverIP = "localhost";
 	String strSID = "orcl";
@@ -43,16 +41,14 @@
 	String pass = "aaaa";
 	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
 	*/
-	String serverIP = "localhost";
+	/* String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
 	String username = "team";
 	String pass = "1234";
-	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-
+	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID; */
 	Connection conn = null;
 	Statement stmt = null;
-
 	PreparedStatement ps;
 	ResultSet rs;
 	Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -61,7 +57,6 @@
 	%>
 	<%
 	request.setCharacterEncoding("UTF-8");
-
 	String D_preference = request.getParameter("D_preference");
 	String D_period = request.getParameter("D_period");
 	%>
@@ -75,7 +70,6 @@
 	while (rs.next()) {
 		check_id = rs.getString(1);
 	}
-
 	//for test
 	System.out.println("check_id: " + check_id);
 	//은주 - '000-00-000'
@@ -89,7 +83,6 @@
 			//for test
 			System.out.println("check_pwd: " + check_pwd);
 		}
-
 		if (check_pwd.equals("admin"))//관리자 비밀번호 검사
 		{
 			//비밀번호 동일 -> 관리자
