@@ -29,12 +29,14 @@
 		out.println("<a href='logout.jsp'>로그아웃</a><br><br>");
 	%>
 	<%
+
 	String sql = "";
 
 	
 	PreparedStatement ps;
 	Connection conn = null;
 	Statement stmt = null;
+
 	ResultSet rs;
 	PreparedStatement pstmt;
 	window con = window.getInstance();
@@ -45,7 +47,6 @@
 	%>
 	<%
 	request.setCharacterEncoding("UTF-8");
-
 	String D_preference = request.getParameter("D_preference");
 	String D_period = request.getParameter("D_period");
 	%>
@@ -59,7 +60,6 @@
 	while (rs.next()) {
 		check_id = rs.getString(1);
 	}
-
 	//for test
 	System.out.println("check_id: " + check_id);
 	//은주 - '000-00-000'
@@ -73,7 +73,6 @@
 			//for test
 			System.out.println("check_pwd: " + check_pwd);
 		}
-
 		if (check_pwd.equals("admin"))//관리자 비밀번호 검사
 		{
 			//비밀번호 동일 -> 관리자

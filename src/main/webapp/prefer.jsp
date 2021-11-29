@@ -42,7 +42,7 @@
 				<br>
 				<br>
 
-			
+			<b>선물 취향을 선택해주세요.</b>
 			<select name= "gift" onchange="categoryChange(this)">
                <option>선물 취향을 선택해주세요</option>
                <option value="ACCESSORY">ACCESSORY</option>
@@ -64,7 +64,7 @@
             
             <script type="text/javascript">
                 function categoryChange(y) {
-                     var good_a = ["BRACELET", "RING", "NECKLACE", "EARRING"];
+                     var good_a = ["BRACELET", "RING", "NECKLACE", "EARRINGS"];
                      var good_b = ["MEAL","DESSERT","COFFEE"];
                      var good_c = ["LIPS","TOTAL","COMPACT CUSHION"];
                      var good_d = ["TUMBLER","ETC"];
