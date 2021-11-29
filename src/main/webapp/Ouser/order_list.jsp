@@ -54,6 +54,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%
 
 		if (session.getAttribute("userID") == null) {
@@ -62,7 +63,7 @@
 		{
 			String usert = (String)session.getAttribute("userType");
 			out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
-			out.println("<a href='logout.jsp'>로그아웃</a>");
+			out.println("<a href='../logout.jsp'>로그아웃</a>");
 	
 	
 %>

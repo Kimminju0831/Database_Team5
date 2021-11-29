@@ -57,7 +57,29 @@
 		
 	}
 		
-	
+	int menu = manager.get_order_donate(userid);
+	if(menu != 0)	//주문을 이미 넣었음 == OUTSOURCING COMPANY 에 ORGAN_ID 가 있음.
+	{
+			// 주문을 넣고 외주업체 측에서 승인 했음 ==  배달비가 산정됨
+			if(menu == 2){
+			%>
+			<script type="text/javascript">
+			alert('주문이 승인되었습니다.')
+			location.href="../Mypage.jsp";
+			</script>
+			<%			
+			}
+			// 주문을 넣었지만 외주 업체 측에서 승인을 안했음
+			else{
+			%>
+			<script type="text/javascript">
+			alert('주문 승인 대기 중 입니다.')
+			location.href="../Mypage.jsp";
+			</script>
+			<%
+			}
+			
+	}
 
 
 %>
@@ -138,7 +160,18 @@
 					
 			%>
 		</table>
-
+<%
+		if(usert.equals("donate")){
+%>
+<%			
+		}else if(usert.equals("outsourcing")){
+%>
+		<button onclick="location='../Ouser/reg.jsp'">등록하기</button>
+<%			
+		}
+	
+%>
+		
 
 </body>
 </html>
