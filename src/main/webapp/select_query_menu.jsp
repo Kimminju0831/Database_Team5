@@ -27,12 +27,6 @@
 		out.println("<a href='logout.jsp'>로그아웃</a><br><br>");
 	%>
 	<%
-	String serverIP = "localhost";
-	String strSID = "xe";
-	String portNum = "1600";
-	String username = "ta";
-	String pass = "ta";
-	String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
 	/*
 	String serverIP = "localhost";
 	String strSID = "orcl";
@@ -41,12 +35,23 @@
 	String pass = "aaaa";
 	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
 	*/
-	/* String serverIP = "localhost";
+	String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
 	String username = "team";
 	String pass = "1234";
-	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID; */
+	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID; 
+	/*
+	
+	String serverIP = "localhost";
+	String strSID = "xe";
+	String portNum = "1600";
+	String username = "ta";
+	String pass = "ta";
+	String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
+	
+	*/
+	
 	Connection conn = null;
 	Statement stmt = null;
 	PreparedStatement ps;

@@ -52,20 +52,18 @@ input[id="tab4"]:checked ~ .con4 {
 	display: block;
 }
 </style>
-
 <head>
 <meta charset="UTF-8">
 </head>
-
 <div class="tab_content">
 	<input type="radio" name="menu" id="tab1" checked> 
-	<label for="tab1">湲곕� 愿��젴 議고쉶_1</label> 
+	<label for="tab1">기부 관련 조회_1</label> 
 	<input type="radio" name="menu" id="tab2">
-	<label for="tab2">湲곕� 愿��젴 議고쉶_2</label> 
+	<label for="tab2">기부 관련 조회_2</label> 
 	<input type="radio" name="menu"id="tab3"> 
-	<label for="tab3">湲곕� 愿��젴 議고쉶_3</label> 
+	<label for="tab3">기부 관련 조회_3</label> 
 	<input type="radio" name="menu" id="tab4"> 
-	<label for="tab4">湲곕� 愿��젴 議고쉶_4</label> 
+	<label for="tab4">기부 관련 조회_4</label> 
 	<input type="radio" name="menu" id="tab5"> 
 	
 
@@ -74,8 +72,8 @@ input[id="tab4"]:checked ~ .con4 {
 
 
 			
-		<b>  1. �뼱�뼡 湲곕� 湲곌컙�쓣 媛�吏� 湲곕� �떒泥대�� 蹂닿퀬 �떢�쑝�떊媛��슂? </b> 
-		<br> <br>湲곕� ���엯:
+		<b>  1. 어떤 기부 기간을 가진 기부 단체를 보고 싶으신가요? </b> 
+		<br> <br>기부 타입:
 			
 			 <select name="donation_type">
              <option value="SHORT" selected>SHORT</option>
@@ -87,7 +85,8 @@ input[id="tab4"]:checked ~ .con4 {
            		<input type="reset" value="Reset"> <input type="submit" value="Submit">
 
 			<br>
-			<a href="Main.jsp">硫붿씤 �럹�씠吏�濡� �씠�룞�븯湲�</a>
+			<a href="Main.jsp">메인 페이지로 이동하기</a>
+			<a href='select_query_menu.jsp'>질의 메뉴 페이지로 이동하기</a>
 			
 		</form>
 
@@ -97,15 +96,16 @@ input[id="tab4"]:checked ~ .con4 {
 	<form action="./query_donate_result_admin.jsp" method="post">
 	
 	
-	<b> 13. _______�뒗 紐⑤뱺 �떒泥댁뿉 湲곕��븯�뒗 �쑀���쓽 �븘�씠�뵒�� �씠由꾩�? </b> 
+	<b> 13. _______는 모든 단체에 기부하는 유저의 아이디와 이름은? </b> 
 		<br> <br>
-		湲곕� 湲곌� �씠由�:
+		기부 기관 이름:
 		<input type="text" name="donation_organization_name"> <br> <br>
 		
 		<input type="reset" value="Reset"> <input type="submit" value="Submit">
 
 			<br>
-			<a href="Main.jsp">硫붿씤 �럹�씠吏�濡� �씠�룞�븯湲�</a>
+			<a href="Main.jsp">메인 페이지로 이동하기</a>
+			<a href='select_query_menu.jsp'>질의 메뉴 페이지로 이동하기</a>
             
 	
 	</form>
@@ -115,14 +115,15 @@ input[id="tab4"]:checked ~ .con4 {
 	<div class="content_box con3">
 	<form action="./query_donate_result_admin.jsp" method="post">
 	
-	    <b>14. �뼱�뼡 湲곕� 湲곌��쓽 �븘�씠�뵒瑜� �븣怨좎떢�쑝�떊媛��슂?  </b> 
+	    <b>14. 어떤 기부 기관의 아이디를 알고싶으신가요?  </b> 
 		<br> <br>
-		湲곕� 湲곌� �씠由�:
+		기부 기관 이름:
 		<input type="text" name="do_org_name"> <br> <br>
 		
 			<input type="reset" value="Reset"> <input type="submit" value="Submit">
 <br>
-			<a href="Main.jsp">硫붿씤 �럹�씠吏�濡� �씠�룞�븯湲�</a>
+			<a href="Main.jsp">메인 페이지로 이동하기</a>
+			<a href='select_query_menu.jsp'>질의 메뉴 페이지로 이동하기</a>
 	</form>
 	</div>
 	
@@ -130,9 +131,9 @@ input[id="tab4"]:checked ~ .con4 {
 	<div class="content_box con4">
 	<form action="./query_donate_result_admin.jsp" method="post">
 	
-	 <b>18. 湲곕� ���엯怨� 湲곕��븳 �궗�엺�뱾�쓽 �닔瑜� �븣怨좎떢�� 湲곕� �닔�삙�옄 ���엯�� 臾댁뾿�씤媛��슂? </b> 
+	 <b>18. 기부 타입과 기부한 사람들의 수를 알고싶은 기부 수혜자 타입은 무엇인가요? </b> 
 		
-		  <br><br>�닔�삙�옄 : 
+		  <br><br>수혜자 : 
             <select name="beneficiary">
              <option value="ABANDONED PETS" selected>ABANDONED PETS</option>
              <option value="ENDANGERED SPECIES">ENDANGERED SPECIES</option>
@@ -151,7 +152,8 @@ input[id="tab4"]:checked ~ .con4 {
 		<input type="reset" value="Reset"> <input type="submit" value="Submit">
 
 			<br>
-			<a href="Main.jsp">硫붿씤 �럹�씠吏�濡� �씠�룞�븯湲�</a>
+			<a href="Main.jsp">메인 페이지로 이동하기</a>
+			<a href='select_query_menu.jsp'>질의 메뉴 페이지로 이동하기</a>
 	</form>
 	
 	</div>
