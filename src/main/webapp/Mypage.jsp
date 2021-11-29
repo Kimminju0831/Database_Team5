@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
 <%@ page import="user.DAO"%>
@@ -30,12 +30,15 @@
 <%
 	
 	String userid = ""; 
+	String usert ="";
+	String userpw = "";
 	if (session.getAttribute("userID") == null) {
 		out.println("<a href='login.jsp'>로그인</a>");
 	}else
 	{
 		userid = (String)session.getAttribute("userID");
-		String usert = (String)session.getAttribute("userType");
+		usert = (String)session.getAttribute("userType");
+		userpw = (String)session.getAttribute("userPassword");
 		out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
 		out.println("<a href='logout.jsp'>로그아웃</a>");
 		out.println("<a href='info_modification.jsp'>내 정보 수정</a>");
@@ -44,13 +47,14 @@
 	out.println("<br><br>");	
 	out.println("<br><br>");
 	
-	Select manager = Select.getInstance();
-	String donation =  manager.my_donation(userid);
-	String present = manager.my_present(userid);
-	
-	out.println(donation);
-	out.println("<br>");
-	out.println(present);
+if(usert.equals("basic")){
+		Select manager = Select.getInstance();
+		String donation =  manager.my_donation(userid);
+		String present = manager.my_present(userid);
+		
+		out.println(donation);
+		out.println("<br>");
+		out.println(present);
 %>
 		
 			

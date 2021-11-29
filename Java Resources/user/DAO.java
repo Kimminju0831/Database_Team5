@@ -292,7 +292,7 @@ public class DAO {
 		return list;
 	}
 	
-	// 등록된 기부 목록을 기간 기준으로 가져오기
+	// 기부 단체에 등록 되어있는지 확인 후 있다면 기부단체명을 반환
 		public String get_donate_org(String userid) {
 			
 			conn = connect();
@@ -513,7 +513,7 @@ public class DAO {
 					do {
 						OrderDTO paper = new OrderDTO();
 						paper.setn(num);
-						paper.setCOMPANY_ID(userid);
+						paper.setCOMPANY_ID(rs.getString(8));
 						paper.setCOMPANY_PWD(companypw);
 						//
 						paper.setDELIVERY_CHARGE(rs.getString(1));
@@ -547,6 +547,42 @@ public class DAO {
 			}
 			
 			return list;
+		}
+	
+	public int out_contain(String userid) {
+		// 아웃소싱 테이블에 등록되어있는지 검사
+			conn = connect();
+			
+			String SQL = "SELECT * "
+					+ "FROM OUTSOURCING_COMPANY WHERE COMPANY_ID = '"+ userid +"'";
+			
+			System.out.println(SQL);
+			
+			try {
+				pstmt = conn.createStatement();
+				
+				rs = pstmt.executeQuery(SQL);
+
+				while (rs.next()) {
+					
+					return 1;
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e) {
+					e.getStackTrace();
+				}
+			}
+			
+			return 0;
 		}
 	
 	public List<OrderDTO> getList_outSourcing() {
