@@ -51,6 +51,8 @@ if (session.getAttribute("userID") == null) {
       out.println("<a href = 'info_modi_gi_admin.html'>[관리자 권한]사용자 선물 취향 수정 페이지</a>");
       out.println("<br>");
       
+      out.println("<a href = 'select_query_menu.jsp'>질의 메뉴 페이지</a>");
+      out.println("<br>");
       
    }
    

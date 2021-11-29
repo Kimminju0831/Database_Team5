@@ -5,8 +5,14 @@
 @font-face {
 	src: url("./fonts/SangSangTitle.ttf");
 	font-family: "font1";
-	src: url("./fonts/Rix°íµñB.ttf");
+	
+	
+	src: url("./fonts/Rixê³ ë”•B.ttf");
 	font-family: "font2";
+	
+		src: url("./fonts/Binggrae.ttf");
+	font-family: "font3";
+	
 	
 	
 	
@@ -23,7 +29,7 @@ p1 {
 }
 
 p2 {
-	font-family: "font2";
+	font-family: "font3";
 	font-size: 15px;
 }
 
@@ -39,3 +45,8 @@ th, td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
+
+
+
+
+<!-- -->
