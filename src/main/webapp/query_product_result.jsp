@@ -66,7 +66,7 @@
 	
 	if (production_count != null) {
 		sql = "SELECT PRODUCTION_TYPE, DELIVERY_CHARGE\n" + "FROM OUTSOURCING_COMPANY\n" + "WHERE PRODUCT_NUM < "
-		+ production_count;
+		+ production_count+"\n AND PRODUCTION_TYPE != '$'";
 		System.out.println(sql);
 		pstmt = conn.prepareStatement(sql);
 		System.out.println(sql);

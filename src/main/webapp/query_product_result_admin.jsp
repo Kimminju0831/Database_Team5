@@ -61,7 +61,7 @@
 	//Query 2
 	String production_count = request.getParameter("production_count");
 	sql = "SELECT PRODUCTION_TYPE, DELIVERY_CHARGE\n" + "FROM OUTSOURCING_COMPANY\n" + "WHERE PRODUCT_NUM < "
-			+ production_count;
+			+ production_count+"\n AND PRODUCTION_TYPE != '$'";
 	System.out.println(sql);
 	pstmt = conn.prepareStatement(sql);
 	System.out.println(sql);
@@ -82,7 +82,7 @@
 	//Query 4
 	String estimated_date = request.getParameter("estimated_date");
 	sql = "SELECT Production_type, SUM(Product_num)\n" + "FROM OUTSOURCING_COMPANY\n" + "WHERE Estimated_date <= TO_DATE('"
-			+ estimated_date + "', 'yyyy-mm-dd')\n" + "GROUP BY Production_type";
+			+ estimated_date + "', 'yyyy-mm-dd')\n"+"AND PRODUCTION_TYPE != '$'\n" + "GROUP BY Production_type";
 	System.out.println(sql);
 	pstmt = conn.prepareStatement(sql);
 	System.out.println(sql);

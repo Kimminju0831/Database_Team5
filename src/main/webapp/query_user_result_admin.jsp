@@ -156,7 +156,7 @@
 	String production_count_2 = request.getParameter("production_count_2");
 	if (production_count_2 != null) {
 		sql = "SELECT BENEFICIARY, SUM( PRODUCT_NUM )" + "FROM OUTSOURCING_COMPANY , DONATION_ORGANIZATION\n"
-		+ "WHERE ORGAN_ID = ORG_ID\n" + "AND PRODUCT_NUM >= " + production_count_2 + "\n" + "GROUP BY BENEFICIARY";
+		+ "WHERE ORGAN_ID = ORG_ID\n" + "AND PRODUCT_NUM >= " + production_count_2 + "\n AND PRODUCTION_TYPE != '$'\n" + "GROUP BY BENEFICIARY";
 		System.out.println(sql);
 		pstmt = conn.prepareStatement(sql);
 		System.out.println(sql);
