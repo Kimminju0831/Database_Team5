@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page language = "java" import="java.text.*, java.sql.*" %>
+<%@ page import="user.mac"%> 
+<%@ page import="user.window"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,21 +12,16 @@
 <body>
 	
 	<%
-		String serverIP = "localhost";
-		String strSID = "xe";
-		String portNum = "1600";
-		String user = "ta";
-		String pass = "ta";
-		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-		
-		Connection conn = null;
-		Statement stmt = null;
-		
-		PreparedStatement ps;
-		ResultSet rs;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url, user, pass);
-		stmt = conn.createStatement();
+	PreparedStatement ps;
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs;
+	
+	window con = window.getInstance();
+	
+	conn = con.connect();
+	
+	stmt = conn.createStatement();
 
 	%>
 	
