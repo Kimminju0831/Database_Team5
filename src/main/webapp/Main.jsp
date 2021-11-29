@@ -41,6 +41,11 @@ if (session.getAttribute("userID") == null) {
 	<br>
 	<a href = 'support.html'>지원 페이지</a>
 	<br>
+
+	<a href = 'gift_Gives_presents_to.jsp'>선물하기 페이지</a>
+	<br>
+	<a href = 'gift_list.jsp'>선물 주문 내역 페이지</a>
+	<br>
 	<a href = 'Donation_list.jsp'>기부 목록 페이지</a>
 
 	<br>
