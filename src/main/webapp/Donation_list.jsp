@@ -37,6 +37,7 @@
 	
 	
 	String userid = (String)session.getAttribute("userID");
+	String usert = (String)session.getAttribute("userType");
 	
 	DAO manager = DAO.getInstance();
 	
@@ -88,10 +89,26 @@
 </head>
 
 <body>
+<%
+		if (session.getAttribute("userID") == null) {
+			out.println("<a href='login.jsp'>로그인</a>");
+		}else
+		{
+			userid = (String)session.getAttribute("userID");
+			usert = (String)session.getAttribute("userType");
+			out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
+			out.println("<a href='logout.jsp'>로그아웃</a>");
+		}
+	
+		if(usert.equals("basic")){
+%>
 		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=all%>">전체 보기</a>
 		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=best%>">베스트</a>
 		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=period%>">기간 맞춤</a>
 		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=bene%>">수혜자 맞춤</a>
+<%
+		}
+%>
 		<h3>게시판 목록</h3>
 		<table>
 			<tr>
@@ -99,10 +116,13 @@
 				<td width = "20%">기간</td>
 				<td width = "30%">수혜자</td>
 				<td width = "20%">단체명</td>
-				<td width = "10%">신청</td>
-			</tr>
+			<%	
+				if(usert.equals("basic")){
+				
+					out.println("<td width = \"10%\">신청</td></tr>");
+				
+				}
 			
-			<%
 				ExBoardDTO board  = null;
 				if(list != null){
 					for(int i = start-1; i < end ; i++){
@@ -133,11 +153,11 @@
 					} 
 				}
 				
-				if(Contain == true){
+				if(usert.equals("basic") && Contain == true){
 				%>	
 					<td>참여 중</td>
 				<% 
-				}else{
+				}else if(usert.equals("basic") && Contain != true){
 				%>	
 					<td><input type="submit" value="참여하기"></td>
 				<% 

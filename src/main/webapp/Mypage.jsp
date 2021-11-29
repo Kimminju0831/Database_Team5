@@ -5,6 +5,7 @@
 <%@ page import="user.DAO"%>
 <%@ page import="user.Select"%>
 <%@ page import="user.DonateDTO"%>
+<%@ page import="user.ExBoardDTO"%>
 <%@ page import="user.OrderDTO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
@@ -57,7 +58,9 @@ if(usert.equals("basic")){
 	out.println("<br>");
 	out.println(present);
 %>
-		<h3>기부 참여 목록</h3>
+		
+			
+	<h3>기부 참여 목록</h3>
 			<table width="900">
 				<tr>
 				<td width = "10%">번호</td>
@@ -98,6 +101,8 @@ if(usert.equals("basic")){
 	}
 }else if(usert.equals("donate")){
 	
+	Select manager = Select.getInstance();
+	
 	List<OrderDTO> order_user = null;
 	
 	DAO managerDAO = DAO.getInstance();
@@ -110,9 +115,33 @@ if(usert.equals("basic")){
 	}
 	
 %>
+	<h3>기부 참여 목록</h3>
+		<table width="900">
+			<tr>
+			<td width = "10%">기부 프로그램명</td>
+			<td width = "10%">수혜자</td>
+			<td width = "10%">기간 유형</td>
+			<td width = "10%">실제 기간</td>
+			</tr>
+			
+			<tr>
+<% 		
+			ExBoardDTO hi = new ExBoardDTO();
+
+			hi = manager.donation_content(userid);
+%>
+			<td><%=hi.gettitle() %></td>
+			<td><%=hi.getcontent() %></td>
+			<td><%=hi.getpw() %></td>
+			<td><%=hi.getip() %></td>
+			</tr>
+		</table>
+		
+		
 	<h3>기부 혜택 주문 현황</h3>
 		<table>
 			<tr>
+				<td width = "10%">외주 업체</td>
 				<td width = "10%">기부 프로그램</td>
 				<td width = "10%">기부 단체</td>
 				<td width = "10%">물품 유형</td>
@@ -128,6 +157,7 @@ if(usert.equals("basic")){
 				userorder = order_user.get(i);
 %>			
 				<tr>
+					<td><%=userorder.getCOMPANY_ID() %></td>
 					<td><%=userorder.getDO_NAME() %></td>
 					<td><%=userorder.getORGAN_ID() %></td>
 					<td><%=userorder.getPRODUCTION_TYPE() %></td>
@@ -154,9 +184,11 @@ if(usert.equals("basic")){
 	
 }else{
 	
+	//아웃소싱일때 보여줄 내용
 	
+	//회원정보 수정
 	
-	
+	//주문 신청 확인 링크
 	
 	
 }
