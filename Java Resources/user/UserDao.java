@@ -120,7 +120,7 @@ public class UserDao {
 	
 	public int makedorder(String DELIVERY_CHARGE, String DESIGN, String PRODUCTION_TYPE,
 			String PRODUCTION_PRICE, String ESTIMATED_DATE, String PRODUCT_NUM, 
-			String userpw, String userid, String ORGAN_ID, String DO_NAME) {
+			String userpw,String userid, String ORGAN_ID, String DO_NAME) {
 		
 		
 		String SQL = "insert into OUTSOURCING_COMPANY" +
@@ -129,6 +129,29 @@ public class UserDao {
 				" organ_id, Do_name) values ('$" + DELIVERY_CHARGE + "', '"+ DESIGN +"', '"+ PRODUCTION_TYPE +"', " +
 				" '$"+ PRODUCTION_PRICE +"', TO_DATE('"+ ESTIMATED_DATE +"', 'yyyy-mm-dd'), "+ PRODUCT_NUM +", '"+ userpw +"', " +
 				"'"+ userid +"', '"+ ORGAN_ID +"', '"+ DO_NAME +"')";
+		
+		System.out.println(SQL);
+		
+		try {
+			pstmt = conn.prepareStatement(SQL);
+
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;// DB¿À·ù
+		
+	}
+	
+	public int makeout(String ESTIMATED_DATE,String userpw,String userid) {
+		
+		
+		String SQL = "insert into OUTSOURCING_COMPANY" +
+				" (Delivery_charge, Design, Production_type, Production_Price, " +
+				"Estimated_date, Product_num, Company_pwd, Company_id, " +
+				" organ_id, Do_name) values ('$', '$', '$', " +
+				" '$', TO_DATE('"+ ESTIMATED_DATE +"', 'yyyy-mm-dd'), 0, '"+ userpw +"', " +
+				"'"+ userid +"', '$', '$')";
 		
 		System.out.println(SQL);
 		
