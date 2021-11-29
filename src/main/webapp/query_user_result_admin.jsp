@@ -99,7 +99,7 @@
 
 	if (production_design != null && production_type != null) {
 		sql = "SELECT NAME, PHONE, ADDRESS\n FROM USERS, OUTSOURCING_COMPANY\nWHERE UR_ID = USER_ID\n" + "AND DESIGN = '"
-		+ production_design + "'" + "AND PRODUCTION_TYPE = '" + production_type + "'";
+		+ production_design + "'" + "AND PRODUCTION_TYPE = '" + production_type + "'\n AND PRODUCTION_TYPE != '$'" ;
 		System.out.println(sql);
 
 		pstmt = conn.prepareStatement(sql);
