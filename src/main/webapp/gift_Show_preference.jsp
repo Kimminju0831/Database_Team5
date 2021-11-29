@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page language = "java" import="java.text.*, java.sql.*" %>
+<%@ page import="user.window"%> 
+<%@ page import="user.mac"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +13,14 @@
 	<h1>조회하신 아이디의 선물 취향을 알려드립니다.</h1>
 	
 	<%
-		String serverIP = "localhost";
-		String strSID = "xe";
-		String portNum = "1600";
-		String user = "ta";
-		String pass = "ta";
-		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-		
 		Connection conn = null;
 		Statement stmt = null;
-		
-		PreparedStatement ps;
 		ResultSet rs;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url, user, pass);
+		
+		window con = window.getInstance();
+		
+		conn = con.connect();
+		
 		stmt = conn.createStatement();
 
 	%>
