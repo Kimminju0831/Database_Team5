@@ -58,6 +58,50 @@ public class Gift {
 		return ProductID;
 	}
 	
+	public int refer_to_insert(String nlink, String blink, String UID)
+	{
+		conn = connect();
+		
+		int result = 0;
+		
+		
+		String query = "insert into REFER_TO (N_LINK, B_LINK, USR_ID) values ('"+blink + "', '" + nlink + "', '" + UID + "')";
+			
+		try {
+			conn.setAutoCommit(false);
+			System.out.println(query);
+			
+			stmt = conn.createStatement();
+			int cnt = stmt.executeUpdate(query);
+			if (cnt == 1)
+			{
+				System.out.println("refer_to insert문 성공");
+				conn.commit();
+				result = 1;
+			}
+			else
+			{
+				System.out.println("refer_to insert문 실패");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (stmt != null)
+					stmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		}
+		
+		return result; // 데이터베이스 자체 오류
+	}
+	
 	public int product_insert(String quantity, String protype, String price, String userid) throws SQLException {
 		
 		conn = connect();
@@ -103,7 +147,7 @@ public class Gift {
 		return result; // 데이터베이스 자체 오류
 	}
 	
-	public int make_insert(String nlink, String blink, String check)
+public int make_insert(String nlink, String blink, String check, String userid)
 	{
 		conn = connect();
 		int result = 0;
@@ -120,7 +164,7 @@ public class Gift {
 			{
 				System.out.println("make insert문 성공");
 				conn.commit();
-				result = 1;
+				result = refer_to_insert(nlink, blink, userid);
 			}
 			else
 			{
@@ -144,9 +188,101 @@ public class Gift {
 		
 		
 		return result;
+}
+
+public String[] select_links(String PID, String userid)
+{
+	conn = connect();
+	String[] links = new String[2];
+	
+	String sql = "SELECT NO_LINK, BE_LINK"
+			 + "FROM MAKE WHERE P_I = '"+ PID +"'";
+	
+	String result = "";
+	try {
+		System.out.println(sql);
+	
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		if(rs.next()){
+			links[0] = rs.getString(1);
+			links[1] = rs.getString(2);
+		}
+		
+		if(links[0].equals("")||links[1].equals(""))
+		{
+			System.out.println("링크 찾기 실패");
+		}
+		else {
+			System.out.println("링크 찾기 성공");
+		}
+	}
+	catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (stmt != null)
+					stmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.getStackTrace();
+		}
 	}
 	
-	public int delete_product(String PID)
+	return links;
+	
+}
+
+public int delete_refer_to(String PID, String userid)
+{
+	conn = connect();
+	int result = 0;
+	
+	String[] links = new String[2];//1번이 normal link, 2번이 better link
+	
+	
+	String query = "delete from refer_to where nlink = '" + links[0] + "' and blink = '" + links[1] + "' and USR_ID = '" + userid + "'";
+	
+	try {
+		conn.setAutoCommit(false);
+		System.out.println(query);
+		
+		stmt = conn.createStatement();
+		int cnt = stmt.executeUpdate(query);
+		if (cnt == 0)
+		{
+			System.out.println("refer_to 취소 실패");
+			
+		}
+		else if(cnt ==1)
+		{
+			conn.commit();
+			System.out.println("refer_to 취소 성공");
+			result = delete_order(PID, userid);
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			if (rs != null)
+				rs.close();
+			if (stmt != null)
+				stmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	return result;
+}
+	
+public int delete_product(String PID, String userid)
 	{
 		conn = connect();
 		int result = 0;
@@ -188,7 +324,7 @@ public class Gift {
 		return result;
 	}
 	
-	public int delete_order(String PID) {
+	public int delete_order(String PID, String userid) {
 		conn = connect();
 		int result = 0;
 		
@@ -209,7 +345,7 @@ public class Gift {
 			{
 				System.out.println("make 삭제 완료");
 				conn.commit();
-				result = delete_product(PID);
+				result = delete_product(PID, userid);
 			}
 			
 		} catch (Exception e) {
