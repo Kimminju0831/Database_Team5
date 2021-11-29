@@ -3,13 +3,9 @@
 	pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>    
-<%@ page import="user.UserDao"%>
-<%@ page import="user.DAO"%>
-<%@ page import="user.Select"%>
-<%@ page import="user.DonateDTO"%>
+<%@ page import="user.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
-<%@ page import = "user.ExBoardDTO" %>
 <!DOCTYPE html5>
 <%
 

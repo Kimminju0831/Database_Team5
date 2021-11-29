@@ -1,35 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
-<%@ page import="user.UserDao"%>
-<%@ page language = "java" import = "java.text.*, java.sql.*" %>   
-
-<jsp:useBean id="user" class="user.User" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAddress" />
-<jsp:setProperty name="user" property="userPhone" />
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>Insert title here</title>
-</head>
-<body>
+<%@include file ="static/header.jsp" %> 
+	
+<div id = "body-wrapper">
+   	<div id ="body-content">
 <%
 if (session.getAttribute("userID") == null) {
-   out.println("<a href='login.jsp'>로그인</a>");
+	out.println("<a href='login.jsp'>로그인</a>");
 }else
 {
-   String userid = (String)session.getAttribute("userID");
-   String usert = (String)session.getAttribute("userType");
-   out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
-   out.println("<a href='logout.jsp'>로그아웃</a>");
-   
-   
+	String userid = (String)session.getAttribute("userID");
+	String usert = (String)session.getAttribute("userType");
+	out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
+	out.println("<a href='logout.jsp'>로그아웃</a>");
+	
+
 %>
-   
+  
 <%
 
    if(userid.equals("000-00-0000"))
@@ -92,10 +80,13 @@ if (session.getAttribute("userID") == null) {
       <a href = 'gift_Gives_presents_to.jsp'>선물하기 페이지</a>
       <br>
       <a href = 'gift_list.jsp'>선물 주문 내역 페이지</a>
+      
 <%         
    }
 
 }
+
 %>
-</body>
-</html>
+	</div>
+
+<%@include file ="static/footer.jsp" %>
