@@ -4,6 +4,8 @@
 <%@ page import="user.UserDao"%>
 <%@	page import="java.time.LocalDate"%>
 <%@ page import="java.time.ZoneId"%>
+<%@ page import="user.mac"%> 
+<%@ page import="user.window"%> 
 <%@ page language="java" import="java.text.*, java.sql.*"%>
 
 <jsp:useBean id="user" class="user.User" scope="page" />
@@ -24,31 +26,20 @@
 
 	<%
 	String sql = "";
-	String serverIP = "localhost";
-	String strSID = "xe";
-	String portNum = "1600";
-	String username = "ta";
-	String pass = "ta";
-	String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-	/*
-	String serverIP = "localhost";
-	String strSID = "orcl";
-	String portNum = "1521";
-	String user = "Team";
-	String pass = "aaaa";
-	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-	*/
-	/* String serverIP = "localhost";
-	String strSID = "orcl";
-	String portNum = "1521";
-	String username = "team";
-	String pass = "1234";
-	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":"  + strSID;*/
+	PreparedStatement ps;
+
 	Connection conn = null;
-	PreparedStatement pstmt;
+	Statement stmt = null;
 	ResultSet rs;
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	conn = DriverManager.getConnection(url, username, pass);
+
+	PreparedStatement pstmt;
+	window con = window.getInstance();
+	
+	conn = con.connect();
+	
+	stmt = conn.createStatement();
+
+
 	//======================================================================================//
 	String userid = "";
 	if (session.getAttribute("userID") == null) {

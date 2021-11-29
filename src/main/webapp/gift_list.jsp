@@ -3,7 +3,8 @@
 <%@ page language = "java" import="java.text.*, java.sql.*" %>
 <%@page import="java.util.*" %>
 <%@ page import="user.Gift"%> 
-
+<%@ page import="user.mac"%> 
+<%@ page import="user.window"%> 
 
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
@@ -35,20 +36,15 @@
 	%>
 	
 		<%
-		String serverIP = "localhost";
-		String strSID = "xe";
-		String portNum = "1600";
-		String User = "ta";
-		String pass = "ta";
-		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-		
+
 		Connection conn = null;
 		Statement stmt = null;
-		
-		PreparedStatement ps;
 		ResultSet rs;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url, User, pass);
+		
+		window con = window.getInstance();
+		
+		conn = con.connect();
+		
 		stmt = conn.createStatement();
 
 	%>

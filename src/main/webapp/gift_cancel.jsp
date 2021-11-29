@@ -3,6 +3,7 @@
 <%@ page language = "java" import="java.text.*, java.sql.*" %>
 <%@page import="java.util.*" %>
 <%@ page import="user.Gift"%> 
+<%@ page import="user.window"%> 
 
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
