@@ -7,6 +7,7 @@
 <%@ page import="user.DonateDTO"%>
 <%@ page import="user.ExBoardDTO"%>
 <%@ page import="user.OrderDTO"%>
+
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 
@@ -29,28 +30,21 @@
 <%
 	
 	String userid = ""; 
-	String usert ="";
-	String userpw = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>·Î±×ÀÎ</a>");
+		out.println("<a href='login.jsp'>ë¡œê·¸ì¸</a>");
 	}else
 	{
 		userid = (String)session.getAttribute("userID");
-		usert = (String)session.getAttribute("userType");
-		userpw = (String)session.getAttribute("userPassword");
-		out.println(usert + " È¸¿ø | " + userid+" ´Ô ¹İ°©½À´Ï´Ù! <br>");
-		out.println("<a href='logout.jsp'>·Î±×¾Æ¿ô</a>");
+		String usert = (String)session.getAttribute("userType");
+		out.println(usert + " íšŒì› | " + userid+" ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤! <br>");
+		out.println("<a href='logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a>");
+		out.println("<a href='info_modification.jsp'>ë‚´ ì •ë³´ ìˆ˜ì •</a>");
 	}
 	
 	out.println("<br><br>");	
 	out.println("<br><br>");
 	
-	
-
-
-if(usert.equals("basic")){
 	Select manager = Select.getInstance();
-
 	String donation =  manager.my_donation(userid);
 	String present = manager.my_present(userid);
 	
@@ -60,12 +54,12 @@ if(usert.equals("basic")){
 %>
 		
 			
-	<h3>±âºÎ Âü¿© ¸ñ·Ï</h3>
+	<h3>ê¸°ë¶€ ì°¸ì—¬ ëª©ë¡</h3>
 			<table width="900">
 				<tr>
-				<td width = "10%">¹øÈ£</td>
-				<td width = "10%">´ÜÃ¼¸í</td>
-				<td width = "10%">´ÜÃ¼¾ÆÀÌµğ</td>
+				<td width = "10%">ë²ˆí˜¸</td>
+				<td width = "10%">ë‹¨ì²´ëª…</td>
+				<td width = "10%">ë‹¨ì²´ì•„ì´ë””</td>
 				<td width = "10%"></td>
 			</tr>
 <% 	
@@ -78,7 +72,7 @@ if(usert.equals("basic")){
 	int count = 0;
 	
 	if(list != null){
-		count = list.size();		// ÃÑ µ¥ÀÌÅÍ °¹¼ö
+		count = list.size();		// ì´ ë°ì´í„° ê°¯ìˆ˜
 	}
 	
 	DonateDTO board  = null;
@@ -92,7 +86,7 @@ if(usert.equals("basic")){
 			<td><%=board.getorgid() %></td>
 			<form method="post" action = "Donation_cancle.jsp">	
 			<input type = "hidden" name = "orgid" value = <%=board.getorgid() %>>
-			<td><input type="submit" value="±âºÎ ÇØÁö"></td>
+			<td><input type="submit" value="ê¸°ë¶€ í•´ì§€"></td>
 			</form>
 		</tr>
 <%
@@ -115,13 +109,13 @@ if(usert.equals("basic")){
 	}
 	
 %>
-	<h3>±âºÎ Âü¿© ¸ñ·Ï</h3>
+	<h3>ê¸°ë¶€ ì°¸ì—¬ ëª©ë¡</h3>
 		<table width="900">
 			<tr>
-			<td width = "10%">±âºÎ ÇÁ·Î±×·¥¸í</td>
-			<td width = "10%">¼öÇıÀÚ</td>
-			<td width = "10%">±â°£ À¯Çü</td>
-			<td width = "10%">½ÇÁ¦ ±â°£</td>
+			<td width = "10%">ê¸°ë¶€ í”„ë¡œê·¸ë¨ëª…</td>
+			<td width = "10%">ìˆ˜í˜œì</td>
+			<td width = "10%">ê¸°ê°„ ìœ í˜•</td>
+			<td width = "10%">ì‹¤ì œ ê¸°ê°„</td>
 			</tr>
 			
 			<tr>
@@ -138,18 +132,18 @@ if(usert.equals("basic")){
 		</table>
 		
 		
-	<h3>±âºÎ ÇıÅÃ ÁÖ¹® ÇöÈ²</h3>
+	<h3>ê¸°ë¶€ í˜œíƒ ì£¼ë¬¸ í˜„í™©</h3>
 		<table>
 			<tr>
-				<td width = "10%">¿ÜÁÖ ¾÷Ã¼</td>
-				<td width = "10%">±âºÎ ÇÁ·Î±×·¥</td>
-				<td width = "10%">±âºÎ ´ÜÃ¼</td>
-				<td width = "10%">¹°Ç° À¯Çü</td>
-				<td width = "10%">¹°Ç° °¹¼ö</td>
-				<td width = "10%">¹°Ç° °¡°İ</td>
-				<td width = "10%">¹è¼Ûºñ</td>
-				<td width = "20%">¿¹»ó µµÂøÀÏ</td>
-				<td width = "10%">»óÅÂ</td>
+				<td width = "10%">ì™¸ì£¼ ì—…ì²´</td>
+				<td width = "10%">ê¸°ë¶€ í”„ë¡œê·¸ë¨</td>
+				<td width = "10%">ê¸°ë¶€ ë‹¨ì²´</td>
+				<td width = "10%">ë¬¼í’ˆ ìœ í˜•</td>
+				<td width = "10%">ë¬¼í’ˆ ê°¯ìˆ˜</td>
+				<td width = "10%">ë¬¼í’ˆ ê°€ê²©</td>
+				<td width = "10%">ë°°ì†¡ë¹„</td>
+				<td width = "20%">ì˜ˆìƒ ë„ì°©ì¼</td>
+				<td width = "10%">ìƒíƒœ</td>
 			</tr>
 <%
 			OrderDTO userorder = new OrderDTO();
@@ -167,9 +161,9 @@ if(usert.equals("basic")){
 					<td><%=userorder.getESTIMATED_DATE() %></td>
 <%
 					if(userorder.getPRODUCTION_PRICE().equals("$none")){
-						out.println("<td>½ÂÀÎ ´ë±â Áß</td>");
+						out.println("<td>ìŠ¹ì¸ ëŒ€ê¸° ì¤‘</td>");
 					}else{
-						out.println("<td>½ÂÀÎ ¿Ï·á</td>");
+						out.println("<td>ìŠ¹ì¸ ì™„ë£Œ</td>");
 					}
 %>					
 				<tr>
@@ -184,19 +178,18 @@ if(usert.equals("basic")){
 	
 }else{
 	
-	//¾Æ¿ô¼Ò½ÌÀÏ¶§ º¸¿©ÁÙ ³»¿ë
+	//ì•„ì›ƒì†Œì‹±ì¼ë•Œ ë³´ì—¬ì¤„ ë‚´ìš©
 	
-	//È¸¿øÁ¤º¸ ¼öÁ¤
+	//íšŒì›ì •ë³´ ìˆ˜ì •
 	
-	//ÁÖ¹® ½ÅÃ» È®ÀÎ ¸µÅ©
+	//ì£¼ë¬¸ ì‹ ì²­ í™•ì¸ ë§í¬
 	
 	
 }
-
 %>
 	</table>
 	
-	<a href = 'Main.jsp'>¸ŞÀÎ ÆäÀÌÁö</a>
+	<a href = 'Main.jsp'>ë©”ì¸ í˜ì´ì§€</a>
 	<br>
 </body>
 </html>
