@@ -42,7 +42,7 @@
 				<br>
 				<br>
 
-			
+			<b>선물 취향을 선택해주세요.</b>
 			<select name= "gift" onchange="categoryChange(this)">
                <option>선물 취향을 선택해주세요</option>
                <option value="ACCESSORY">ACCESSORY</option>
