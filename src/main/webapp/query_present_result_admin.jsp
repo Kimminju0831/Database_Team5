@@ -24,14 +24,12 @@
 
 	<%
 	String sql = "";
-	/*
 	String serverIP = "localhost";
 	String strSID = "xe";
 	String portNum = "1600";
-	String user = "ta";
+	String username = "ta";
 	String pass = "ta";
 	String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-	*/
 	/*
 	String serverIP = "localhost";
 	String strSID = "orcl";
@@ -40,21 +38,18 @@
 	String pass = "aaaa";
 	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
 	*/
-	String serverIP = "localhost";
+	/* String serverIP = "localhost";
 	String strSID = "orcl";
 	String portNum = "1521";
 	String username = "team";
 	String pass = "1234";
-	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID;
-
+	String url = "jdbc:oracle:thin:@" + serverIP + ":" + portNum + ":" + strSID; */
 	Connection conn = null;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	conn = DriverManager.getConnection(url, username, pass);
-
 	//======================================================================================//
-
 	String userid = "";
 	if (session.getAttribute("userID") == null) {
 		out.println("<a href='login.jsp'>로그인</a>");
@@ -63,22 +58,16 @@
 		out.println(userid + " 님 안녕하세요, 반갑습니다! <br>");
 		out.println("<a href='logout.jsp'>  로그아웃</a>");
 	}
-
 	request.setCharacterEncoding("UTF-8");
-
 	//Query 8
 	String user_name = request.getParameter("user_name");
-
 	if (user_name != null) {
-
 		sql = "SELECT NORMAL_LINK, BETTER_LINK\n" + "FROM MALL, REFER_TO, USERS\n" + "WHERE NORMAL_LINK = N_LINK\n"
 		+ "AND BETTER_LINK = B_LINK\n" + "AND USER_ID = USR_ID\n" + "AND NAME = '" + user_name + "'";
 		System.out.println(sql);
-
 		pstmt = conn.prepareStatement(sql);
 		System.out.println(sql);
 		rs = pstmt.executeQuery();
-
 		out.println("<table border=\"1\">");
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int cnt = rsmd.getColumnCount();
@@ -99,13 +88,10 @@
 		if (check.equals("yes")) {
 			sql = "(SELECT DISTINCT N_LINK as nor_link, B_LINK as bet_link \n" + "FROM REFER_TO)\n" + "INTERSECT\n"
 			+ "(SELECT DISTINCT NO_LINK as nor_link, BE_LINK as bet_link\n" + "FROM MAKE, PRODUCT)";
-
 			System.out.println(sql);
-
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(sql);
 			rs = pstmt.executeQuery();
-
 			out.println("<table border=\"1\">");
 			ResultSetMetaData rsmd = rs.getMetaData();
 			int cnt = rsmd.getColumnCount();
@@ -124,5 +110,6 @@
 	conn.close();
 	%>
 	<a href='Main.jsp'>메인 페이지</a>
+	<a href='select_query_menu.jsp'>질의 메뉴 페이지로 이동하기</a>
 </body>
 </html>
