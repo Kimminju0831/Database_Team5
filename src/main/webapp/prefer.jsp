@@ -64,7 +64,7 @@
             
             <script type="text/javascript">
                 function categoryChange(y) {
-                     var good_a = ["BRACELET", "RING", "NECKLACE", "EARRING"];
+                     var good_a = ["BRACELET", "RING", "NECKLACE", "EARRINGS"];
                      var good_b = ["MEAL","DESSERT","COFFEE"];
                      var good_c = ["LIPS","TOTAL","COMPACT CUSHION"];
                      var good_d = ["TUMBLER","ETC"];
