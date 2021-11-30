@@ -83,7 +83,10 @@ if(usert.equals("basic")){
 			<td><%=board.getorgid() %></td>
 			<form method="post" action = "Donation_cancle.jsp">	
 			<input type = "hidden" name = "orgid" value = <%=board.getorgid() %>>
-			<td><input type="submit" value="기부 해지"></td>
+			<td>
+			<div class="container2" style="width:400px; heigth:50px;">
+			<input type="submit"  value="기부 해지" style="border:0; outline:0;" class ="btn btn-1"><p4></p4></a>
+			</td>
 			</form>
 		</tr>
 <%
@@ -199,8 +202,11 @@ if(usert.equals("basic")){
 
 	</div>
 	<div class="container2">
-<a class ="btn btn-1" href='Main.jsp'><p4>메인 페이지</p4></a>
-<a class ="btn btn-1" href='Delete_path.jsp'><p4>회원 탈퇴 페이지</p4></a>
+			<a class ="btn btn-1" href='gift_list.jsp'><p4>선물 주문 내역 페이지</p4></a>
+			<br>
+			<a class ="btn btn-1" href='info_modification.jsp'><p4>회원 정보 수정 페이지</p4></a>
+			<br>
+			<a class ="btn btn-1" href='Delete_path.jsp'><p4>회원 탈퇴 페이지</p4></a>
 
 </div>
 	
