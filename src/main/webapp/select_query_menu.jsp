@@ -5,8 +5,9 @@
 <%@ page import="user.mac"%> 
 <%@ page import="user.window"%> 
 <%@ page language="java" import="java.text.*, java.sql.*"%>
+<%@include file ="static/header.jsp" %> 
 
-<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:useBean id="user2" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
@@ -20,7 +21,10 @@
 <meta charset="UTF-8">
 <link href="./style.css" rel="stylesheet">
 </head>
+
 <body>
+<div id = "body-wrapper">
+   	<div id ="body-content">
 	<%
 	if (session.getAttribute("userID") == null) {
 		out.println("<a href='login.jsp'><p2>로그인</p2></a>");
@@ -81,13 +85,13 @@
 		{
 			//비밀번호 동일 -> 관리자
 	%>
-	<a href='query_user_admin.html'><p2>사용자 관련 질의 페이지(관리자)</p2></a>
+	<a href='query_user_admin.jsp'><p2>사용자 관련 질의 페이지(관리자)</p2></a>
 	<br>
-	<a href='query_product_admin.html'><p2>상품 자체 관련 질의 페이지(관리자)</p2></a>
+	<a href='query_product_admin.jsp'><p2>상품 자체 관련 질의 페이지(관리자)</p2></a>
 	<br>
-	<a href='query_donate_admin.html'><p2>기부 관련 질의 페이지(관리자)</p2></a>
+	<a href='query_donate_admin.jsp'><p2>기부 관련 질의 페이지(관리자)</p2></a>
 	<br>
-	<a href='query_present_admin.html'><p2>선물 관련 질의 페이지(관리자)</p2></a>
+	<a href='query_present_admin.jsp'><p2>선물 관련 질의 페이지(관리자)</p2></a>
 	<br>
 	<%
 	} else {
@@ -98,9 +102,9 @@
 	%>
 	<a href='query_user.jsp'><p2>사용자 관련 질의 페이지</p2></a>
 	<br>
-	<a href='query_product.html'><p2>상품 자체 관련 질의 페이지</p2></a>
+	<a href='query_product.jsp'><p2>상품 자체 관련 질의 페이지</p2></a>
 	<br>
-	<a href='query_donate.html'><p2>기부 관련 질의 페이지</p2></a>
+	<a href='query_donate.jsp'><p2>기부 관련 질의 페이지</p2></a>
 	<br>
 	<a href='query_present.jsp'><p2>선물 관련 질의 페이지</p2></a>
 	<br>
@@ -117,5 +121,9 @@
 	<%
 	}
 	%>
+	
+	<%@include file ="static/footer.jsp" %>
+	</div>
+	</div>
 </body>
 </html>

@@ -16,21 +16,25 @@ input[type="radio"] {
 
 input[type="radio"]+label {
 	display: inline-block;
-	padding: 20px;
-	background: #FBD100;
+	padding: 25px;
+	background: #f8a4bf;
 	color: #000000;
-	font-size: 15px;
+	font-size: 18px;
 	cursor: pointer;
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
+border-bottom-left-radius: 0px;
+border-bottom-left-radius: 0px;
 }
 
 input[type="radio"]:checked+label {
-	background: #CFCFCD;
+	background: #dbdbdb;
 	color: #000000;
 }
 
 .content_box {
 	height: 200px;
-	background:  #CFCFCD;
+	background:  #dbdbdb;
 	margin: 0 20px;
 	display: none;
 	text-align: left;
@@ -48,13 +52,20 @@ input[id="tab2"]:checked ~ .con2 {
 input[id="tab3"]:checked ~ .con3 {
 	display: block;
 }
-
+input[id="tab4"]:checked ~ .con4 {
+	display: block;
+}
 </style>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file ="static/header.jsp" %> 
+
 <head>
 <meta charset="UTF-8">
 <link href="./style.css" rel="stylesheet">
 </head>
-
+<div id = "body-wrapper">
+   	<div id ="body-content">
 <div class="tab_content">
 	<input type="radio" name="menu" id="tab1" checked> 
 	<label for="tab1">상품 관련 조회_1</label> 
@@ -119,6 +130,11 @@ input[id="tab3"]:checked ~ .con3 {
 			<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
 
 	</form>
+	
+	<%@include file ="static/footer.jsp" %> 
+	
+	</div>
+	</div>
 	</div>
 	
 	
