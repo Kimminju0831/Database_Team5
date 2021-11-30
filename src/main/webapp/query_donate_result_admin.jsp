@@ -1,32 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
-<%@ page import="user.UserDao"%>
-<%@	page import="java.time.LocalDate"%>
-<%@ page import="java.time.ZoneId"%>
-<%@ page import="user.mac"%> 
-<%@ page import="user.window"%> 
-<%@ page language="java" import="java.text.*, java.sql.*"%>
 <%@include file ="static/header.jsp" %> 
-
-<jsp:useBean id="user" class="user.User" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAddress" />
-<jsp:setProperty name="user" property="userPhone" />
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>query_donate_result</title>
-<meta charset="utf-8">
-<link href="./style.css" rel="stylesheet">
-<link rel="stylesheet" href="static/button.css">
-
-</head>
-<body>
-<body>
+<link rel="stylesheet" href="static/main.css">
 <div id = "body-wrapper">
    	<div id ="body-content">
 
@@ -172,10 +148,7 @@
 <a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
 
 </div>
-</div></div>
-			
-<%@include file ="static/footer.jsp" %> 
-
-
-</body>
-</html>
+</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 
