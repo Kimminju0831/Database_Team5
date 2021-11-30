@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@include file ="static/header.jsp" %> 
-<link rel="stylesheet" href="static/main.css">
 <div id = "body-wrapper">
    	<div id ="body-content">
 
@@ -113,41 +112,72 @@
 		else if(usert.equals("donate") ){
 			
 			if(mode.compareTo("my")!=0){
-%>
-				<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=my">내 기부 프로그램 보기</a>
+%>				<br>
+				</br>
+				<a id="list_mode" style="margin-top: 40px; float:right" 
+					href="Donation_list.jsp?pageNum=<%=1%>&&mode=my" >내 기부 프로그램 보기</a>
+				
 <% 			
 			}else{
 %>
-			<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=all%>">전체 보기</a>
+			<a id="list_mode" style="margin-top: 60px; float:right"
+					 href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=all%>">전체 보기</a>
 <%				
 			}
 			
 		}
+		
+		
+		if(mode.equals("my")){
 %>
+		<br>
+<%			
+			
+		}
+%>		
+		
+		</br>
 		<h3 style="margin-left:30px;">게시판 목록</h3>
-		<table id = "donation_table" style="margin-left:30px;">
+	
+		<hr>
+		<table id = "donation_table" style="margin-left:30px; border-spacing: 0 10px;">
 			<tr>
+			<%
+				if(usert.equals("basic")){
+			%>
 				<td width = "100px">번호</td>
 				<td width = "150px">기간</td>
 				<td width = "300px">수혜자</td>
 				<td width = "300px">단체명</td>
-			<%	
+			<%
+				}else{
+			%>
+				<td width = "200px">번호</td>
+				<td width = "400px">기간</td>
+				<td width = "500px">수혜자</td>
+				<td width = "50px">단체명</td>
+			<%		
+					
+				}
+			
 				if(usert.equals("basic")){
 				
 					out.println("<td width = \"100px\">신청</td></tr>");
 				
+				}else{
+					out.println("</tr>");
 				}
 			
 				if(mode.compareTo("my")==0){
 			%>
-				</tr>
-				<tr>
-				<td><%=result.getn() %></td>
-				<td><%=result.getip() %></td>
-				<td><%=result.getcontent() %></td>
-				<td><%=mydonate %></td>
-				</tr>
-				<tr>
+					</tr>
+					<tr>
+					<td><%=result.getn() %></td>
+					<td><%=result.getip() %></td>
+					<td><%=result.getcontent() %></td>
+					<td><%=mydonate %></td>
+					</tr>
+					<tr>
 			<% 		
 					
 				}
@@ -256,11 +286,11 @@
 			<%
 						}
 						
-						String utype = (String)session.getAttribute("userType");
-						if (utype.equals("donate")){
-							if(mydonate.isEmpty()){
-								String command = "<button onclick = \"location='Duser/write.jsp'\">글쓰기</button>";
-								out.println(command);
+						if (usert.equals("donate")){
+							if(mydonate == null){
+			%>
+									<a href="Duser/write.jsp">등록하기</a>
+			<% 					
 							}
 							
 						}

@@ -42,17 +42,19 @@
 	
 	
 %>
-<meta charset="EUC-KR">
 <title>기부 참여자 목록</title>
-</head>
-<body>
-<h3>
 <%
 	if(det != null){
 
 	
 %>
-	<%=det %> 기부 참여자 목록</h3>
+	
+	<br>
+	</br>
+	<br>
+	</br>
+	<h3><%=det %> 기부 참여자 목록</h3>
+	<hr>
 	
 <%
 	}else{
@@ -101,7 +103,9 @@
 						}
 					}
 				}
-				
+			%>
+			</table>	
+			<%
 			int pageCount = count / pageNum + (count%pageNum ==  0 ? 0 : 1);
 			
 			int Block = 10;
@@ -120,20 +124,23 @@
 						}
 						
 						
-						for( int i = startPagenum ; i <= endPagenum ; i++){
-							if(i==current){
-			%>
-							[<%=i %>]
-			
-			<% 			
-							}else{
-								 
-			%>
-							<a href="people_list.jsp?pageNum=<%=i %>">[<%=i %>]</a>		
-			<%					
-								
+					for( int i = startPagenum ; i <= endPagenum ; i++){
+						if(i==current){
+							if(endPagenum!=1){
+		%>	
+						<a id="page_num">[<%=i %>]</a>
+		
+		<% 							
 							}
+				
+						}else{
+							 
+		%>
+						<a id="page_num" href="Donation_list.jsp?pageNum=<%=i %>">[<%=i %>]</a>		
+		<%					
+							
 						}
+					}
 						
 						if(endPagenum < pageCount){
 								
@@ -143,14 +150,20 @@
 			<%
 						}
 						
-						
+					
 			%>
 			
 			
-		</table>
+		
 		<br>
-		<button type="button" onclick="location='out_list.jsp'">기부 혜택 주문 페이지</button>
-		<a href = "../Main.jsp">메인 페이지로</a>
+		<br>
+		</br>
+		<br>
+		
+		<div class="container2" style="width:700px">
+		<a class ="btn btn-1" href='out_list.jsp' style="width:100px"><p4>기부 혜택 주문 페이지</p4></a>
+
+		</div>
 </div>
 	
 	<%@include file ="../static/footer_for_D.jsp" %>

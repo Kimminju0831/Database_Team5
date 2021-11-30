@@ -3,13 +3,9 @@
 <!-- import JDBC package -->
 <%@include file ="static/header.jsp" %> 
 <link rel="stylesheet" href="static/main.css">
-<link rel="stylesheet" href="static/button.css">
-<link href="./style.css" rel="stylesheet">
-
 <div id = "body-wrapper">
-   	<div id ="body-content">
+<div id ="body-content">
 
-	
 <%
 	
 	String userid = ""; 
@@ -111,6 +107,7 @@ if(usert.equals("basic")){
 	
 %>
 	<h3>기부 참여 목록</h3>
+	<hr>
 		<table width="900">
 			<tr>
 			<td width = "10%">기부 프로그램명</td>
@@ -131,6 +128,8 @@ if(usert.equals("basic")){
 			</tr>
 		</table>
 		
+	<br>
+	<hr>
 		
 	<h3>기부 혜택 주문 현황</h3>
 		<table>
