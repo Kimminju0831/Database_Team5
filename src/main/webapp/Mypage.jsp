@@ -56,7 +56,8 @@ if(usert.equals("basic")){
 		out.println("<br>");
 		out.println(present);
 %>
-		
+	<br>
+    <a href = 'prefer.jsp'>취향 페이지</a>		<!-- 입력한 취향 없을 경우 버튼 뜨도록 변경 -->	
 			
 	<h3>기부 참여 목록</h3>
 			<table width="900">
@@ -190,6 +191,9 @@ if(usert.equals("basic")){
 	
 	
 }
+
+out.println("<a href = 'Delete_path.jsp'>회원 탈퇴 페이지</a>");
+out.println("<br>");
 %>
 	</table>
 	

@@ -39,22 +39,8 @@ if (session.getAttribute("userID") == null) {
       
    }
    
-   else{
-      out.println("<a href = 'Delete_path.jsp'>회원 탈퇴 페이지</a>");
-      out.println("<br>");
-      out.println("<a href = 'Mypage.jsp'>마이 페이지</a>");
-      out.println("<br>");
-      out.println("<a href = 'support.html'>지원 페이지</a>");
-      out.println("<br>");
-      out.println("<a href = 'select_query_menu.jsp'>질의 메뉴 페이지</a>");
-      out.println("<br>");
-      
-   }
- 
    if(usert.equals("donate")){
 %>
-   <br>
-   <a href = 'Donation_list.jsp'>기부 목록 페이지</a>
    <br>
    <a href = 'Duser/Donate_order.jsp'>기부 혜택 주문 페이지</a>
    <br>
@@ -68,15 +54,8 @@ if (session.getAttribute("userID") == null) {
    <a href = 'Duser/out_list.jsp'>주문 페이지</a>
 <%      
    }else if(usert.equals("basic")){
-%>
-      <br>
-      <a href = 'prefer.jsp'>취향 페이지</a>
-      <br>
-      <a href = 'Donation_list.jsp'>기부 목록 페이지</a>
-      <br>
-      <a href = 'gift_Gives_presents_to.jsp'>선물하기 페이지</a>
-      <br>
-      <a href = 'gift_list.jsp'>선물 주문 내역 페이지</a>
+%>		
+ 
       
 <%         
    }
