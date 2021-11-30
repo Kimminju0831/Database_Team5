@@ -21,6 +21,8 @@
 <title>query_present_result</title>
 <meta charset="utf-8">
 <link href="./style.css" rel="stylesheet">
+<link rel="stylesheet" href="static/button.css">
+
 </head>
 <body>
 
@@ -103,7 +105,9 @@
 	}
 	conn.close();
 	%>
-	<a href='Main.jsp'><p2>메인 페이지</p2></a>
-	<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
-</body>
+<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
+
+</div></body>
 </html>

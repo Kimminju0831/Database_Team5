@@ -20,6 +20,8 @@
 <title>Insert title here</title>
 <meta charset="UTF-8">
 <link href="./style.css" rel="stylesheet">
+<link rel="stylesheet" href="static/button.css">
+
 </head>
 
 <body>
@@ -61,7 +63,6 @@
 
 	<%
 	int repeat = 0;
-	out.println("<p2>------ 관리자 권한 사용자 정보 수정  ------ </p2><br/><br/>");
 	String check_sql = "select user_id from users WHERE user_id='" + userid + "'";
 	String check_id = "";
 	rs = stmt.executeQuery(check_sql);
@@ -85,14 +86,12 @@
 		{
 			//비밀번호 동일 -> 관리자
 	%>
-	<a href='query_user_admin.jsp'><p2>사용자 관련 질의 페이지(관리자)</p2></a>
-	<br>
-	<a href='query_product_admin.jsp'><p2>상품 자체 관련 질의 페이지(관리자)</p2></a>
-	<br>
-	<a href='query_donate_admin.jsp'><p2>기부 관련 질의 페이지(관리자)</p2></a>
-	<br>
-	<a href='query_present_admin.jsp'><p2>선물 관련 질의 페이지(관리자)</p2></a>
-	<br>
+	<div class="container2">
+	<a class ="btn btn" href='query_user_admin.jsp'><p4>사용자 관련 질의 페이지(관리자)</p4></a>
+	<a class ="btn btn" href='query_product_admin.jsp'><p4>상품 자체 관련 질의 페이지(관리자)</p4></a>
+	<a class ="btn btn" href='query_donate_admin.jsp'><p4>기부 관련 질의 페이지(관리자)</p4></a>
+	<a class ="btn btn" href='query_present_admin.jsp'><p4>선물 관련 질의 페이지(관리자)</p4></a>
+	</div>
 	<%
 	} else {
 	out.println("<p2>관리자 비밀번호가 올바르지 않습니다.</p2>");
@@ -100,14 +99,13 @@
 	} else {
 	// out.println("관리자 계정이 아닙니다.");
 	%>
-	<a href='query_user.jsp'><p2>사용자 관련 질의 페이지</p2></a>
-	<br>
-	<a href='query_product.jsp'><p2>상품 자체 관련 질의 페이지</p2></a>
-	<br>
-	<a href='query_donate.jsp'><p2>기부 관련 질의 페이지</p2></a>
-	<br>
-	<a href='query_present.jsp'><p2>선물 관련 질의 페이지</p2></a>
-	<br>
+	
+	<div class="container2">
+	<a class ="btn btn" href='query_user.jsp'><p4>사용자 관련 질의 페이지</p4></a>
+	<a class ="btn btn" href='query_product.jsp'><p4>상품 자체 관련 질의 페이지</p4></a>
+	<a class ="btn btn" href='query_donate.jsp'><p4>기부 관련 질의 페이지</p4></a>
+	<a class ="btn btn" href='query_present.jsp'><p4>선물 관련 질의 페이지</p4></a>
+	</div>
 	<%
 	}
 	out.println("<br/>");

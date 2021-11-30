@@ -1,16 +1,20 @@
 <%@page import="user.User"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>    
+<%@include file ="static/header.jsp" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>È¸¿ø Å»Åð ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<title>íšŒì› íƒˆí‡´ íŽ˜ì´ì§€</title>
 </head>
 <body>
-	<p>Delete Site - Å»Åð ÆäÀÌÁö</p>
+<div id = "body-wrapper">
+   	<div id ="body-content">
+	<p>Delete Site - íƒˆí‡´ íŽ˜ì´ì§€</p>
 	<br>
 	
 <%
@@ -21,11 +25,12 @@
 	if(userid.compareTo("admin")==0){
 	
 		%>
+		
 		<form action="./Delete.jsp" method="post">
-	  		<b>»èÁ¦ÇÒ À¯Àú ID ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</b>
+	  		<b>ì‚­ì œí•  ìœ ì € ID ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”.</b>
 	  		<input type="text" name = "request_user">
 			<br><br> 
-			<b>»èÁ¦¸¦ À§ÇØ °ü¸®ÀÚ PW ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. </b>
+			<b>ì‚­ì œë¥¼ ìœ„í•´ ê´€ë¦¬ìž PW ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”. </b>
 			<input type="text" name="D_password"><br>
 			<a><input type="reset" value="Reset"><input type="submit" value="Submit"></a>
 		</form>
@@ -36,15 +41,17 @@
 		
 		%>
 		<form action="./Delete.jsp" method="post">
-	  		<a><b>Å»Åð ÀýÂ÷¸¦ À§ÇØ ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.</b>
-			<br><br> ÇöÀç ºñ¹Ð¹øÈ£ | <input type="text" name="D_password"><br></a>
-			<a><input type="reset" value="Reset"><input type="submit" value="Submit"></a>
+	  		<a><b>íƒˆí‡´ ì ˆì°¨ë¥¼ ìœ„í•´ ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”.</b>
+			<br><br> í˜„ìž¬ ë¹„ë°€ë²ˆí˜¸  <input type="text" name="D_password"><br></a>
+			<a><br><br><input type="reset" value="Reset"><input type="submit" value="Submit"></a>
 		</form>
 		<%
 	}
 %>
 		
+		<%@include file ="static/footer.jsp" %> 
 		
-	
+	</div>
+	</div>
 </body>
 </html>

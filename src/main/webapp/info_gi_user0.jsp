@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>사용자 기부 취향 정보 수정</title>
-</head>
-<body>
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+      <div id ="body-content">
 	<h2>사용자</h2>
 	<form action="info_gi_user.jsp" method=post>
 	<br /> <br />
@@ -75,5 +73,7 @@
 	<br /> <br />
 	<a href = 'Main.jsp'>메인 페이지</a>
 	<a href = 'Mypage.jsp'>정보 수정 페이지</a>
-</body>
-</html>
+   </div>
+   
+   <%@include file ="static/footer.jsp" %>
+</div>

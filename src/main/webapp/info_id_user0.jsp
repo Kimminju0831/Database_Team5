@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>아이디 변경</title>
-</head>
-<body>
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+      <div id ="body-content">
 	<h1>다른 사이트와 아이디가 같으시다구요?</h1>
 	<h2>DㅓBㅔ풀기만의 특별한 아이디로 변경하세요!</h2>
 	<form action="info_id_user.jsp" method=post>
@@ -21,5 +19,7 @@
 	<br /> <br />
 	<br /> <br />
 	<a href = 'Main.jsp'>메인 페이지</a>
-</body>
-</html>
+   </div>
+   
+   <%@include file ="static/footer.jsp" %>
+</div>
