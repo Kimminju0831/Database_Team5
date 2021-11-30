@@ -68,6 +68,7 @@ input[id="tab4"]:checked ~ .con4 {
 <link rel="stylesheet" href="static/button.css">
 
 </head>
+<body>
 <div id = "body-wrapper">
    	<div id ="body-content">
 <div class="tab_content">
@@ -137,15 +138,17 @@ input[id="tab4"]:checked ~ .con4 {
 <a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
 <a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
 			</div>
+		
 			
 	</form>
 	
-	<%@include file ="static/footer.jsp" %> 
 	
 	</div>
 	</div>
 	</div>
 	
 	
+		<%@include file ="static/footer.jsp" %> 
 
 </div>
+</body>

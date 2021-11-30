@@ -3,6 +3,10 @@
 <!-- import JDBC package -->
 <%@include file ="static/header.jsp" %> 
 <link rel="stylesheet" href="static/main.css">
+<meta charset="UTF-8">
+<link href="./style.css" rel="stylesheet">
+<link rel="stylesheet" href="static/button.css">
+
 <div id = "body-wrapper">
    	<div id ="body-content">
 
@@ -77,8 +81,13 @@
 	
 	
 	<br/><br/>
-	<a href = 'Main.jsp'>메인 페이지</a>
-	<a href = 'gift_list.jsp'>선물 주문내역 페이지</a>
+	
+		<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='gift_list.jsp'><p4>선물 주문내역 페이지</p4></a>
+
+</div>
+	
 </div>
 	
 	<%@include file ="static/footer.jsp" %>

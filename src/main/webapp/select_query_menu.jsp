@@ -29,12 +29,10 @@
    	<div id ="body-content">
 	<%
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'><p2>로그인</p2></a>");
 	} else {
 		String userid = (String) session.getAttribute("userID");
 		String usert = (String) session.getAttribute("userType");
-		out.println("<p2>"+usert + " 회원 | " + userid + " 님 반갑습니다! </p2><br>");
-		out.println("<a href='logout.jsp'><p2>로그아웃</p2></a><br><br>");
+		
 	%>
 	<%
 
@@ -86,6 +84,7 @@
 		{
 			//비밀번호 동일 -> 관리자
 	%>
+	<br><br><br><br>
 	<div class="container2">
 	<a class ="btn btn" href='query_user_admin.jsp'><p4>사용자 관련 질의 페이지(관리자)</p4></a>
 	<a class ="btn btn" href='query_product_admin.jsp'><p4>상품 자체 관련 질의 페이지(관리자)</p4></a>
@@ -99,7 +98,7 @@
 	} else {
 	// out.println("관리자 계정이 아닙니다.");
 	%>
-	
+	<br><br><br><br>
 	<div class="container2">
 	<a class ="btn btn" href='query_user.jsp'><p4>사용자 관련 질의 페이지</p4></a>
 	<a class ="btn btn" href='query_product.jsp'><p4>상품 자체 관련 질의 페이지</p4></a>
