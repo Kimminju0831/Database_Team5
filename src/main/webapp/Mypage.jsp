@@ -1,10 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
+<<<<<<< HEAD
 <%@include file ="static/header.jsp" %> 
 <link rel="stylesheet" href="static/main.css">
 <div id = "body-wrapper">
    	<div id ="body-content">
+=======
+<%@ page import="user.UserDao"%>
+<%@ page import="user.DAO"%>
+<%@ page import="user.Select"%>
+<%@ page import="user.DonateDTO"%>
+<%@ page import="user.ExBoardDTO"%>
+<%@ page import="user.OrderDTO"%>
+
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
+
+<%@ page language = "java" import = "java.text.*, java.sql.*" %>   
+
+<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:setProperty name="user" property="userID" />
+<jsp:setProperty name="user" property="userPassword" />
+<jsp:setProperty name="user" property="userName" />
+<jsp:setProperty name="user" property="userAddress" />
+<jsp:setProperty name="user" property="userPhone" />
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>My page</title>
+<meta charset="UTF-8">
+<link href="./style.css" rel="stylesheet">
+</head>
+<body>
+>>>>>>> 23f5eee71c8e9c70944b63801d05e374f3e11b2c
 	
 <%
 	
@@ -12,15 +42,15 @@
 	String usert ="";
 	String userpw = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>로그인</a>");
+		out.println("<a href='login.jsp'><p2>로그인</p2></a>");
 	}else
 	{
 		userid = (String)session.getAttribute("userID");
 		usert = (String)session.getAttribute("userType");
 		userpw = (String)session.getAttribute("userPassword");
-		out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
-		out.println("<a href='logout.jsp'>로그아웃</a>");
-		out.println("<a href='info_modification.jsp'>내 정보 수정</a>");
+		out.println("<p2>"+usert + " 회원 | " + userid+" 님 반갑습니다! </p2><br>");
+		out.println("<a href='logout.jsp'><p2>로그아웃</p2></a>");
+		out.println("<a href='info_modification.jsp'><p2>내 정보 수정</p2></a>");
 	}
 	
 	out.println("<br><br>");	
@@ -105,7 +135,6 @@ if(usert.equals("basic")){
 			<tr>
 <% 		
 			ExBoardDTO hi = new ExBoardDTO();
-
 			hi = manager.donation_content(userid);
 %>
 			<td><%=hi.gettitle() %></td>
