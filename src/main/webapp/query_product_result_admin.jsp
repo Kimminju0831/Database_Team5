@@ -97,6 +97,13 @@
 	//Query 10
 	sql = "SELECT PRODUCT_TYPE, COUNT(BETTER_LINK)\n" + "FROM MALL, REFER_TO\n" + "WHERE NORMAL_LINK = N_LINK\n"
 			+ "AND BETTER_LINK = B_LINK\n" + "GROUP BY PRODUCT_TYPE";
+	
+	String check = request.getParameter("query_radio");
+	//for test
+	System.out.println("check: " + check);
+	if (check != null) {
+		if (check.equals("yes")) {
+	
 	System.out.println(sql);
 	pstmt = conn.prepareStatement(sql);
 	System.out.println(sql);
@@ -114,6 +121,9 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	
+	
+		}}
 	//Query 15
 	sql = "SELECT T.Product_name, COUNT(*) as numprefer\n" + "FROM PRODUCT T, PREFERENCE\n" + "WHERE T.UIDN = US_ID\n"
 			+ "GROUP BY T.Product_name\n" + "ORDER BY numprefer DESC";
@@ -134,8 +144,10 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	
 	//Query 16
 	String production_count_2 = request.getParameter("production_count_2");
+	if (production_count != null){
 	sql = "SELECT USER_ID, COUNT(*) as count\n" + "FROM USERS, GIVES_A_PRESENT_TO\n" + "WHERE USER_ID = Use_id\n"
 			+ "GROUP BY USER_ID\n" + "HAVING COUNT(*) >=" + production_count_2 + "\n" + "ORDER BY count DESC";
 	System.out.println(sql);
@@ -155,8 +167,11 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	}
 	//Query 17
 	String quantity = request.getParameter("quantity");
+	if (quantity != null)
+	{
 	sql = "SELECT NAME, PRODUCT_TYPE, PRODUCT_ID\n" + "FROM USERS, PRODUCT, MALL, MAKE\n" + "WHERE USER_ID = UIDN\n"
 			+ "AND PRODUCT_ID = P_I\n" + "AND NO_LINK = NORMAL_LINK\n" + "AND BE_LINK = BETTER_LINK\n" + "AND QUANTITY >= "
 			+ quantity;
@@ -178,8 +193,10 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	}
 	//Query 19
 	String quantity_2 = request.getParameter("quantity_2");
+	if (quantity_2 != null){
 	sql = "SELECT PRODUCT_TYPE, MIN(PRICE)\n"+
 			"FROM PRODUCT, MALL, MAKE\n"+
 			"WHERE QUANTITY = "+quantity_2+"\n"+
@@ -205,7 +222,7 @@
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
-	
+	}
 	
 	conn.close();
 	%>

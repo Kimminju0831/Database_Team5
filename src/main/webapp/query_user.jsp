@@ -1,6 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@include file ="static/header.jsp" %> 
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,9 @@
 <title>Main page</title>
 </head>
 <body>
+
+<div id = "body-wrapper">
+   	<div id ="body-content">
 <p>query_user</p>
    
            <p2>
@@ -22,5 +27,9 @@
    	<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
    
    <br>
+   	<%@include file ="static/footer.jsp" %>
+   
+   </div>
+   </div>
 </body>
 </html>
