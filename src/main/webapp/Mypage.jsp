@@ -1,40 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
-<<<<<<< HEAD
 <%@include file ="static/header.jsp" %> 
 <link rel="stylesheet" href="static/main.css">
 <div id = "body-wrapper">
    	<div id ="body-content">
-=======
-<%@ page import="user.UserDao"%>
-<%@ page import="user.DAO"%>
-<%@ page import="user.Select"%>
-<%@ page import="user.DonateDTO"%>
-<%@ page import="user.ExBoardDTO"%>
-<%@ page import="user.OrderDTO"%>
 
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.List"%>
-
-<%@ page language = "java" import = "java.text.*, java.sql.*" %>   
-
-<jsp:useBean id="user" class="user.User" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAddress" />
-<jsp:setProperty name="user" property="userPhone" />
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>My page</title>
-<meta charset="UTF-8">
-<link href="./style.css" rel="stylesheet">
-</head>
-<body>
->>>>>>> 23f5eee71c8e9c70944b63801d05e374f3e11b2c
 	
 <%
 	

@@ -1,14 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import = "user.DAO" %>
-<%@ page import = "user.User" %>
-<%@ page import = "user.DonateDTO" %>
-<%@ page import = "user.OrderDTO" %>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.List"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- import JDBC package -->
+<%@include file ="../static/header_for_D.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 <% 
 	int pageNum = 15;
 	
@@ -41,39 +38,39 @@
 	
 %>	
 <meta charset="EUC-KR">
-<title>¾Æ¿ô ¼Ò½Ì ±â¾÷ ÆäÀÌÁö</title>
+<title>ì•„ì›ƒ ì†Œì‹± ê¸°ì—… í˜ì´ì§€</title>
 </head>
 <body>
 <%
 	
 	String usert = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>·Î±×ÀÎ</a>");
+		out.println("<a href='login.jsp'>ë¡œê·¸ì¸</a>");
 	}else
 	{
 		usert = (String)session.getAttribute("userType");
-		out.println(usert + " È¸¿ø | " + userid+" ´Ô ¹İ°©½À´Ï´Ù! <br>");
-		out.println("<a href='../logout.jsp'>·Î±×¾Æ¿ô</a>");
+		out.println(usert + " íšŒì› | " + userid+" ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤! <br>");
+		out.println("<a href='../logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a>");
 		
 	}
 		
 	int menu = manager.get_order_donate(userid);
-	if(menu != 0)	//ÁÖ¹®À» ÀÌ¹Ì ³Ö¾úÀ½ == OUTSOURCING COMPANY ¿¡ ORGAN_ID °¡ ÀÖÀ½.
+	if(menu != 0)	//ì£¼ë¬¸ì„ ì´ë¯¸ ë„£ì—ˆìŒ == OUTSOURCING COMPANY ì— ORGAN_ID ê°€ ìˆìŒ.
 	{
-			// ÁÖ¹®À» ³Ö°í ¿ÜÁÖ¾÷Ã¼ Ãø¿¡¼­ ½ÂÀÎ ÇßÀ½ ==  ¹è´Şºñ°¡ »êÁ¤µÊ
+			// ì£¼ë¬¸ì„ ë„£ê³  ì™¸ì£¼ì—…ì²´ ì¸¡ì—ì„œ ìŠ¹ì¸ í–ˆìŒ ==  ë°°ë‹¬ë¹„ê°€ ì‚°ì •ë¨
 			if(menu == 2){
 			%>
 			<script type="text/javascript">
-			alert('ÁÖ¹®ÀÌ ½ÂÀÎµÇ¾ú½À´Ï´Ù.')
+			alert('ì£¼ë¬¸ì´ ìŠ¹ì¸ë˜ì—ˆìŠµë‹ˆë‹¤.')
 			location.href="../Mypage.jsp";
 			</script>
 			<%			
 			}
-			// ÁÖ¹®À» ³Ö¾úÁö¸¸ ¿ÜÁÖ ¾÷Ã¼ Ãø¿¡¼­ ½ÂÀÎÀ» ¾ÈÇßÀ½
+			// ì£¼ë¬¸ì„ ë„£ì—ˆì§€ë§Œ ì™¸ì£¼ ì—…ì²´ ì¸¡ì—ì„œ ìŠ¹ì¸ì„ ì•ˆí–ˆìŒ
 			else{
 			%>
 			<script type="text/javascript">
-			alert('ÁÖ¹® ½ÂÀÎ ´ë±â Áß ÀÔ´Ï´Ù.')
+			alert('ì£¼ë¬¸ ìŠ¹ì¸ ëŒ€ê¸° ì¤‘ ì…ë‹ˆë‹¤.')
 			location.href="../Mypage.jsp";
 			</script>
 			<%
@@ -84,11 +81,11 @@
 
 %>
 
-<h3>¿ÜÁÖ ¾÷Ã¼ ¸ñ·Ï</h3>
+<h3>ì™¸ì£¼ ì—…ì²´ ëª©ë¡</h3>
 		<table>
 			<tr>
-				<td width = "10%">¹øÈ£</td>
-				<td width = "20%">¾÷Ã¼¸í</td>
+				<td width = "10%">ë²ˆí˜¸</td>
+				<td width = "20%">ì—…ì²´ëª…</td>
 				<td width = "20%"></td>
 			</tr>
 			
@@ -106,7 +103,7 @@
 			<%
 				if(usert.equals("donate")){
 			%>
-					<td><input type="submit" value="Âü¿©ÇÏ±â"></td>
+					<td><input type="submit" value="ì°¸ì—¬í•˜ê¸°"></td>
 			<%
 				}
 			%></form>
@@ -115,7 +112,7 @@
 					}
 				}
 				else{
-					out.println("¿ÜÁÖ ±â¾÷ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+					out.println("ì™¸ì£¼ ê¸°ì—…ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				}
 			
 						
@@ -132,7 +129,7 @@
 						
 						if(startPagenum > Block){
 				%>
-							<a href="out_list.jsp?pageNum=<%=startPagenum - 10%>">[ÀÌÀü]</a>
+							<a href="out_list.jsp?pageNum=<%=startPagenum - 10%>">[ì´ì „]</a>
 				<%			
 						}
 						
@@ -153,7 +150,7 @@
 						
 						if(endPagenum < pageCount){
 				%>
-							<a href="out_list.jsp?pageNum=<%=startPagenum + 10 %>">[´ÙÀ½]</a>	
+							<a href="out_list.jsp?pageNum=<%=startPagenum + 10 %>">[ë‹¤ìŒ]</a>	
 							
 				<%								
 						}
@@ -166,12 +163,13 @@
 <%			
 		}else if(usert.equals("outsourcing")){
 %>
-		<button onclick="location='../Ouser/reg.jsp'">µî·ÏÇÏ±â</button>
+		<button onclick="location='../Ouser/reg.jsp'">ë“±ë¡í•˜ê¸°</button>
 <%			
 		}
 	
 %>
 		
-
-</body>
-</html>
+</div>
+	
+	<%@include file ="../static/footer_for_D.jsp" %>
+</div> 
