@@ -1,29 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
-<%@include file ="static/header.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Support page</title>
-</head>
-<body>
-	<div class = "loading" id = "background-rectangle3">
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+      <div id ="body-content">
+
+	<div class = "loading" id = "background-rectangle3" style="text-align: center; align-items: center;">
 		<span>
 		<h1>DㅓBㅔ풀기 사용 도움말 </h1>
+		<hr>
 		</span>
 	</div>
 	
-	<div id=background-rectangle1" style="margin-top : 80px;">
+	<div id=background-rectangle1" style="margin-top : 50px; text-align: center; align-items: center;">
 		<h2>&#128293;DㅓBㅔ풀기 ?</h2>
 		<h3>고마운 사람들에게 마음을 전달하는 것이 어렵게 느껴지지 않도록 여러분들의 마음을 전달해드립니다. </h3>
 		<h4>기부, 선물하기의 기능으로 마음을 베풀 수 있도록 하고자 하는 저희 사이트의 목표와, DataBase의 D,B를 이용해 저희 사이트의 이름을 'DㅓBㅔ풀기'라고 짓게 되었습니다.</h4>
 		<br>
+		<hr>
 	</div>
 	
 	<div id="background-rectangle2" style="text-align: center; align-items: center;">
         <h2>&#129330;DㅓBㅔ풀기는 어떤 플랫폼일까요?</h2>
+        <br>
         <h3>1. 선물하기</h3>
         <h3>1-1 기존 선물하기 플랫폼에서 사용자들이 느꼈던 부담스러움을 개선한 플랫폼입니다.</h3>
         <h4>기존에 존재하는 선물하기 서비스에서는 상대방이 직접 특정 상품을 받고 싶다고 선택해야 어떤 선물을 원하는 지 알 수 있거나, 
@@ -46,13 +46,13 @@
         'DㅓBㅔ풀기'에서는 기부가 어렵게만 느껴졌던 사람들을 위해 사용자에게 맞는 기부 활동을 추천해주고 사용자들이 많은 기부 수혜자들에게 마음을 베풀 수 있도록 도와주고 있습니다.
         </h4>
         <br>
+        <hr>
     </div>
     
     
-    <div id="background-rectangle1">
+    <div id="background-rectangle1" style="text-align: center; align-items: center;">
         <h2>&#10068; 'DㅓBㅔ풀기'를 어떻게 사용해야 할까요?</h2>
-
-        <body>
+		<br>
         	<h2>0. 공통</h2>
         	<h3>0-1. 회원가입 페이지</h3>
             <img src="" style="margin-right:20px; " width="800px">
@@ -104,7 +104,8 @@
 			<h3>2-1. 주문(의뢰) 조회 페이지</h3>
             <img src="" style="margin-right:20px; " width="800px">
             <h4>외주 업체로 들어온 주문(의뢰)내역을 조회할 수 있습니다.</h4>
-            
+            <br>
+			<br>
             <h2>3. 기부 단체 사용자 사용자 (donate) </h2>
 			<h3>3-1. 기부 활동 등록 페이지</h3>
             <img src="" style="margin-right:20px; " width="800px">
@@ -123,9 +124,7 @@
 	<a href="Main.jsp">메인 페이지로 이동하기</a>
 	<br>
 	
-	</div>
-	
-</body>
-<%-- <%@include file ="static/footer.jsp" %> --%>
-</html>
-
+	   </div>
+   
+   <%@include file ="static/footer.jsp" %>
+</div>
