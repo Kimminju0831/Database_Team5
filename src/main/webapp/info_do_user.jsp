@@ -4,17 +4,14 @@
 <%@ page import="user.DonateDTO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
-<%@ page import="user.mac"%> 
-<%@ page import="user.window"%> 
 
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>   
 
-<jsp:useBean id="user" class="user.User" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAddress" />
-<jsp:setProperty name="user" property="userPhone" />
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+      <div id ="body-content">
 
 <!DOCTYPE html>
 <html>
@@ -43,16 +40,21 @@
 	%>
 	
 	<%
-	PreparedStatement ps;
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs;
-	
-	window con = window.getInstance();
-	
-	conn = con.connect();
-	
-	stmt = conn.createStatement();
+		String serverIP = "localhost";
+		String strSID = "xe";
+		String portNum = "1600";
+		String User = "ta";
+		String pass = "ta";
+		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
+		
+		Connection conn = null;
+		Statement stmt = null;
+		
+		PreparedStatement ps;
+		ResultSet rs;
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection(url, User, pass);
+		stmt = conn.createStatement();
 
 	%>
 	
@@ -112,5 +114,7 @@
 	<br /> <br />
 	<a href = 'Main.jsp'>메인 페이지</a>
 	<a href = 'Mypage.jsp'>정보 수정 페이지</a>
-</body>
-</html>
+   </div>
+   
+   <%@include file ="static/footer.jsp" %>
+</div>

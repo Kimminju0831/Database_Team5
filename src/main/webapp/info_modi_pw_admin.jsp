@@ -2,27 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ page language = "java" import="java.text.*, java.sql.*" %>
 <%@	page import="java.time.LocalDate" %>
-<%@ page import="user.mac"%> 
-<%@ page import="user.window"%> 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>관리자 권한 사용자 정보 수정</title>
-</head>
-<body>
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+      <div id ="body-content">
 	
 	<%
-	PreparedStatement ps;
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs;
-	
-	window con = window.getInstance();
-	
-	conn = con.connect();
-	
-	stmt = conn.createStatement();
+		String serverIP = "localhost";
+		String strSID = "xe";
+		String portNum = "1600";
+		String username = "ta";
+		String pass = "ta";
+		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
+		
+		Connection conn = null;
+		Statement stmt = null;
+		
+		PreparedStatement ps;
+		ResultSet rs;
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection(url, username, pass);
+		stmt = conn.createStatement();
 
 	%>
 	
@@ -81,5 +82,7 @@
 		out.println("<br/>");
 	%>
 	<a href = 'Main.jsp'>메인 페이지</a>
-</body>
-</html>
+   </div>
+   
+   <%@include file ="static/footer.jsp" %>
+</div>
