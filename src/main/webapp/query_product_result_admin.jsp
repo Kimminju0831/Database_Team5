@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
 <%@	page import="java.time.LocalDate"%>
@@ -18,7 +18,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
+<link href="./style.css" rel="stylesheet">
 <title>query_product_result</title>
 </head>
 <body>
@@ -44,11 +45,11 @@
 	//======================================================================================//
 	String userid = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>로그인</a>");
+		out.println("<a href='login.jsp'><p2>로그인</p2></a>");
 	} else {
 		userid = (String) session.getAttribute("userID");
-		out.println(userid + " 님 안녕하세요, 반갑습니다! <br>");
-		out.println("<a href='logout.jsp'>  로그아웃</a>");
+		out.println("<p2>"+userid + " 님 안녕하세요, 반갑습니다!</p2> <br>");
+		out.println("<a href='logout.jsp'><p2>  로그아웃</p2></a>");
 	}
 	request.setCharacterEncoding("UTF-8");
 	//Query 2
@@ -67,8 +68,8 @@
 	}
 	while (rs.next()) {
 		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+		out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
@@ -88,14 +89,21 @@
 	}
 	while (rs.next()) {
 		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+		out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
 	//Query 10
 	sql = "SELECT PRODUCT_TYPE, COUNT(BETTER_LINK)\n" + "FROM MALL, REFER_TO\n" + "WHERE NORMAL_LINK = N_LINK\n"
 			+ "AND BETTER_LINK = B_LINK\n" + "GROUP BY PRODUCT_TYPE";
+	
+	String check = request.getParameter("query_radio");
+	//for test
+	System.out.println("check: " + check);
+	if (check != null) {
+		if (check.equals("yes")) {
+	
 	System.out.println(sql);
 	pstmt = conn.prepareStatement(sql);
 	System.out.println(sql);
@@ -108,11 +116,14 @@
 	}
 	while (rs.next()) {
 		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+		out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	
+	
+		}}
 	//Query 15
 	sql = "SELECT T.Product_name, COUNT(*) as numprefer\n" + "FROM PRODUCT T, PREFERENCE\n" + "WHERE T.UIDN = US_ID\n"
 			+ "GROUP BY T.Product_name\n" + "ORDER BY numprefer DESC";
@@ -128,13 +139,15 @@
 	}
 	while (rs.next()) {
 		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+		out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	
 	//Query 16
 	String production_count_2 = request.getParameter("production_count_2");
+	if (production_count != null){
 	sql = "SELECT USER_ID, COUNT(*) as count\n" + "FROM USERS, GIVES_A_PRESENT_TO\n" + "WHERE USER_ID = Use_id\n"
 			+ "GROUP BY USER_ID\n" + "HAVING COUNT(*) >=" + production_count_2 + "\n" + "ORDER BY count DESC";
 	System.out.println(sql);
@@ -149,13 +162,16 @@
 	}
 	while (rs.next()) {
 		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+		out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	}
 	//Query 17
 	String quantity = request.getParameter("quantity");
+	if (quantity != null)
+	{
 	sql = "SELECT NAME, PRODUCT_TYPE, PRODUCT_ID\n" + "FROM USERS, PRODUCT, MALL, MAKE\n" + "WHERE USER_ID = UIDN\n"
 			+ "AND PRODUCT_ID = P_I\n" + "AND NO_LINK = NORMAL_LINK\n" + "AND BE_LINK = BETTER_LINK\n" + "AND QUANTITY >= "
 			+ quantity;
@@ -171,14 +187,16 @@
 	}
 	while (rs.next()) {
 		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
-		out.println("<td>" + rs.getString(3) + "</td>");
+		out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+		out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
+		out.println("<td><p2>" + rs.getString(3) + "</p2></td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
+	}
 	//Query 19
 	String quantity_2 = request.getParameter("quantity_2");
+	if (quantity_2 != null){
 	sql = "SELECT PRODUCT_TYPE, MIN(PRICE)\n"+
 			"FROM PRODUCT, MALL, MAKE\n"+
 			"WHERE QUANTITY = "+quantity_2+"\n"+
@@ -199,16 +217,16 @@
 	}
 	while (rs.next()) {
 		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
+		out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+		out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
 		out.println("</tr>");
 	}
 	out.println("</table><br>");
-	
+	}
 	
 	conn.close();
 	%>
-	<a href='Main.jsp'>메인 페이지</a>
-	<a href='select_query_menu.jsp'>질의 메뉴 페이지로 이동하기</a>
-</body>
+	<a href='Main.jsp'><p2>메인 페이지</p2></a>
+	<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
+	</body>
 </html>

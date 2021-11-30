@@ -1,22 +1,35 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@include file ="static/header.jsp" %> 
+   
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="./style.css" rel="stylesheet">
 <title>Main page</title>
 </head>
 <body>
+
+<div id = "body-wrapper">
+   	<div id ="body-content">
 <p>query_user</p>
    
-           <a>
+           <p2>
               
            사용자 관련 처리할 질의가 존재하지 않습니다.
             
-         </a>
+         </p2>
+         <br><br>
    
-   <a href="Main.jsp">메인 페이지로 이동하기</a>
+   <a href="Main.jsp"><p2>메인 페이지로 이동하기</p2></a><br>
+   	<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
+   
    <br>
+   	<%@include file ="static/footer.jsp" %>
+   
+   </div>
+   </div>
 </body>
 </html>

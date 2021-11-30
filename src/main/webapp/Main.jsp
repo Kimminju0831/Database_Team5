@@ -68,3 +68,4 @@ if (session.getAttribute("userID") == null) {
 	
 	<%@include file ="static/footer.jsp" %>
 </div>
+

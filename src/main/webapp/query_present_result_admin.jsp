@@ -46,11 +46,11 @@
 	//======================================================================================//
 	String userid = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>로그인</a>");
+		out.println("<a href='login.jsp'><p2>로그인</p2></a>");
 	} else {
 		userid = (String) session.getAttribute("userID");
-		out.println(userid + " 님 안녕하세요, 반갑습니다! <br>");
-		out.println("<a href='logout.jsp'>  로그아웃</a>");
+		out.println("<p2>"+userid + " 님 안녕하세요, 반갑습니다!</p2> <br>");
+		out.println("<a href='logout.jsp'><p2>  로그아웃</p2></a>");
 	}
 	request.setCharacterEncoding("UTF-8");
 	//Query 8
@@ -70,8 +70,8 @@
 		}
 		while (rs.next()) {
 			out.println("<tr>");
-			out.println("<td>" + rs.getString(1) + "</td>");
-			out.println("<td>" + rs.getString(2) + "</td>");
+			out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+			out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
 			out.println("</tr>");
 		}
 		out.println("</table><br>");
@@ -93,17 +93,17 @@
 		out.println("<th>" + rsmd.getColumnName(i) + "</th>");
 			}
 			while (rs.next()) {
-		out.println("<tr>");
-		out.println("<td>" + rs.getString(1) + "</td>");
-		out.println("<td>" + rs.getString(2) + "</td>");
-		out.println("</tr>");
+				out.println("<tr>");
+				out.println("<td><p2>" + rs.getString(1) + "</p2></td>");
+				out.println("<td><p2>" + rs.getString(2) + "</p2></td>");
+				out.println("</tr>");
 			}
 			out.println("</table><br>");
 		}
 	}
 	conn.close();
 	%>
-	<a href='Main.jsp'>메인 페이지</a>
-	<a href='select_query_menu.jsp'>질의 메뉴 페이지로 이동하기</a>
+	<a href='Main.jsp'><p2>메인 페이지</p2></a>
+	<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
 </body>
 </html>

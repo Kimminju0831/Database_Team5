@@ -4,7 +4,18 @@
 
 @font-face {
 	src: url("./fonts/SangSangTitle.ttf");
-	font-family: "font1"
+	font-family: "font1";
+	
+	
+	src: url("./fonts/Rix고딕B.ttf");
+	font-family: "font2";
+	
+		src: url("./fonts/Binggrae.ttf");
+	font-family: "font3";
+	
+	
+	
+	
 }
 
 p {
@@ -12,10 +23,31 @@ p {
 	font-size: 25px;
 }
 
+
+
+
 p1 {
 	font-family: "font1";
 	font-size: 30px;
 }
+
+p2 {
+	font-family: "font3";
+	font-size: 15px;
+}
+
+p3 {
+	font-family: "font1";
+	font-size: 15px;
+}
+
+
+
+h1 {
+	font-family: "font1";
+	font-size: 35px;
+}
+
 
 table {
 	width: 100%;
@@ -27,3 +59,8 @@ th, td {
 	border-bottom: 1px solid #444444;
 	padding: 10px;
 }
+
+
+
+
+<!-- -->
