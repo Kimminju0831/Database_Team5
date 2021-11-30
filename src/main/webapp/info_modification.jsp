@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
 <%@ page import="user.DAO"%>
@@ -10,53 +10,45 @@
 
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>   
 
-<jsp:useBean id="user" class="user.User" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAddress" />
-<jsp:setProperty name="user" property="userPhone" />
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>³ªÀÇ Á¤º¸ ¼öÁ¤</title>
-</head>
-<body>
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+      <div id ="body-content">
 <%
 	
 	String userid = ""; 
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>·Î±×ÀÎ</a>");
+		out.println("<a href='login.jsp'>ë¡œê·¸ì¸</a>");
 	}else
 	{
 		userid = (String)session.getAttribute("userID");
 		String usert = (String)session.getAttribute("userType");
-		out.println(usert + " È¸¿ø | " + userid+" ´Ô ¹İ°©½À´Ï´Ù! <br>");
-		out.println("<a href='logout.jsp'>·Î±×¾Æ¿ô</a>");
+		out.println(usert + " íšŒì› | " + userid+" ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤! <br>");
+		out.println("<a href='logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a>");
 		out.println("<br>");
-		out.println("<a href='info_id_user0.jsp'>¾ÆÀÌµğ º¯°æ</a>");
+		out.println("<a href='info_id_user0.jsp'>ì•„ì´ë”” ë³€ê²½</a>");
 		out.println("<br>");
-		out.println("<a href='info_pw_user0.jsp'>ºñ¹Ğ¹øÈ£ º¯°æ</a>");
+		out.println("<a href='info_pw_user0.jsp'>ë¹„ë°€ë²ˆí˜¸ ë³€ê²½</a>");
 		out.println("<br>");
-		out.println("<a href='info_name_user0.jsp'>ÀÌ¸§ º¯°æ</a>");
+		out.println("<a href='info_name_user0.jsp'>ì´ë¦„ ë³€ê²½</a>");
 		out.println("<br>");
-		out.println("<a href='info_phone_user0.jsp'>ÀüÈ­¹øÈ£ º¯°æ</a>");
+		out.println("<a href='info_phone_user0.jsp'>ì „í™”ë²ˆí˜¸ ë³€ê²½</a>");
 		out.println("<br>");
-		out.println("<a href='info_address_user0.jsp'>ÁÖ¼Ò º¯°æ</a>");
+		out.println("<a href='info_address_user0.jsp'>ì£¼ì†Œ ë³€ê²½</a>");
 		
 		out.println("<br>");out.println("<br>");
-		out.println("<a href='info_gi_user0.jsp'>¼±¹° ÃëÇâ º¯°æ</a>");
+		out.println("<a href='info_gi_user0.jsp'>ì„ ë¬¼ ì·¨í–¥ ë³€ê²½</a>");
 		out.println("<br>");
-		out.println("<a href='info_do_user0.jsp'>±âºÎ ÃëÇâ º¯°æ</a>");
+		out.println("<a href='info_do_user0.jsp'>ê¸°ë¶€ ì·¨í–¥ ë³€ê²½</a>");
 		
 	}
 	
 	
 %>
-	<a href = 'Main.jsp'>¸ŞÀÎ ÆäÀÌÁö</a>
+	<a href = 'Main.jsp'>ë©”ì¸ í˜ì´ì§€</a>
 	<br>
-
-</body>
-</html>
+   </div>
+   
+   <%@include file ="static/footer.jsp" %>
+</div>

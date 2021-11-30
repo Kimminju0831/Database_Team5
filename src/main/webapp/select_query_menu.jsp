@@ -20,6 +20,8 @@
 <title>Insert title here</title>
 <meta charset="UTF-8">
 <link href="./style.css" rel="stylesheet">
+<link rel="stylesheet" href="static/button.css">
+
 </head>
 
 <body>

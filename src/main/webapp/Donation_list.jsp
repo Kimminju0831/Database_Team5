@@ -34,6 +34,16 @@
 	String userid = (String)session.getAttribute("userID");
 	String usert = (String)session.getAttribute("userType");
 	
+	String mydonate = "";
+	
+		Select man = Select.getInstance();
+		
+		ExBoardDTO result = new ExBoardDTO();
+		
+		result = man.donation_content(userid);
+		
+		mydonate = result.gettitle();
+		
 	DAO manager = DAO.getInstance();
 	
 	List<ExBoardDTO> list = null;
@@ -46,6 +56,8 @@
 		list = manager.getList_bene(userid);
 	}else if(mode.compareTo("period")==0){
 		list = manager.getList_period(userid);
+	}else if(mode.compareTo("my")==0){
+	
 	}else{
 		list = manager.getList();
 	}
@@ -83,8 +95,6 @@
 		{
 			userid = (String)session.getAttribute("userID");
 			usert = (String)session.getAttribute("userType");
-			out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
-			out.println("<a href='logout.jsp'>로그아웃</a>");
 		}
 	
 		if(usert.equals("basic")){
@@ -94,6 +104,19 @@
 		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=period%>">기간 맞춤</a>
 		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=bene%>">수혜자 맞춤</a>
 <%
+		}
+		else if(usert.equals("donate") ){
+			
+			if(mode.compareTo("my")!=0){
+%>
+				<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=my">내 기부 프로그램 보기</a>
+<% 			
+			}else{
+%>
+			<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=all%>">전체 보기</a>
+<%				
+			}
+			
 		}
 %>
 		<h3>게시판 목록</h3>
@@ -110,25 +133,40 @@
 				
 				}
 			
+				if(mode.compareTo("my")==0){
+			%>
+				</tr>
+				<tr>
+				<td><%=result.getn() %></td>
+				<td><%=result.getip() %></td>
+				<td><%=result.getcontent() %></td>
+				<td><%=mydonate %></td>
+				</tr>
+			<% 		
+					
+				}
+			
 				ExBoardDTO board  = null;
 				if(list != null){
 					for(int i = start-1; i < end ; i++){
 						board = list.get(i);
-			%>
+						if(board.getip().compareTo("$")!=0){
+							%>
+								<tr>
+								<form method="post" action = "Donation_Content.jsp">
+									<td><%=board.getn() %></td>	
+									<td><%=board.getip() %></td>
+									<td><%=board.getcontent() %></td>
+									<td><%=board.gettitle() %></td>
+									<input type = "hidden" name = "org_id" value = <%=board.getid() %>>
+									<input type = "hidden" name = "no" value = <%=board.getn() %>>
+									<input type = "hidden" name = "period" value = <%=board.getip() %>>
+									<input type = "hidden" name = "benefit" value = <%=board.getcontent() %>>
+									<input type = "hidden" name = "name" value = <%=board.gettitle() %>>
+									
+							<% 
+						}
 			
-			<tr>
-			<form method="post" action = "Donation_Content.jsp">
-				<td><%=board.getn() %></td>	
-				<td><%=board.getip() %></td>
-				<td><%=board.getcontent() %></td>
-				<td><%=board.gettitle() %></td>
-				<input type = "hidden" name = "org_id" value = <%=board.getid() %>>
-				<input type = "hidden" name = "no" value = <%=board.getn() %>>
-				<input type = "hidden" name = "period" value = <%=board.getip() %>>
-				<input type = "hidden" name = "benefit" value = <%=board.getcontent() %>>
-				<input type = "hidden" name = "name" value = <%=board.gettitle() %>>
-				
-			<% 
 				Boolean Contain = false;
 				DonateDTO dboard  = null;
 				if(donate_list != null){
@@ -159,7 +197,7 @@
 			<td>
 			<%
 					}
-				}else{
+				}else if(usert.equals("basic")){
 				
 					out.println("게시글이 없습니다.");
 			
@@ -211,8 +249,11 @@
 						
 						String utype = (String)session.getAttribute("userType");
 						if (utype.equals("donate")){
-							String command = "<button onclick = \"location='Duser/write.jsp'\">글쓰기</button>";
-							out.println(command);
+							if(mydonate.isEmpty()){
+								String command = "<button onclick = \"location='Duser/write.jsp'\">글쓰기</button>";
+								out.println(command);
+							}
+							
 						}
 			%>
 			</td>

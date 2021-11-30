@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>관리자 권한 : 사용자 정보 수정</title>
-</head>
-<body>
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+      <div id ="body-content">
 	<h2>관리자</h2>
 	<form action="info_modi_gi_admin.jsp" method=post>
 	관리자 계정입니다. 
@@ -78,5 +76,7 @@
 	<br /> <br />
 	<input type="reset" value="Reset"> 
 	<input type="submit"value="Submit">
-</body>
-</html>
+   </div>
+   
+   <%@include file ="static/footer.jsp" %>
+</div>

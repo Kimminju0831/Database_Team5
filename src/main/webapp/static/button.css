@@ -27,6 +27,16 @@ body{
   background-color: #FFBFBF;
  }
 
+.btn2 {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  color: black;
+  border-radius: 40px;
+  width: 30px;
+  background-color: #FFBFBF;
+ }
 
 .btn:hover {
   background-position: right center; 
