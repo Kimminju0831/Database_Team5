@@ -32,6 +32,14 @@ header {
 	
 }
 
+#header-total {
+	width: 70%;
+	height:  100%;
+	margin-left:15%;
+	font-size: 20px;
+	/*background-color: rgb(100, 100, 100);*/
+}
+
 #header-content {
 	width: 100%;
 	height:  100px;
@@ -39,22 +47,24 @@ header {
 }
 
 #header-logo {
+	position:absolute;
+	z-index:1;
 	margin-top : 15px;
+	margin-left: 10%;
 }
 
 #header-logo-img {
 	width: 80px;
 	float : left;
-	margin-left: 30%;
+	margin-left: 10%;
 	
 }
 
 #header-content1 { 
 	width: 150px;
 	float : left;
-	margin-top : 20px;
-	margin-left:150px;
-
+	margin-top : 40px;
+	margin-left: 10%;
 	
 }
 
@@ -67,8 +77,8 @@ header {
 #header-content2 { 
 	width: 300px;
 	float : left;
-	margin-top : 20px;
-	margin-left: 120px;
+	margin-top : 40px;
+	margin-left: 300px;
 
 }
 
@@ -80,7 +90,7 @@ header {
 #header-content3 { 
 	width: 200px;
 	float : left;
-	margin-top : 20px;
+	margin-top : 40px;
 	margin-left: 10px;
 
 }
@@ -99,21 +109,32 @@ header {
 
 #header-banner1 {
 	float:left;
-	margin-left: 30%;
-	margin-top: 0px;
+	margin-left: 15%;
+	margin-top: 10px;
 	width: 80px;
 	height: 33px;
 	box-sizing: border-box;
 }
 
 #banner-donate {
+	position:absolute;
+	z-index:1;
+	text-decoration-line: none;
 	box-sizing: border-box;
+}
+
+#banner-donate:link { color:black; }
+
+#banner-donate:visited { color:black; }
+
+#banner-donate:hover {
+	color: rgb(255, 0, 0);
 }
 
 #header-banner2 {
 	float:left;
-	margin-left: 50px;
-	margin-top: 0px;
+	margin-left: 8%;
+	margin-top: 10px;
 	width: 80px;
 	height: 33px;
 	
@@ -121,13 +142,24 @@ header {
 }
 
 #banner-present {
+	position:absolute;
+	z-index:1;
+	text-decoration-line: none;
 	box-sizing: border-box;
+}
+
+#banner-present:link { color:black; }
+
+#banner-present:visited { color:black; }
+
+#banner-present:hover {
+	color: rgb(255, 0, 0);
 }
 
 #header-banner3 {
 	float:left;
-	margin-left: 50px;
-	margin-top: 0px;
+	margin-left: 8%;
+	margin-top: 10px;
 	width: 150px;
 	height: 33px;
 	
@@ -135,13 +167,24 @@ header {
 }
 
 #banner-mypage {
+	position:absolute;
+	z-index:1;
+	text-decoration-line: none;
 	box-sizing: border-box;
+}
+
+#banner-mypage:link { color:black; }
+
+#banner-mypage:visited { color:black; }
+
+#banner-mypage:hover {
+	color: rgb(255, 0, 0);
 }
 
 #header-banner4 {
 	float:left;
-	margin-left: 50px;
-	margin-top: 0px;
+	margin-left: 8%;
+	margin-top: 10px;
 	width: 50px;
 	height: 33px;
 	
@@ -149,23 +192,46 @@ header {
 }
 
 #banner-FAQ {
+	position:absolute;
+	z-index:1;
+	text-decoration-line: none;
 	box-sizing: border-box;
+}
+
+#banner-FAQ:link { color:black; }
+
+#banner-FAQ:visited { color:black; }
+
+#banner-FAQ:hover {
+	color: rgb(255, 0, 0);
 }
 
 #header-banner5 {
 	float:left;
-	margin-left: 80px;
-	margin-top: 0px;
+	margin-left: 8%;
+	margin-top: 10px;
 	width: 130px;
 	height: 33px;
 	
 	box-sizing: border-box;
 }
 
+
+
 #banner-support {
+	position:absolute;
+	z-index:1;
+	text-decoration-line: none;
 	box-sizing: border-box;
 }
 
+#banner-support:link { color:black; }
+
+#banner-support:visited { color:black; }
+
+#banner-support:hover {
+	color: rgb(255, 0, 0);
+}
 
 footer {
 	width: 100%;

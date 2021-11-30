@@ -28,35 +28,37 @@ if (session.getAttribute("userID") == null) {
 
 %>
 	<header>
-		<div id="header-content">
-			<div id="header-logo">
-				<img id="header-logo-img" src="static/logo_not_shadow.png">
+		<div id = "header-total">
+			<div id="header-content">
+				<div id="header-logo">
+					<a href="Main.jsp"><img id="header-logo-img" src="static/logo_not_shadow.png"></a>
+				</div>
+				<div id="header-content1">
+					<a id="header-text1"></a>
+				</div>
+				<div id="header-content2">
+					<a id="header-text2"><%=usert %> 회원 - <%=userid %> 님 반갑습니다!</a>
+				</div>
+				<div id="header-content3">
+					<a id="header-text3" href='logout.jsp'>로그아웃</a>
+				</div>
 			</div>
-			<div id="header-content1">
-				<a id="header-text1"></a>
-			</div>
-			<div id="header-content2">
-				<a id="header-text2"><%=usert %> 회원 - <%=userid %> 님 반갑습니다!</a>
-			</div>
-			<div id="header-content3">
-				<a id="header-text3" href='logout.jsp'>로그아웃</a>
-			</div>
-		</div>
-		<div id="header-banner">
-			<div id="header-banner1">
-				<a id="banner-donate">기부</a>
-			</div>
-			<div id="header-banner2">
-				<a id="banner-present">선물</a>
-			</div>
-			<div id="header-banner3">
-				<a id="banner-mypage">마이페이지</a>
-			</div>
-			<div id="header-banner4">
-				<a id="banner-FAQ">FAQ</a>
-			</div>
-			<div id="header-banner5">
-				<a id="banner-support">지원페이지</a>
+			<div id="header-banner">
+				<div id="header-banner1">
+					<a id="banner-donate" href = 'Donation_list.jsp'>기부</a>
+				</div>
+				<div id="header-banner2">
+					<a id="banner-present" href = 'gift_Gives_presents_to.jsp'>선물</a>
+				</div>
+				<div id="header-banner3">
+					<a id="banner-mypage" href = 'Mypage.jsp'>마이페이지</a>
+				</div>
+				<div id="header-banner4">
+					<a id="banner-FAQ" href = 'select_query_menu.jsp'>FAQ</a>
+				</div>
+				<div id="header-banner5">
+					<a id="banner-support" href = 'support.jsp'>지원페이지</a>
+				</div>
 			</div>
 		</div>
 <%
