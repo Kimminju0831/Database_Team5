@@ -13,15 +13,12 @@
 	String usert ="";
 	String userpw = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'><p2>로그인</p2></a>");
+
 	}else
 	{
 		userid = (String)session.getAttribute("userID");
 		usert = (String)session.getAttribute("userType");
 		userpw = (String)session.getAttribute("userPassword");
-		out.println("<p2>"+usert + " 회원 | " + userid+" 님 반갑습니다! </p2><br>");
-		out.println("<a href='logout.jsp'><p2>로그아웃</p2></a>");
-		out.println("<a href='info_modification.jsp'><p2>내 정보 수정</p2></a>");
 	}
 	
 	out.println("<br><br>");	
@@ -32,23 +29,25 @@ if(usert.equals("basic")){
 		String donation =  manager.my_donation(userid);
 		String present = manager.my_present(userid);
 		
+		if(donation.isEmpty()){
+	%>
+		 <br>
+   		 <a href = 'prefer.jsp'>취향 페이지</a>		<!-- 입력한 취향 없을 경우 버튼 뜨도록 변경 -->	
+	<% 		
+		}
+		
+	%>
+		<h3>나의 취향</h3>
+	<%	
 		out.println(donation);
-		out.println("<br>");
 		out.println(present);
 %>
-	<br>
-    <a href = 'prefer.jsp'>취향 페이지</a>		<!-- 입력한 취향 없을 경우 버튼 뜨도록 변경 -->	
-			
+	
+
+
 	<h3>기부 참여 목록</h3>
-			<table width="900">
-				<tr>
-				<td width = "10%">번호</td>
-				<td width = "10%">단체명</td>
-				<td width = "10%">단체아이디</td>
-				<td width = "10%"></td>
-			</tr>
-<% 	
-	DAO manager2 = DAO.getInstance();
+	<%
+		DAO manager2 = DAO.getInstance();
 	
 	List<DonateDTO> list = null;
 	
@@ -58,6 +57,18 @@ if(usert.equals("basic")){
 	
 	if(list != null){
 		count = list.size();		// 총 데이터 갯수
+	}
+	
+	if(count!=0){
+	%>
+			<table width="900">
+				<tr>
+				<td width = "10%">번호</td>
+				<td width = "10%">단체명</td>
+				<td width = "10%">단체아이디</td>
+				<td width = "10%"></td>
+			</tr>
+<% 	
 	}
 	
 	DonateDTO board  = null;
@@ -118,6 +129,11 @@ if(usert.equals("basic")){
 		
 	<h3>기부 혜택 주문 현황</h3>
 		<table>
+		
+		<%
+		
+			if(count != 0){
+				%>
 			<tr>
 				<td width = "10%">외주 업체</td>
 				<td width = "10%">기부 프로그램</td>
@@ -130,6 +146,8 @@ if(usert.equals("basic")){
 				<td width = "10%">상태</td>
 			</tr>
 <%
+			}
+		
 			OrderDTO userorder = new OrderDTO();
 			for(int i = 0; i < count ; i++){
 				userorder = order_user.get(i);
@@ -176,9 +194,6 @@ out.println("<br>");
 %>
 	</table>
 	
-	<a href = 'Main.jsp'>메인 페이지</a>
-	<br>
-
 	</div>
 	
 	<%@include file ="static/footer.jsp" %>
