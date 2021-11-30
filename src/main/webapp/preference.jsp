@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@ page import="user.UserDao"%>
 <%@	page import="java.time.LocalDate" %>
@@ -18,7 +18,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <title>Preference insert page</title>
 </head>
 <body>
@@ -40,12 +39,9 @@
 	
 	String userid = "";
 	if (session.getAttribute("userID") == null) {
-	   out.println("<a href='login.jsp'>·Î±×ÀÎ</a>");
 	}else
 	{
 	   userid = (String)session.getAttribute("userID");
-	   out.println(userid+" ´Ô ¾È³çÇÏ¼¼¿ä, ¹İ°©½À´Ï´Ù! <br>");
-	   out.println("<a href='logout.jsp'>  ·Î±×¾Æ¿ô</a>");
 	}
 		
 	
@@ -104,6 +100,12 @@
 	conn.close();
 
 %>
-<a href = 'Main.jsp'>¸ŞÀÎ ÆäÀÌÁö</a>
+
+
+<script type="text/javascript">
+		alert('<%=userid%> ë‹˜ì˜ ì·¨í–¥ì„ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í–ˆìŠµë‹ˆë‹¤.')
+		location.href="./Mypage.jsp";
+</script>
+
 </body>
 </html>
