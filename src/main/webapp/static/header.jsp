@@ -5,6 +5,7 @@
 <%@ page language = "java" import = "java.text.*, java.sql.*" %>    
 <%@ page import="user.*"%>
 <link rel="stylesheet" href="static/layout.css">
+<link rel="stylesheet" href="static/button.css">
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
