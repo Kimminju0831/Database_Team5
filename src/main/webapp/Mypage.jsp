@@ -196,10 +196,7 @@ if(usert.equals("basic")){
 
 </table>
 	
-<<<<<<< HEAD
 
-=======
->>>>>>> e9fb62c90ef4f1c8e2549c3ba5830afeec55878f
 	</div>
 	<div class="container2">
 <a class ="btn btn-1" href='Main.jsp'><p4>메인 페이지</p4></a>
