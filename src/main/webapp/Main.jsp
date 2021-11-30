@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
 <%@include file ="static/header.jsp" %> 
-	
+<link rel="stylesheet" href="static/main.css">
 <div id = "body-wrapper">
    	<div id ="body-content">
 <%
@@ -63,6 +63,9 @@ if (session.getAttribute("userID") == null) {
 }
 
 %>
+		<a href="Main.jsp"><img id="img" src="static/media/donate2.png"></a>
 	</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div>
 
-<%@include file ="static/footer.jsp" %>
