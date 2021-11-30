@@ -18,19 +18,28 @@
 <title>HelloMyPage</title>
 </head>
 <body>
+<%
+if (session.getAttribute("userID") == null) {
+	out.println("<a href='login.jsp'>로그인</a>");
+}else
+{
+	String userid = (String)session.getAttribute("userID");
+	String usert = (String)session.getAttribute("userType");		
+
+%>
 	<header>
 		<div id="header-content">
 			<div id="header-logo">
-				<img id="header-logo-img" src="static/logo.png">
+				<img id="header-logo-img" src="static/logo_not_shadow.png">
 			</div>
 			<div id="header-content1">
-				<a id="header-text1">헤더입니동</a>
+				<a id="header-text1"></a>
 			</div>
 			<div id="header-content2">
-				<a id="header-text2">정보를 쓸겁니동</a>
+				<a id="header-text2"><%=usert %> 회원 - <%=userid %> 님 반갑습니다!</a>
 			</div>
 			<div id="header-content3">
-				<a id="header-text3">로그아웃</a>
+				<a id="header-text3" href='logout.jsp'>로그아웃</a>
 			</div>
 		</div>
 		<div id="header-banner">
@@ -50,5 +59,7 @@
 				<a id="banner-support">지원페이지</a>
 			</div>
 		</div>
-		
+<%
+	}
+%>		
 	</header>
