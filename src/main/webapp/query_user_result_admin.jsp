@@ -25,7 +25,7 @@
 <body>
 
 	<%
-	/*
+	
 	String sql = "";
 
 	PreparedStatement ps;
