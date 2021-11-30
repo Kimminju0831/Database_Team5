@@ -17,16 +17,18 @@
 <html>
 <head>
 <title>Insert title here</title>
+<meta charset="UTF-8">
+<link href="./style.css" rel="stylesheet">
 </head>
 <body>
 	<%
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>로그인</a>");
+		out.println("<a href='login.jsp'><p2>로그인</p2></a>");
 	} else {
 		String userid = (String) session.getAttribute("userID");
 		String usert = (String) session.getAttribute("userType");
-		out.println(usert + " 회원 | " + userid + " 님 반갑습니다! <br>");
-		out.println("<a href='logout.jsp'>로그아웃</a><br><br>");
+		out.println("<p2>"+usert + " 회원 | " + userid + " 님 반갑습니다! </p2><br>");
+		out.println("<a href='logout.jsp'><p2>로그아웃</p2></a><br><br>");
 	%>
 	<%
 
@@ -55,7 +57,7 @@
 
 	<%
 	int repeat = 0;
-	out.println("------ 관리자 권한 사용자 정보 수정  ------ <br/><br/>");
+	out.println("<p2>------ 관리자 권한 사용자 정보 수정  ------ </p2><br/><br/>");
 	String check_sql = "select user_id from users WHERE user_id='" + userid + "'";
 	String check_id = "";
 	rs = stmt.executeQuery(check_sql);
@@ -79,28 +81,28 @@
 		{
 			//비밀번호 동일 -> 관리자
 	%>
-	<a href='query_user_admin.html'>사용자 관련 질의 페이지(관리자)</a>
+	<a href='query_user_admin.html'><p2>사용자 관련 질의 페이지(관리자)</p2></a>
 	<br>
-	<a href='query_product_admin.html'>상품 자체 관련 질의 페이지(관리자)</a>
+	<a href='query_product_admin.html'><p2>상품 자체 관련 질의 페이지(관리자)</p2></a>
 	<br>
-	<a href='query_donate_admin.html'>기부 관련 질의 페이지(관리자)</a>
+	<a href='query_donate_admin.html'><p2>기부 관련 질의 페이지(관리자)</p2></a>
 	<br>
-	<a href='query_present_admin.html'>선물 관련 질의 페이지(관리자)</a>
+	<a href='query_present_admin.html'><p2>선물 관련 질의 페이지(관리자)</p2></a>
 	<br>
 	<%
 	} else {
-	out.println("관리자 비밀번호가 올바르지 않습니다.");
+	out.println("<p2>관리자 비밀번호가 올바르지 않습니다.</p2>");
 	}
 	} else {
 	// out.println("관리자 계정이 아닙니다.");
 	%>
-	<a href='query_user.jsp'>사용자 관련 질의 페이지</a>
+	<a href='query_user.jsp'><p2>사용자 관련 질의 페이지</p2></a>
 	<br>
-	<a href='query_product.html'>상품 자체 관련 질의 페이지</a>
+	<a href='query_product.html'><p2>상품 자체 관련 질의 페이지</p2></a>
 	<br>
-	<a href='query_donate.html'>기부 관련 질의 페이지</a>
+	<a href='query_donate.html'><p2>기부 관련 질의 페이지</p2></a>
 	<br>
-	<a href='query_present.jsp'>선물 관련 질의 페이지</a>
+	<a href='query_present.jsp'><p2>선물 관련 질의 페이지</p2></a>
 	<br>
 	<%
 	}
