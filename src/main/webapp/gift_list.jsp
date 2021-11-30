@@ -1,37 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page language = "java" import="java.text.*, java.sql.*" %>
+<%@page import="java.util.*" %>
+<%@ page import="user.Gift"%> 
 <!-- import JDBC package -->
-<%@include file ="static/header.jsp" %> 
 <link rel="stylesheet" href="static/main.css">
+<link rel="stylesheet" href="static/button.css">
+<%@include file ="static/header.jsp" %>
 <div id = "body-wrapper">
    	<div id ="body-content">
-
 	<%
-		String userid = ""; 
-		if (session.getAttribute("userID") == null) {
-			out.println("<a href='login.jsp'>로그인</a>");
-		}else
-		{
-			userid = (String)session.getAttribute("userID");
-			String usert = (String)session.getAttribute("userType");
-			out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
-			out.println("<a href='logout.jsp'>로그아웃</a>");
-		}
-	
-		out.println("<br><br>");	
+	String userid = ""; 
+	if (session.getAttribute("userID") == null) {
+	}else
+	{
+		userid = (String)session.getAttribute("userID");
+		String usert = (String)session.getAttribute("userType");
+	}
+
+	out.println("<br><br>");		
 	%>
 	
-	<%
-	PreparedStatement ps;
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs;
-	
-	window con = window.getInstance();
-	
-	conn = con.connect();
-	
-	stmt = conn.createStatement();
+		<%
+		String serverIP = "localhost";
+		String strSID = "xe";
+		String portNum = "1600";
+		String User = "ta";
+		String pass = "ta";
+		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
+		
+		Connection conn = null;
+		Statement stmt = null;
+		
+		PreparedStatement ps;
+		ResultSet rs;
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection(url, User, pass);
+		stmt = conn.createStatement();
 
 	%>
 		
@@ -78,7 +83,7 @@
 		       	}
 				out.println("</table>");
 		%>
-		<a href = 'Main.jsp'>메인 페이지</a>
+		
 </div>
 	
 	<%@include file ="static/footer.jsp" %>
