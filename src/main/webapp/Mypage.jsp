@@ -24,6 +24,8 @@
 <html>
 <head>
 <title>My page</title>
+<meta charset="UTF-8">
+<link href="./style.css" rel="stylesheet">
 </head>
 <body>
 	
@@ -33,15 +35,15 @@
 	String usert ="";
 	String userpw = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>로그인</a>");
+		out.println("<a href='login.jsp'><p2>로그인</p2></a>");
 	}else
 	{
 		userid = (String)session.getAttribute("userID");
 		usert = (String)session.getAttribute("userType");
 		userpw = (String)session.getAttribute("userPassword");
-		out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
-		out.println("<a href='logout.jsp'>로그아웃</a>");
-		out.println("<a href='info_modification.jsp'>내 정보 수정</a>");
+		out.println("<p2>"+usert + " 회원 | " + userid+" 님 반갑습니다! </p2><br>");
+		out.println("<a href='logout.jsp'><p2>로그아웃</p2></a>");
+		out.println("<a href='info_modification.jsp'><p2>내 정보 수정</p2></a>");
 	}
 	
 	out.println("<br><br>");	
