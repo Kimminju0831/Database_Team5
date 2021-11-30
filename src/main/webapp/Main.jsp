@@ -7,14 +7,11 @@
    	<div id ="body-content">
 <%
 if (session.getAttribute("userID") == null) {
-	out.println("<a href='login.jsp'>로그인</a>");
+
 }else
 {
 	String userid = (String)session.getAttribute("userID");
-	String usert = (String)session.getAttribute("userType");
-	out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
-	out.println("<a href='logout.jsp'>로그아웃</a>");
-	
+	String usert = (String)session.getAttribute("userType");	
 
 %>
   
