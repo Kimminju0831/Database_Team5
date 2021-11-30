@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import = "user.DAO" %>
-<%@ page import = "user.User" %>
-<%@ page import = "user.DonateDTO" %>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.List"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- import JDBC package -->
+<%@include file ="../static/header_for_D.jsp" %> 
+<link rel="stylesheet" href="main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 <%
 
 	int pageNum = 15;
@@ -45,7 +43,7 @@
 	
 %>
 <meta charset="EUC-KR">
-<title>±âºÎ Âü¿©ÀÚ ¸ñ·Ï</title>
+<title>ê¸°ë¶€ ì°¸ì—¬ìž ëª©ë¡</title>
 </head>
 <body>
 <h3>
@@ -54,14 +52,14 @@
 
 	
 %>
-	<%=det %> ±âºÎ Âü¿©ÀÚ ¸ñ·Ï</h3>
+	<%=det %> ê¸°ë¶€ ì°¸ì—¬ìž ëª©ë¡</h3>
 	
 <%
 	}else{
 		
 %>
 		<script>
-			alert('¿î¿µ ÁßÀÎ ±âºÎ ÄÜÅÙÃ÷°¡ ¾ø½À´Ï´Ù.')
+			alert('ìš´ì˜ ì¤‘ì¸ ê¸°ë¶€ ì½˜í…ì¸ ê°€ ì—†ìŠµë‹ˆë‹¤.')
 			location.href="../Main.jsp";
 		</script>
 <% 		
@@ -71,11 +69,11 @@
 %>
 		<table>
 			<tr>
-				<td width = "5%">¹øÈ£</td>
-				<td width = "10%">±âºÎÀÚ ÀÌ¸§</td>
-				<td width = "15%">±âºÎÀÚ ÀüÈ­¹øÈ£</td>
-				<td width = "20%">±âºÎÀÚ ÁÖ¼Ò</td>
-				<td width = "10%">»óÅÂ</td>
+				<td width = "5%">ë²ˆí˜¸</td>
+				<td width = "10%">ê¸°ë¶€ìž ì´ë¦„</td>
+				<td width = "15%">ê¸°ë¶€ìž ì „í™”ë²ˆí˜¸</td>
+				<td width = "20%">ê¸°ë¶€ìž ì£¼ì†Œ</td>
+				<td width = "10%">ìƒíƒœ</td>
 			</tr>
 			
 			<%
@@ -87,17 +85,17 @@
 						String uid = board.getuid();
 						System.out.println(uid);
 						
-						User user = new User();
-						user = manager.getList_user(uid);
-						if(user != null){
+						User user1 = new User();
+						user1 = manager.getList_user(uid);
+						if(user1 != null){
 						
 				%>
 				<tr>
 						<td><%=i %></td>	
-						<td><%=user.getUserName() %></td>
-						<td><%=user.getUserPhone() %></td>
-						<td><%=user.getUserAddress() %></td>
-						<td> Âü¿©Áß </td>
+						<td><%=user1.getUserName() %></td>
+						<td><%=user1.getUserPhone() %></td>
+						<td><%=user1.getUserAddress() %></td>
+						<td> ì°¸ì—¬ì¤‘ </td>
 				</tr>
 				<% 	
 						}
@@ -117,7 +115,7 @@
 					
 					if(startPagenum > Block){
 			%>
-						<a href="people_list.jsp?pageNum=<%=startPagenum - 10%>">[ÀÌÀü]</a>
+						<a href="people_list.jsp?pageNum=<%=startPagenum - 10%>">[ì´ì „]</a>
 			<%
 						}
 						
@@ -140,7 +138,7 @@
 						if(endPagenum < pageCount){
 								
 			%>
-							<a href="people_list.jsp?pageNum=<%=startPagenum + 10 %>">[´ÙÀ½]</a>	
+							<a href="people_list.jsp?pageNum=<%=startPagenum + 10 %>">[ë‹¤ìŒ]</a>	
 							
 			<%
 						}
@@ -151,7 +149,9 @@
 			
 		</table>
 		<br>
-		<button type="button" onclick="location='out_list.jsp'">±âºÎ ÇýÅÃ ÁÖ¹® ÆäÀÌÁö</button>
-		<a href = "../Main.jsp">¸ÞÀÎ ÆäÀÌÁö·Î</a>
-</body>
-</html>
+		<button type="button" onclick="location='out_list.jsp'">ê¸°ë¶€ í˜œíƒ ì£¼ë¬¸ íŽ˜ì´ì§€</button>
+		<a href = "../Main.jsp">ë©”ì¸ íŽ˜ì´ì§€ë¡œ</a>
+</div>
+	
+	<%@include file ="../static/footer_for_D.jsp" %>
+</div> 

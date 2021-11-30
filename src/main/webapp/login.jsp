@@ -2,16 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file ="static/header.jsp" %> 
-	
-<!DOCTYPE html>
-<html>
-
-<head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>login.jsp</title>
-</head>
-<body>
 <div id = "body-wrapper">
    	<div id ="body-content">
 	<form method="post" action="loginAction.jsp">
@@ -38,11 +28,9 @@
 		
 		
 	</form>
-		<%@include file ="static/footer.jsp" %> 
 	
 	
-	</div></div>
-
-</body>
-
-</html>
+	
+	</div>	
+	
+	<%@include file ="static/footer.jsp" %> </div>

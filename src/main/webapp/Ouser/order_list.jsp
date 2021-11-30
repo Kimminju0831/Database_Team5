@@ -1,18 +1,10 @@
-<%@page import="user.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
-<%@ page language = "java" import = "java.text.*, java.sql.*" %>    
-<%@ page import="user.UserDao"%>
-<%@ page import="user.DAO"%>
-<%@ page import="user.Select"%>
-<%@ page import="user.DonateDTO"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.List"%>
-<%@ page import = "user.OrderDTO" %>
-<!DOCTYPE html>
-<html>
-<head>
+<%@include file ="../static/header_for_D.jsp" %> 
+<link rel="stylesheet" href="main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
 <% 
 	int pageNum = 15;
 	
@@ -173,5 +165,7 @@
 
 	<br/>
 	<a href = "../Main.jsp">메인 페이지로</a>
-</body>
-</html>
+</div>
+	
+	<%@include file ="../static/footer_for_D.jsp" %>
+</div> 

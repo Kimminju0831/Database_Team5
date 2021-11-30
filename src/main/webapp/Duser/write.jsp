@@ -1,20 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import = "user.UserDao" %>
-<!DOCTYPE html>
-<html>
-<head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- import JDBC package -->
+<%@include file ="../static/header_for_D.jsp" %> 
+<link rel="stylesheet" href="main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 <%
 
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='../login.jsp'>·Î±×ÀÎ</a>");
+		out.println("<a href='../login.jsp'>ë¡œê·¸ì¸</a>");
 	}else
 	{
 		String userid = (String)session.getAttribute("userID");
 		String usert = (String)session.getAttribute("userType");
 		String userpw = (String)session.getAttribute("userPassword");
-		out.println(usert + " È¸¿ø | " + userid+" ´Ô ¹İ°©½À´Ï´Ù! <br>");
-		out.println("<a href='../logout.jsp'>·Î±×¾Æ¿ô</a>");
+		out.println(usert + " íšŒì› | " + userid+" ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤! <br>");
+		out.println("<a href='../logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a>");
 
 %>
 <meta charset="EUC-KR">
@@ -22,30 +24,30 @@
 </head>
 <body>
 		
-		±âºÎ ÄÜÅÙÃ÷¸¦ ¾÷·ÎµåÇÏ´Â »çÀÌÆ®ÀÔ´Ï´Ù.
+		ê¸°ë¶€ ì½˜í…ì¸ ë¥¼ ì—…ë¡œë“œí•˜ëŠ” ì‚¬ì´íŠ¸ì…ë‹ˆë‹¤.
 		
 <%
 
 	//insert into DONATION_ORGANIZATION 
 	//(Donation_period, Donation_type, Beneficiary, Donation_organization_name, org_pwd, org_id) 
 	// values ('1Y-1M-12D', 'LONG', 'ENVIRONMENT', 'HEEJUNGCOMPANY', 'Indigo', '442-05-1994');
-	// ±â°£ / ±â°£ À¯Çü / ¼öÇìÀÚ / ÀÌ¸§ / ±â°ü ºñ¹Ğ¹øÈ£ / ±â°ü ¾ÆÀÌµğ
+	// ê¸°ê°„ / ê¸°ê°„ ìœ í˜• / ìˆ˜í—¤ì / ì´ë¦„ / ê¸°ê´€ ë¹„ë°€ë²ˆí˜¸ / ê¸°ê´€ ì•„ì´ë””
 	
-	// ±â°£ ¼±ÅÃÇÏ°Ô
+	// ê¸°ê°„ ì„ íƒí•˜ê²Œ
 	
-	// ±â°£À» ÀÏÀÚ·Î º¯°æ : year >= 1 ÀÌ¸é long , year < 1 ÀÌ¸é short , day = 1 ÀÌ¸é temporary
+	// ê¸°ê°„ì„ ì¼ìë¡œ ë³€ê²½ : year >= 1 ì´ë©´ long , year < 1 ì´ë©´ short , day = 1 ì´ë©´ temporary
 	
-	// ¼öÇıÀÚ¸¦ Ã¼Å© ¹Ú½º·Î ¼±ÅÃ
+	// ìˆ˜í˜œìë¥¼ ì²´í¬ ë°•ìŠ¤ë¡œ ì„ íƒ
 	
-	// ±â°ü ¾ÆÀÌµğ ÀÔ·Â
+	// ê¸°ê´€ ì•„ì´ë”” ì…ë ¥
 
 %>
 	
 		<form action = "./write_donate.jsp" method = "POST">
 				<br>
 				<br/>
-				<b>±âºÎ ±â°£À» ¼±ÅÃÇØÁÖ¼¼¿ä.</b>
-				<br><br>±âºÎ ±â°£ : 
+				<b>ê¸°ë¶€ ê¸°ê°„ì„ ì„ íƒí•´ì£¼ì„¸ìš”.</b>
+				<br><br>ê¸°ë¶€ ê¸°ê°„ : 
 				<select name="DperiodY">
 			    <option value="0" selected>0</option>
 <%
@@ -83,9 +85,9 @@
 				</select> DAY
 				<br>
 				<br/>
-				<b>¼öÇıÀÚ À¯ÇüÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.</b>
+				<b>ìˆ˜í˜œì ìœ í˜•ì„ ì„ íƒí•´ì£¼ì„¸ìš”.</b>
 				
-				<br><br>¼öÇıÀÚ À¯Çü : 
+				<br><br>ìˆ˜í˜œì ìœ í˜• : 
 				<select name="Dbenefit">
 			    <option value="ABANDONED PETS" selected>ABANDONED PETS</option>
 			    <option value="ENDANGERED SPECIES">ENDANGERED SPECIES</option>
@@ -100,14 +102,14 @@
 				
 				<br>
 				<br/>
-				<b>±âºÎ ´ÜÃ¼¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.</b>
+				<b>ê¸°ë¶€ ë‹¨ì²´ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.</b>
 				<input type="text" name="name" maxlength="50"> <br> 
 				
 				<input type = "hidden" name = "org_id" value = <%=userid %>>
 				<input type = "hidden" name = "org_pw" value = <%=userpw %>>
 				
 				<!-- org_id , org_pw , Dbenefit , DperiodY , DperiodM , DperiodD -->
-				<input type="submit" value="¿Ï·á"> <button type="button" onclick="location='../Main.jsp'">Ãë¼Ò</button>
+				<input type="submit" value="ì™„ë£Œ"> <button type="button" onclick="location='../Main.jsp'">ì·¨ì†Œ</button>
 				
 		</form>
 		
@@ -116,5 +118,7 @@
 	}
 
 %>				
-</body>
-</html>
+</div>
+	
+	<%@include file ="../static/footer_for_D.jsp" %>
+</div> 

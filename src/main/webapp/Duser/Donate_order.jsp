@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import = "user.DAO" %>
-<%@ page import = "user.User" %>
-<%@ page import = "user.DonateDTO" %>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.List"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!-- import JDBC package -->
+<%@include file ="../static/header_for_D.jsp" %> 
+<link rel="stylesheet" href="main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 <% 
 
 String userid = (String)session.getAttribute("userID");
@@ -24,63 +22,63 @@ org_name = manager.get_donate_org(userid);
 
 if(org_name!=null){
 	
-	out.println(org_name + " ´ÜÃ¼ÀÇ ±âºÎ ÇıÅÃ ÁÖ¹®");
+	out.println(org_name + " ë‹¨ì²´ì˜ ê¸°ë¶€ í˜œíƒ ì£¼ë¬¸");
 	
 }else{
 %>
 		<script>
-			alert('¿î¿µ ÁßÀÎ ±âºÎ ÄÜÅÙÃ÷°¡ ¾ø½À´Ï´Ù.')
+			alert('ìš´ì˜ ì¤‘ì¸ ê¸°ë¶€ ì½˜í…ì¸ ê°€ ì—†ìŠµë‹ˆë‹¤.')
 			location.href="../Main.jsp";
 		</script>
 <%		
 }
 %>
 <meta charset="EUC-KR">
-<title>±âºÎ ÇıÅÃ ÁÖ¹® ÆäÀÌÁö</title>
+<title>ê¸°ë¶€ í˜œíƒ ì£¼ë¬¸ í˜ì´ì§€</title>
 </head>
 <body>
 
 <%
 
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>·Î±×ÀÎ</a>");
+		out.println("<a href='login.jsp'>ë¡œê·¸ì¸</a>");
 	}else
 	{
 		String usert = (String)session.getAttribute("userType");
-		out.println(usert + " È¸¿ø | " + userid+" ´Ô ¹İ°©½À´Ï´Ù! <br>");
-		out.println("<a href='../logout.jsp'>·Î±×¾Æ¿ô</a>");
+		out.println(usert + " íšŒì› | " + userid+" ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤! <br>");
+		out.println("<a href='../logout.jsp'>ë¡œê·¸ì•„ì›ƒ</a>");
 		
 	}
 		int menu = manager.get_order_donate(userid);
-		if(menu != 0)	//ÁÖ¹®À» ÀÌ¹Ì ³Ö¾úÀ½ == OUTSOURCING COMPANY ¿¡ ORGAN_ID °¡ ÀÖÀ½.
+		if(menu != 0)	//ì£¼ë¬¸ì„ ì´ë¯¸ ë„£ì—ˆìŒ == OUTSOURCING COMPANY ì— ORGAN_ID ê°€ ìˆìŒ.
 		{
-				// ÁÖ¹®À» ³Ö°í ¿ÜÁÖ¾÷Ã¼ Ãø¿¡¼­ ½ÂÀÎ ÇßÀ½ ==  ¹è´Şºñ°¡ »êÁ¤µÊ
+				// ì£¼ë¬¸ì„ ë„£ê³  ì™¸ì£¼ì—…ì²´ ì¸¡ì—ì„œ ìŠ¹ì¸ í–ˆìŒ ==  ë°°ë‹¬ë¹„ê°€ ì‚°ì •ë¨
 				if(menu == 2){
 				%>
 				<script type="text/javascript">
-				alert('ÁÖ¹®ÀÌ ½ÂÀÎµÇ¾ú½À´Ï´Ù.')
+				alert('ì£¼ë¬¸ì´ ìŠ¹ì¸ë˜ì—ˆìŠµë‹ˆë‹¤.')
 				location.href="../Mypage.jsp";
 				</script>
 				<%			
 				}
-				// ÁÖ¹®À» ³Ö¾úÁö¸¸ ¿ÜÁÖ ¾÷Ã¼ Ãø¿¡¼­ ½ÂÀÎÀ» ¾ÈÇßÀ½
+				// ì£¼ë¬¸ì„ ë„£ì—ˆì§€ë§Œ ì™¸ì£¼ ì—…ì²´ ì¸¡ì—ì„œ ìŠ¹ì¸ì„ ì•ˆí–ˆìŒ
 				else{
 				%>
 				<script type="text/javascript">
-				alert('ÁÖ¹® ½ÂÀÎ ´ë±â Áß ÀÔ´Ï´Ù.')
+				alert('ì£¼ë¬¸ ìŠ¹ì¸ ëŒ€ê¸° ì¤‘ ì…ë‹ˆë‹¤.')
 				location.href="../Mypage.jsp";
 				</script>
 				<%
 				}
 				
 		}
-		else{	// ÁÖ¹®À» ³ÖÁö ¾Ê¾ÒÀ½.
+		else{	// ì£¼ë¬¸ì„ ë„£ì§€ ì•Šì•˜ìŒ.
 			String companyid = request.getParameter("company_id");
-			//¹è¼Û°¹¼ö ±âºÎ´ÜÃ¼¸í ±âºÎ´ÜÃ¼ID »óÇ°À¯Çü µğÀÚÀÎ
+			//ë°°ì†¡ê°¯ìˆ˜ ê¸°ë¶€ë‹¨ì²´ëª… ê¸°ë¶€ë‹¨ì²´ID ìƒí’ˆìœ í˜• ë””ìì¸
 		%>
 			<form action = "./order.jsp" method="POST">
-			¹è¼Û °¹¼ö : <input type ="text" name ="product_num">
-			»óÇ° À¯Çü : <select name="production_type">
+			ë°°ì†¡ ê°¯ìˆ˜ : <input type ="text" name ="product_num">
+			ìƒí’ˆ ìœ í˜• : <select name="production_type">
 			    <option value="BADGE" selected>BADGE</option>
 			    <option value="BAG">BAG</option>
 			    <option value="BRACLET">BRACLET</option>
@@ -93,11 +91,11 @@ if(org_name!=null){
 			    <option value="TUMBLER">TUMBLER</option>
 			    
 				</select>
-			µğÀÚÀÎ : <input type ="text" name ="design">
+			ë””ìì¸ : <input type ="text" name ="design">
 				<input type = "hidden" name = "org_name" value = <%=org_name %>>
 				<input type = "hidden" name = "org_id" value = <%=userid %>>
 				<input type = "hidden" name = "companyid" value = <%=companyid %>>
-			<input type="submit" value="¿Ï·á"> <button type="button" onclick="location='../Main.jsp'">Ãë¼Ò</button>
+			<input type="submit" value="ì™„ë£Œ"> <button type="button" onclick="location='../Main.jsp'">ì·¨ì†Œ</button>
 			</form>
 		
 		
@@ -107,5 +105,7 @@ if(org_name!=null){
 
 
 %>
-</body>
-</html>
+</div>
+	
+	<%@include file ="../static/footer_for_D.jsp" %>
+</div> 

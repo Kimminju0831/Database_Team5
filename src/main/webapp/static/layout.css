@@ -1,6 +1,7 @@
 @font-face{
 	src: url("../fonts/SangSangTitle.ttf");
     font-family: "font1"; 
+    
  }
  
  html, body{
@@ -8,6 +9,27 @@
 	padding: 0;
 	height: 100%;
 	font-family: "font1";
+}
+
+#hello {
+	font-size : 50px;
+	margin-left: 40%;
+	float:left;
+}
+
+#hello2 {
+	font-size : 20px;
+	margin-left: 60%;
+	float: left;
+	margin-left:0px;
+	margin-top: 40px;
+	margin-right: 100px;
+}
+
+#hello-img {
+	width: 100px;
+	float : left;
+	margin-left: 30%;
 }
 
 #img {
@@ -36,7 +58,7 @@ header {
 	height:  150px;
 	/*background-color: rgba(240, 236, 236);*/
 	margin-top: 0;
-	background-color: rgb(255, 255, 255);
+	background: linear-gradient( to bottom, rgb(255, 255, 255), rgb(243, 240, 240) );
 	box-shadow: 0px 2px 3px 0px rgb(156, 156, 156);
 	
 }
@@ -77,10 +99,43 @@ header {
 	
 }
 
+
+
 #header-text1 {
 	width: 150px;
 	font-weight: bold;
 	
+}
+
+#header-login {
+	position:absolute;
+	z-index:1;
+	width: 150px;
+	font-weight: bold;
+	text-decoration-line: none;
+}
+
+#header-login:link { color:black; }
+
+#header-login:visited { color:black; }
+
+#header-login:hover {
+	color: rgb(255, 0, 0);
+}
+
+#header-join {
+	position:absolute;
+	z-index:1;
+	font-weight: bold;
+	text-decoration-line: none;
+}
+
+#header-join:link { color:black; }
+
+#header-join:visited { color:black; }
+
+#header-join:hover {
+	color: rgb(255, 0, 0);
 }
 
 #header-content2 { 
@@ -93,8 +148,9 @@ header {
 
 #header-text2 {
 	font-weight: bold;
-
 }
+
+
 
 #header-content3 { 
 	width: 200px;
@@ -239,6 +295,31 @@ header {
 #banner-support:visited { color:black; }
 
 #banner-support:hover {
+	color: rgb(255, 0, 0);
+}
+
+#header-banner6 {
+	float:left;
+	margin-left: 6%;
+	margin-top: 10px;
+	width: 130px;
+	height: 33px;
+	
+	box-sizing: border-box;
+}
+
+#banner-cont {
+	position:absolute;
+	z-index:1;
+	text-decoration-line: none;
+	box-sizing: border-box;
+}
+
+#banner-cont:link { color:black; }
+
+#banner-cont:visited { color:black; }
+
+#banner-cont:hover {
 	color: rgb(255, 0, 0);
 }
 
