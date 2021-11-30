@@ -21,7 +21,7 @@
 	    		<br><br>
 	     		<a id = "footer-content-text2">
 	     			폰트 | 로고 @ 여기어때 '잘난체'<br>
-	     			개발 환경 | Eclips-IDE , Oracle DB <br>
+	     			개발 환경 | Eclipse-IDE , Oracle DB <br>
 	     			데이터 베이스 팀프로젝트<br>
 	     			Copyright ⓒ 2021. All Rights Reserved.<br>
 	     		</a>
@@ -34,6 +34,3 @@
 	     </div>
      </div>
 </footer>
-</div>
-</body>
-</html>
