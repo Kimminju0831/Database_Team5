@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Main page</title>
-</head>
-<body>
+    pageEncoding="UTF-8"%>
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 <p>Preference Insert Site - 취향 등록 사이트</p>
 	
 	<form action="./preference.jsp" method="post">
@@ -108,5 +107,7 @@
 	
 	<a href="Main.jsp">메인 페이지로 이동하기</a>
 	<br>
-</body>
-</html>
+</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 

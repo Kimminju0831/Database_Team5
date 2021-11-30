@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>선물할 대상 조회</title>
-</head>
-<body>
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 	<h2> 선물하고자 하는 분의 아이디를 입력해주세요.</h2>
 	<br/>
 	<form method="post" action = "gift_Show_preference.jsp">
@@ -14,5 +13,7 @@
 	
 	<input type="reset" value="Reset"> 
 	<input type="submit"value="Submit">
-</body>
-</html>
+</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 

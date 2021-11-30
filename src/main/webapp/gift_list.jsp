@@ -1,26 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page language = "java" import="java.text.*, java.sql.*" %>
-<%@page import="java.util.*" %>
-<%@ page import="user.Gift"%> 
-<%@ page import="user.mac"%> 
-<%@ page import="user.window"%> 
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
 
-
-<jsp:useBean id="user" class="user.User" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAddress" />
-<jsp:setProperty name="user" property="userPhone" />
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>주문내역</title>
-</head>
-<body>
 	<%
 		String userid = ""; 
 		if (session.getAttribute("userID") == null) {
@@ -94,5 +79,7 @@
 				out.println("</table>");
 		%>
 		<a href = 'Main.jsp'>메인 페이지</a>
-</body>
-</html>
+</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 

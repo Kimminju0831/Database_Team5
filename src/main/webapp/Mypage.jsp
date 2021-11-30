@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
+<<<<<<< HEAD
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+=======
 <%@ page import="user.UserDao"%>
 <%@ page import="user.DAO"%>
 <%@ page import="user.Select"%>
@@ -28,6 +34,7 @@
 <link href="./style.css" rel="stylesheet">
 </head>
 <body>
+>>>>>>> 23f5eee71c8e9c70944b63801d05e374f3e11b2c
 	
 <%
 	
@@ -200,5 +207,8 @@ out.println("<br>");
 	
 	<a href = 'Main.jsp'>메인 페이지</a>
 	<br>
-</body>
-</html>
+
+	</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 

@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page language = "java" import="java.text.*, java.sql.*" %>
-<%@ page import="user.mac"%> 
-<%@ page import="user.window"%> 
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 
 <!DOCTYPE html>
 <html>
@@ -76,5 +79,7 @@
 	<br/><br/>
 	<a href = 'Main.jsp'>메인 페이지</a>
 	<a href = 'gift_list.jsp'>선물 주문내역 페이지</a>
-</body>
-</html>
+</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 
