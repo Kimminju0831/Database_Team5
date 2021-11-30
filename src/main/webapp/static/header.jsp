@@ -15,9 +15,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>HelloMyPage</title>
-</head>
-<body>
 <%
 if (session.getAttribute("userID") == null) {
 	out.println("<a href='login.jsp'>로그인</a>");
@@ -65,3 +62,5 @@ if (session.getAttribute("userID") == null) {
 	}
 %>		
 	</header>
+</head>
+<body>
