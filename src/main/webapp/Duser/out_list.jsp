@@ -36,6 +36,7 @@
 		end = count;
 	}
 	
+	int mine = 0;
 %>	
 <meta charset="EUC-KR">
 <title>아웃 소싱 기업 페이지</title>
@@ -45,12 +46,10 @@
 	
 	String usert = "";
 	if (session.getAttribute("userID") == null) {
-		out.println("<a href='login.jsp'>로그인</a>");
+
 	}else
 	{
 		usert = (String)session.getAttribute("userType");
-		out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
-		out.println("<a href='../logout.jsp'>로그아웃</a>");
 		
 	}
 		
@@ -98,6 +97,11 @@
 			<tr>
 				<td><%=board.getn() %></td>	
 				<td><%=board.getCOMPANY_ID() %></td>
+			<%
+				if(board.getCOMPANY_ID().compareTo(userid)==0){
+					mine = 1;
+				}
+			%>
 				<form action = "Donate_order.jsp" method="post">
 				<input type = "hidden" name = "company_id" value = <%=board.getCOMPANY_ID() %>>
 			<%
@@ -136,18 +140,21 @@
 						
 						for( int i = startPagenum ; i <= endPagenum ; i++){
 							if(i==current){
+								if(endPagenum != 1){
 				%>
 								[<%=i %>]
 				
-				<% 	
+				<% 				}		
+								
+				
 							}else{
 				%>
 								<a href="out_list.jsp?pageNum=<%=i %>">[<%=i %>]</a>		
 				<%					 				
 								
 							}
+							
 						}
-						
 						if(endPagenum < pageCount){
 				%>
 							<a href="out_list.jsp?pageNum=<%=startPagenum + 10 %>">[다음]</a>	
@@ -162,9 +169,12 @@
 %>
 <%			
 		}else if(usert.equals("outsourcing")){
-%>
-		<button onclick="location='../Ouser/reg.jsp'">등록하기</button>
-<%			
+			if(mine == 0){
+%>		
+				<button onclick="location='../Ouser/reg.jsp'">등록하기</button>
+<%					
+			}
+		
 		}
 	
 %>

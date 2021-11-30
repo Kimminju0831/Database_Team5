@@ -43,11 +43,13 @@ if(usert.equals("basic")){
 		out.println(present);
 %>
 	
-
+	<br>
+	</br>
+	
 
 	<h3>기부 참여 목록</h3>
 	<%
-		DAO manager2 = DAO.getInstance();
+	DAO manager2 = DAO.getInstance();
 	
 	List<DonateDTO> list = null;
 	
@@ -189,7 +191,7 @@ if(usert.equals("basic")){
 	
 }
 
-out.println("<a href = 'Delete_path.jsp'>회원 탈퇴 페이지</a>");
+//out.println("<a href = 'Delete_path.jsp'>회원 탈퇴 페이지</a>");
 out.println("<br>");
 %>
 	</table>
