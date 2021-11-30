@@ -17,7 +17,7 @@ input[type="radio"] {
 input[type="radio"]+label {
 	display: inline-block;
 	padding: 25px;
-	background: #f8a4bf;
+	background: #fea4a4;
 	color: #000000;
 	font-size: 18px;
 	cursor: pointer;
@@ -56,6 +56,7 @@ input[id="tab4"]:checked ~ .con4 {
 	display: block;
 }
 </style>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file ="static/header.jsp" %> 
@@ -63,6 +64,7 @@ input[id="tab4"]:checked ~ .con4 {
 <head>
 <meta charset="UTF-8">
 <link href="./style.css" rel="stylesheet">
+<link rel="stylesheet" href="static/button.css">
 
 </head>
 <div id = "body-wrapper">
@@ -96,8 +98,10 @@ input[id="tab4"]:checked ~ .con4 {
 			<input type="reset" value="Reset"> <input type="submit" value="Submit">
 
 			<br>
-			<a href="Main.jsp"><p2>메인 페이지로 이동하기</p2></a>
-			<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
+				<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
+			</div>
 			
 		</form>
 
@@ -114,10 +118,11 @@ input[id="tab4"]:checked ~ .con4 {
            	<input type="reset" value="Reset"> <input type="submit" value="Submit">
 
 			<br>
-			<a href="Main.jsp"><p2>메인 페이지로 이동하기</p2></a>
-			<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
-            
-	
+				<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
+			</div>
+			
 	</form>
 	
 	
@@ -133,9 +138,11 @@ input[id="tab4"]:checked ~ .con4 {
             
 			<input type="reset" value="Reset"> <input type="submit" value="Submit">
 <br>
-			<a href="Main.jsp"><p2>메인 페이지로 이동하기</p2></a>
-			<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
-	</form>
+				<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
+			</div>
+			</form>
 	</div>
 	
 	
@@ -152,9 +159,11 @@ input[id="tab4"]:checked ~ .con4 {
 		<input type="reset" value="Reset"> <input type="submit" value="Submit">
 
 			<br>
-			<a href="Main.jsp"><p2>메인 페이지로 이동하기</p2></a>
-			<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
-	</form>
+				<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
+			</div>
+				</form>
 	
 	</div>
 	
@@ -170,10 +179,12 @@ input[id="tab4"]:checked ~ .con4 {
 		<input type="reset" value="Reset"> <input type="submit" value="Submit">
 
 			<br>
-			<a href="Main.jsp"><p2>메인 페이지로 이동하기</p2></a>
-			<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
-	</form>
-	
+			<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
+			</div>
+			
+			</form>	
 	</div>
 	
 	
@@ -190,9 +201,11 @@ input[id="tab4"]:checked ~ .con4 {
 		<input type="reset" value="Reset"> <input type="submit" value="Submit">
 
 			<br>
-			<a href="Main.jsp"><p2>메인 페이지로 이동하기</p2></a>
-			<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
-	</form>
+				<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
+			</div>
+				</form>
 	
 	</div>
 	
@@ -207,9 +220,11 @@ input[id="tab4"]:checked ~ .con4 {
 	
 	<input type="reset" value="Reset"> <input type="submit" value="Submit">
 			<br>
-			<a href="Main.jsp"><p2>메인 페이지로 이동하기</p2></a>
-			<a href='select_query_menu.jsp'><p2>질의 메뉴 페이지로 이동하기</p2></a>
-	</form>
+				<div class="container2">
+<a class ="btn btn" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn" href='select_query_menu.jsp'><p4>질의 메뉴 페이지로 이동하기</p4></a>
+			</div>
+				</form>
 	<%@include file ="static/footer.jsp" %> 
 	
 	</div>
