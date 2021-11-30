@@ -125,7 +125,6 @@ if(usert.equals("basic")){
 			<tr>
 <% 		
 			ExBoardDTO hi = new ExBoardDTO();
-
 			hi = manager.donation_content(userid);
 %>
 			<td><%=hi.gettitle() %></td>

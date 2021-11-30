@@ -36,20 +36,20 @@
 		out.println(usert + " 회원 | " + userid+" 님 반갑습니다! <br>");
 		out.println("<a href='logout.jsp'>로그아웃</a>");
 		out.println("<br>");
-		out.println("<a href='info_id_user.html'>아이디 변경</a>");
+		out.println("<a href='info_id_user0.jsp'>아이디 변경</a>");
 		out.println("<br>");
-		out.println("<a href='info_pw_user.html'>비밀번호 변경</a>");
+		out.println("<a href='info_pw_user0.jsp'>비밀번호 변경</a>");
 		out.println("<br>");
-		out.println("<a href='info_name_user.html'>이름 변경</a>");
+		out.println("<a href='info_name_user0.jsp'>이름 변경</a>");
 		out.println("<br>");
-		out.println("<a href='info_phone_user.html'>전화번호 변경</a>");
+		out.println("<a href='info_phone_user0.jsp'>전화번호 변경</a>");
 		out.println("<br>");
-		out.println("<a href='info_address_user.html'>주소 변경</a>");
+		out.println("<a href='info_address_user0.jsp'>주소 변경</a>");
 		
 		out.println("<br>");out.println("<br>");
-		out.println("<a href='info_gi_user.html'>선물 취향 변경</a>");
+		out.println("<a href='info_gi_user0.jsp'>선물 취향 변경</a>");
 		out.println("<br>");
-		out.println("<a href='info_do_user.html'>기부 취향 변경</a>");
+		out.println("<a href='info_do_user0.jsp'>기부 취향 변경</a>");
 		
 	}
 	
