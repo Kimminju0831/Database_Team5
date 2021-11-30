@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 /* <- Demo Stuff Start */
 
 body{
@@ -41,4 +40,3 @@ body{
 .btn:hover {
   background-position: right center; 
 }
-

@@ -90,7 +90,7 @@
 %>
 <%
 		if (session.getAttribute("userID") == null) {
-			out.println("<a href='login.jsp'>로그인</a>");
+			
 		}else
 		{
 			userid = (String)session.getAttribute("userID");
@@ -99,10 +99,15 @@
 	
 		if(usert.equals("basic")){
 %>
-		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=all%>">전체 보기</a>
-		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=best%>">베스트</a>
-		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=period%>">기간 맞춤</a>
-		<a href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=bene%>">수혜자 맞춤</a>
+		<br>
+		</br>
+		<div id = "mode_set">
+			<a id="list_mode" href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=all%>">전체 보기</a>
+			<a id="list_mode" href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=best%>">베스트</a>
+			<a id="list_mode" href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=period%>">기간 맞춤</a>
+			<a id="list_mode" href="Donation_list.jsp?pageNum=<%=1%>&&mode=<%=bene%>">수혜자 맞춤</a>
+		</div>
+
 <%
 		}
 		else if(usert.equals("donate") ){
@@ -119,17 +124,17 @@
 			
 		}
 %>
-		<h3>게시판 목록</h3>
-		<table>
+		<h3 style="margin-left:30px;">게시판 목록</h3>
+		<table id = "donation_table" style="margin-left:30px;">
 			<tr>
-				<td width = "10%">번호</td>
-				<td width = "20%">기간</td>
-				<td width = "30%">수혜자</td>
-				<td width = "20%">단체명</td>
+				<td width = "100px">번호</td>
+				<td width = "150px">기간</td>
+				<td width = "300px">수혜자</td>
+				<td width = "300px">단체명</td>
 			<%	
 				if(usert.equals("basic")){
 				
-					out.println("<td width = \"10%\">신청</td></tr>");
+					out.println("<td width = \"100px\">신청</td></tr>");
 				
 				}
 			
@@ -142,6 +147,7 @@
 				<td><%=result.getcontent() %></td>
 				<td><%=mydonate %></td>
 				</tr>
+				<tr>
 			<% 		
 					
 				}
@@ -152,7 +158,7 @@
 						board = list.get(i);
 						if(board.getip().compareTo("$")!=0){
 							%>
-								<tr>
+								
 								<form method="post" action = "Donation_Content.jsp">
 									<td><%=board.getn() %></td>	
 									<td><%=board.getip() %></td>
@@ -190,11 +196,12 @@
 			
 			%>	
 				
-			</form>
-			</tr>
+					</form>
+				</tr>
 			
-			<tr>
-			<td>
+			
+			
+			
 			<%
 					}
 				}else if(usert.equals("basic")){
@@ -203,7 +210,9 @@
 			
 				}
 			%>
+			</table>
 			
+			<div id="page_num_block">
 			<% 
 						
 				int pageCount = count / pageNum + (count%pageNum ==  0 ? 0 : 1);
@@ -219,7 +228,7 @@
 						
 						if(startPagenum > Block){
 			%>
-						<a href="Donation_list.jsp?pageNum=<%=startPagenum - 10%>&&mode=<%=mode%>">[이전]</a>
+						<a id="page_num" href="Donation_list.jsp?pageNum=<%=startPagenum - 10%>&&mode=<%=mode%>">[이전]</a>
 			<%
 						}
 						
@@ -227,13 +236,13 @@
 						for( int i = startPagenum ; i <= endPagenum ; i++){
 							if(i==current){
 			%>
-							[<%=i %>]
+							<a id="page_num">[<%=i %>]</a>
 			
 			<% 			
 							}else{
 								 
 			%>
-							<a href="Donation_list.jsp?pageNum=<%=i %>&&mode=<%=mode%>">[<%=i %>]</a>		
+							<a id="page_num" href="Donation_list.jsp?pageNum=<%=i %>&&mode=<%=mode%>">[<%=i %>]</a>		
 			<%					
 								
 							}
@@ -242,7 +251,7 @@
 						if(endPagenum < pageCount){
 								
 			%>
-							<a href="Donation_list.jsp?pageNum=<%=startPagenum + 10 %>&&mode=<%=mode%>">[다음]</a>	
+							<a id="page_num" href="Donation_list.jsp?pageNum=<%=startPagenum + 10 %>&&mode=<%=mode%>">[다음]</a>	
 							
 			<%
 						}
@@ -256,9 +265,7 @@
 							
 						}
 			%>
-			</td>
-			</tr>
-		</table>
+			</div>
 	</div>
 	
 	<%@include file ="static/footer.jsp" %>

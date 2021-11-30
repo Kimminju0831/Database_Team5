@@ -14,7 +14,7 @@
 <title>선물 취향 공개</title>
 </head>
 <body>
-	<h1>조회하신 아이디의 선물 취향을 알려드립니다.</h1>
+	<h1 style="margin-top:10%;" >조회하신 아이디의 선물 취향을 알려드립니다.</h1>
 	
 	<%
 	PreparedStatement ps;
@@ -34,7 +34,7 @@
 		request.setCharacterEncoding("UTF-8");
 		String recvid = request.getParameter("recvid");//선물 줄 사람 아이디
 	%>
-	
+		<a style="margin-top:7%;" >
 	<%
 		String result[] = new String[3];
 		
@@ -47,19 +47,16 @@
 			result[2] = rs.getString(3).substring(0,10);
        	}
 		
-		out.println("검색하신 " + recvid +"님의 선물 취향을 알려드립니다.");
+		out.println("<a style=\"font-size:20px;\">검색하신 " + recvid +"님의 선물 취향을 알려드립니다.</a>");
 		out.println("<hr>");
-		out.println("<br/>");
-		out.print("<table border =" + "2 " + "width =" + "800" + "align ="
-                + "center " + "bordercolor =" + "darkblue " + "cellspacing ="
-                + "2 " + " bordercolor =" + "blue >");
+		out.print("<table style=\"border-spacing: 0 20px; font-size: 20px; \">");
         out.print("<tr>");
-        out.print("<th>" + "ID" + "</th>");
-        out.print("<th>" + "상품 종류" + "</th>");
-        out.print("<th>" + "상품" + "</th>");
-        out.print("<th>" + "등록일자" + "</th>");
+        out.print("<td style=\"font-weight:bold;\" width = \"100px\">" + "ID" + "</td>");
+        out.print("<td style=\"font-weight:bold;\" width = \"200px\">" + "상품 종류" + "</td>");
+        out.print("<td style=\"font-weight:bold;\" width = \"200px\">" + "상품" + "</td>");
+        out.print("<td style=\"font-weight:bold;\" width = \"200px\">" + "등록일자" + "</td>");
         out.print("</tr>");
- 
+        
         out.println("<td>" + recvid + "</td>");
         out.println("<td>" + result[0] + "</td>");
         out.println("<td>" + result[1] + "</td>");
@@ -69,15 +66,18 @@
 	%>
 
 	<br/>
-	<a href = "gift_mall.jsp?protype=<%=result[0]%>&product=<%=result[1]%>&recvid=<%=recvid%>&user=">
-		<div style="text-align:center">
-		<%=recvid%>님의 선물 취향과 관련된 사이트가 궁금하신가요?
+	<br>
+	<br/>
+	<br>
+	<a href = "gift_mall.jsp?protype=<%=result[0]%>&product=<%=result[1]%>&recvid=<%=recvid%>&user="
+			style="font-size:30px; text-decoration-line: none; font-weight: bold;">
+		<div>
+			<%=recvid%>님의 선물 취향과 관련된 사이트가 궁금하신가요?
 		</div>
 	</a>
-	
+	<hr>
 	
 	<br/><br/>
-	<a href = 'Main.jsp'>메인 페이지</a>
 	<a href = 'gift_list.jsp'>선물 주문내역 페이지</a>
 </div>
 	
