@@ -3,6 +3,9 @@
 <!-- import JDBC package -->
 <%@include file ="static/header.jsp" %> 
 <link rel="stylesheet" href="static/main.css">
+<link rel="stylesheet" href="static/button.css">
+<link href="./style.css" rel="stylesheet">
+
 <div id = "body-wrapper">
    	<div id ="body-content">
 
@@ -171,15 +174,18 @@ if(usert.equals("basic")){
 	
 }
 
-out.println("<a href = 'Delete_path.jsp'>회원 탈퇴 페이지</a>");
-out.println("<br>");
 %>
-	</table>
+
+</table>
 	
-	<a href = 'Main.jsp'>메인 페이지</a>
 	<br>
 
 	</div>
+	<div class="container2">
+<a class ="btn btn-1" href='Main.jsp'><p4>메인 페이지</p4></a>
+<a class ="btn btn-1" href='Delete_path.jsp'><p4>회원 탈퇴 페이지</p4></a>
+
+</div>
 	
 	<%@include file ="static/footer.jsp" %>
 </div> 
