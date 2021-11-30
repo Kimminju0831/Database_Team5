@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file ="static/header.jsp" %> 
+	
 <!DOCTYPE html>
 <html>
 <head>
 <title>join.jsp</title>
 </head>
 <body>
-
+<div id = "body-wrapper">
+   	<div id ="body-content">
 	<div class="container">
 
 		<form method="post" action="joinAction.jsp">
@@ -23,7 +26,10 @@
 		</form>
 	</div>
 
-
+<%@include file ="static/footer.jsp" %> 
+	
+	
+	</div></div>
 
 
 </body>
