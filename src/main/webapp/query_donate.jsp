@@ -61,7 +61,7 @@ input[id="tab4"]:checked ~ .con4 {
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file ="static/header.jsp" %> 
-
+<html>
 <head>
 <meta charset="UTF-8">
 <link href="./style.css" rel="stylesheet">
@@ -161,7 +161,9 @@ input[id="tab4"]:checked ~ .con4 {
 	
 	</div>
 	</div>
-	</div>
 	
-
-</div>
+	<%@include file ="static/footer.jsp" %>
+	</div>
+	</div>
+</body>
+</html>
