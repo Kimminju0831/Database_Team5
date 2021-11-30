@@ -1,12 +1,11 @@
-<%@page import="user.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
-<%@ page language = "java" import = "java.text.*, java.sql.*" %>    
-<%@ page import="user.*"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.List"%>
-<!DOCTYPE html5>
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 <%
 
 	String best = "best";
@@ -77,14 +76,6 @@
 	}
 	
 %>
-<html>
-
-<head>
-<meta charset="EUC-KR">
-<title>Donate page</title>
-</head>
-
-<body>
 <%
 		if (session.getAttribute("userID") == null) {
 			out.println("<a href='login.jsp'>로그인</a>");
@@ -227,6 +218,7 @@
 			</td>
 			</tr>
 		</table>
-		<a href = "Main.jsp">메인 페이지로</a>
-</body>
-</html>
+	</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 

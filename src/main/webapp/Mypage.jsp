@@ -1,31 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- import JDBC package -->
-<%@ page import="user.UserDao"%>
-<%@ page import="user.DAO"%>
-<%@ page import="user.Select"%>
-<%@ page import="user.DonateDTO"%>
-<%@ page import="user.ExBoardDTO"%>
-<%@ page import="user.OrderDTO"%>
-
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.List"%>
-
-<%@ page language = "java" import = "java.text.*, java.sql.*" %>   
-
-<jsp:useBean id="user" class="user.User" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userPassword" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAddress" />
-<jsp:setProperty name="user" property="userPhone" />
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>My page</title>
-</head>
-<body>
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
 	
 <%
 	
@@ -199,5 +178,8 @@ out.println("<br>");
 	
 	<a href = 'Main.jsp'>메인 페이지</a>
 	<br>
-</body>
-</html>
+
+	</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 

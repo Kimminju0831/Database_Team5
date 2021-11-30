@@ -1,32 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page language = "java" import="java.text.*, java.sql.*" %>
-<%@page import="java.util.*" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>사이트 추천</title>
-</head>
-<body>
+<!-- import JDBC package -->
+<%@include file ="static/header.jsp" %> 
+<link rel="stylesheet" href="static/main.css">
+<div id = "body-wrapper">
+   	<div id ="body-content">
+
 	
 	
 	<%
-		String serverIP = "localhost";
-		String strSID = "xe";
-		String portNum = "1600";
-		String user = "ta";
-		String pass = "ta";
-		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-		
-		Connection conn = null;
-		Statement stmt = null;
-		
-		PreparedStatement ps;
-		ResultSet rs;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url, user, pass);
-		stmt = conn.createStatement();
+	PreparedStatement ps;
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs;
+	
+	window con = window.getInstance();
+	
+	conn = con.connect();
+	
+	stmt = conn.createStatement();
 
 	%>
 	
@@ -86,5 +78,7 @@
 	<br/>
 		<a href = 'Main.jsp'>메인 페이지</a>
 		<a href = 'gift_list.jsp'>선물 주문내역 페이지</a>
-</body>
-</html>
+</div>
+	
+	<%@include file ="static/footer.jsp" %>
+</div> 
