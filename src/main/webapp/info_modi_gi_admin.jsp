@@ -9,21 +9,15 @@
       <div id ="body-content">
 	
 	<%
-		String serverIP = "localhost";
-		String strSID = "xe";
-		String portNum = "1600";
-		String username = "ta";
-		String pass = "ta";
-		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-		
-		Connection conn = null;
-		Statement stmt = null;
-		
-		PreparedStatement ps;
-		ResultSet rs;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url, username, pass);
-		stmt = conn.createStatement();
+
+	PreparedStatement ps;
+	Connection conn = null;
+	PreparedStatement stmt = null;
+	ResultSet rs;
+	
+	window con = window.getInstance();
+	
+	conn = con.connect();
 
 	%>
 	

@@ -8,21 +8,15 @@
 <div id = "body-wrapper">
       <div id ="body-content">
 	<%
-		String serverIP = "localhost";
-		String strSID = "xe";
-		String portNum = "1600";
-		String username = "ta";
-		String pass = "ta";
-		String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-		
-		Connection conn = null;
-		Statement stmt = null;
-		
-		PreparedStatement ps;
-		ResultSet rs;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		conn = DriverManager.getConnection(url, username, pass);
-		stmt = conn.createStatement();
+
+	PreparedStatement ps;
+	Connection conn = null;
+	PreparedStatement stmt = null;
+	ResultSet rs;
+	
+	window con = window.getInstance();
+	
+	conn = con.connect();
 
 	%>
 	
@@ -40,7 +34,7 @@
 	<%
 		int repeat = 0;
 		out.println("------ 관리자 권한 사용자 정보 수정  ------ <br/><br/>");
-	 	String check_sql = "select user_id from users WHERE user_id='"+ adminid + "'";
+	 	String check_sql = "select user_id from users WHERE user_id='"+ adminid + "' for update";
      	String check_id = "";
         rs = stmt.executeQuery(check_sql);
         while(rs.next()) {
@@ -49,7 +43,7 @@
         
         if(check_id.equals("000-00-0000"))//관리자 아이디 검사
         {
-        	String check_pw_sql = "select user_pwd from users WHERE user_id= '"+ check_id +"'";
+        	String check_pw_sql = "select user_pwd from users WHERE user_id= '"+ check_id +"' for update";
 			String check_pwd = "";
         	rs = stmt.executeQuery(check_pw_sql);
         	while(rs.next()) {
