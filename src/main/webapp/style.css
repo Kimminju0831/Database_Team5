@@ -23,6 +23,8 @@ p {
 	font-size: 25px;
 }
 
+
+
 p1 {
 	font-family: "font1";
 	font-size: 30px;
@@ -33,6 +35,17 @@ p2 {
 	font-size: 15px;
 }
 
+p3 {
+	font-family: "font1";
+	font-size: 15px;
+}
+
+
+
+h1 {
+	font-family: "font1";
+	font-size: 35px;
+}
 
 
 table {
