@@ -135,8 +135,7 @@
 			
 		}
 %>		
-		
-		</br>
+
 		<h3 style="margin-left:30px;">게시판 목록</h3>
 	
 		<hr>
@@ -145,24 +144,24 @@
 			<%
 				if(usert.equals("basic")){
 			%>
-				<td width = "100px">번호</td>
-				<td width = "150px">기간</td>
-				<td width = "300px">수혜자</td>
-				<td width = "300px">단체명</td>
+				<td width = "100px" style="font-size:20px; font-weight:bold;">번호</td>
+				<td width = "150px" style="font-size:20px; font-weight:bold;">기간</td>
+				<td width = "300px" style="font-size:20px; font-weight:bold;">수혜자</td>
+				<td width = "300px" style="font-size:20px; font-weight:bold;">단체명</td>
 			<%
 				}else{
 			%>
-				<td width = "200px">번호</td>
-				<td width = "400px">기간</td>
-				<td width = "500px">수혜자</td>
-				<td width = "50px">단체명</td>
+				<td width = "200px" style="font-size:20px; font-weight:bold;">번호</td>
+				<td width = "400px" style="font-size:20px; font-weight:bold;">기간</td>
+				<td width = "500px" style="font-size:20px; font-weight:bold;">수혜자</td>
+				<td width = "50px"  style="font-size:20px; font-weight:bold;">단체명</td>
 			<%		
 					
 				}
 			
 				if(usert.equals("basic")){
 				
-					out.println("<td width = \"100px\">신청</td></tr>");
+					out.println("<td style=\"font-size:20px; font-weight:bold;\" >신청</td></tr>");
 				
 				}else{
 					out.println("</tr>");
@@ -216,11 +215,14 @@
 				
 				if(usert.equals("basic") && Contain == true){
 				%>	
-					<td>참여 중</td>
+					<td><a style="font-size:20px; margin-left: 30%;">참여 중</a></td>
 				<% 
 				}else if(usert.equals("basic") && Contain != true){
 				%>	
-					<td><input type="submit" value="참여하기"></td>
+					<td>
+					<div class="container2" style="width:200px; heigth:30px;">
+					<input type="submit"  value="참여하기" style="border:0; outline:0;" class ="btn btn-1"><p4></p4></a>
+					</td>
 				<% 
 				}
 			
@@ -297,6 +299,8 @@
 			%>
 			</div>
 	</div>
-	
+	<br><br><br><br><br><br>
+	<br><br><br><br><br><br>
+	<br><br><br><br><br><br>
 	<%@include file ="static/footer.jsp" %>
 </div> 

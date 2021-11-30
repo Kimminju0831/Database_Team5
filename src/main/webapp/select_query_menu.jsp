@@ -99,10 +99,16 @@
 	// out.println("관리자 계정이 아닙니다.");
 	%>
 	<br><br><br><br>
-	<div class="container2">
+	<div class="container2" style="width:900px;">
 	<a class ="btn btn" href='query_user.jsp'><p4>사용자 관련 질의 페이지</p4></a>
+	</div>
+	<div class="container2" style="width:900px;">
 	<a class ="btn btn" href='query_product.jsp'><p4>상품 자체 관련 질의 페이지</p4></a>
+	</div>
+	<div class="container2" style="width:900px;">
 	<a class ="btn btn" href='query_donate.jsp'><p4>기부 관련 질의 페이지</p4></a>
+	</div>
+	<div class="container2" style="width:900px;">
 	<a class ="btn btn" href='query_present.jsp'><p4>선물 관련 질의 페이지</p4></a>
 	</div>
 	<%
